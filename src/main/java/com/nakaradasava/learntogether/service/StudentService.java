@@ -1,6 +1,6 @@
 package com.nakaradasava.learntogether.service;
 
-import com.nakaradasava.learntogether.entity.StudentDetails;
+import com.nakaradasava.learntogether.entity.Student;
 import com.nakaradasava.learntogether.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +22,7 @@ public class StudentService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Optional<StudentDetails> optionalStudent = studentRepository.findByEmail(email);
+        final Optional<Student> optionalStudent = studentRepository.findByEmail(email);
 
         if (optionalStudent.isPresent()) {
             return optionalStudent.get();

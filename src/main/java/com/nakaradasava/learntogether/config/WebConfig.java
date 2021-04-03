@@ -19,7 +19,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public WebConfig(StudentService studentService, PasswordEncoder passwordEncoder) {
         this.studentService = studentService;
-        this.passwordEncoder = WebConfig.this.passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider())
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
 
     @Bean
