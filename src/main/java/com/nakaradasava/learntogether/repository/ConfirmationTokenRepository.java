@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationTokenRepository, Integer> {
+public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Integer> {
     public Optional<ConfirmationToken> findConfirmationTokenByConfirmationToken(String token);
 }
