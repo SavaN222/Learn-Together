@@ -1,6 +1,5 @@
 package com.nakaradasava.learntogether.entity;
 
-import com.nakaradasava.learntogether.validation.FieldMatch;
 import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,9 +16,6 @@ import java.util.List;
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldMatch.List({
-        @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
-})
 public class Student implements UserDetails {
 
     @Id
@@ -36,10 +32,6 @@ public class Student implements UserDetails {
     @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
     private String password;
-
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
-    private String matchingPassword;
 
     @ValidEmail
     @NotNull(message = "is required")
@@ -137,9 +129,5 @@ public class Student implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getMatchingPassword() {
-        return matchingPassword;
     }
 }
