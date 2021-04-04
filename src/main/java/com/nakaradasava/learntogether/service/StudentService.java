@@ -58,7 +58,7 @@ public class StudentService implements UserDetailsService {
     public void confirmRegistration(ConfirmationToken confirmationToken) {
         Student student = confirmationToken.getStudent();
 
-        student.isEnabled(true);
+        student.setEnabled(true);
 
         studentRepository.save(student);
 
