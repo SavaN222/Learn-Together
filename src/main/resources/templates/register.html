@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <title>Spring Boot User Authentication</title>
-</head>
-<body>
-<form role="form" th:action="@{/register}" th:method="post" th:object="${student}">
-    <lable>Username</lable>
-    <input type="text" id="name" name="name" th:field="*{username}">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-    <lable>Email</lable>
-    <input type="text" id="email" name="email" th:field="*{email}">
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
 
-    <lable>Password</lable>
-    <input type="password" id="password" name="password" th:field="*{password}">
 
-    <input type="submit">
-</form>
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
 </body>
 </html>
