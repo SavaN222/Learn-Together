@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <title>Welcome to Spring Security Thymeleaf tutorial</title>
-</head>
-<body>
-<h2>Welcome</h2>
-<p>Spring Security Thymeleaf tutorial</p>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
 <p>Username: <b sec:authentication="principal.name"></b></p>
 <p>Email: <b sec:authentication="principal.username"></b></p>
 
 <p>SAD SA CONTROLLEROM</p>
 <h1>Username: <span th:text="${student.name}"></span></h1>
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
 </body>
 </html>

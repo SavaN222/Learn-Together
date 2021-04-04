@@ -1,0 +1,16 @@
+/* Main Colors */
+.bg-main {
+    background-color: #1DB954;
+}
+.text-main {
+    color: #1db954;
+}
+.green-to-black {
+    background: rgb(29,185,84);
+    background: linear-gradient(90deg, rgba(29,185,84,1) 0%, rgba(0,0,0,1) 54%);
+}
+.main-to-darker {
+    background: rgb(29,185,84);
+    background: linear-gradient(90deg, rgba(29,185,84,1) 0%, rgba(4,70,27,1) 57%);
+}
+/* Other Section */
