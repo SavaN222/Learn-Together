@@ -138,4 +138,8 @@ public class Student implements UserDetails {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
 }

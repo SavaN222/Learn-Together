@@ -32,6 +32,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated().and()
                 .formLogin()
+                .usernameParameter("email")
                 .defaultSuccessUrl("/test", true);
     }
 
