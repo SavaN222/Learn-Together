@@ -43,6 +43,10 @@ public class StudentService implements UserDetailsService {
         }
     }
 
+    public Student findStudentByEmailOrUsername(String username, String email) {
+       return studentRepository.findByUsernameOrEmail(username, email);
+    }
+
     public void registerStudent(Student student) {
         student.setPassword(bCryptPasswordEncoder.encode(student.getPassword()));
         student.setRole("student");

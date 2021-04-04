@@ -5,14 +5,15 @@ import com.nakaradasava.learntogether.entity.Student;
 import com.nakaradasava.learntogether.service.ConfirmationTokenService;
 import com.nakaradasava.learntogether.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -28,6 +29,18 @@ public class StudentController {
         this.confirmationTokenService = confirmationTokenService;
     }
 
+    /**
+     * Trim all white spaces
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("student", new Student());
@@ -35,7 +48,21 @@ public class StudentController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute Student student) {
+    public String register(@Valid @ModelAttribute Student student,
+                           BindingResult bindingResult,
+                           Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        Student studentExist = studentService.findStudentByEmailOrUsername(student.getUsername(), student.getEmail());
+        if (studentExist != null) {
+            model.addAttribute("student", new Student());
+            model.addAttribute("registrationError", "username or email already exists.");
+            return "register";
+        }
+
         studentService.registerStudent(student);
 
         return "redirect:/login";
