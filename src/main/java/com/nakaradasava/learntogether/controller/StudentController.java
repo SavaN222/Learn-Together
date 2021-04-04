@@ -56,7 +56,8 @@ public class StudentController {
             return "register";
         }
 
-        Student studentExist = studentService.findStudentByEmailOrUsername(student.getUsername(), student.getEmail());
+        Student studentExist = studentService.findByUsernameOrEmail(student.getUsername(), student.getEmail());
+        System.out.println(studentExist);
         if (studentExist != null) {
             model.addAttribute("student", new Student());
             model.addAttribute("registrationError", "username or email already exists.");

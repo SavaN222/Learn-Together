@@ -33,17 +33,17 @@ public class StudentService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        final Optional<Student> optionalStudent = studentRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        final Optional<Student> optionalStudent = studentRepository.findByUsername(username);
 
         if (optionalStudent.isPresent()) {
             return optionalStudent.get();
         } else {
-            throw new UsernameNotFoundException("User with email " + email + " not found :(");
+            throw new UsernameNotFoundException("User with email " + username + " not found :(");
         }
     }
 
-    public Student findStudentByEmailOrUsername(String username, String email) {
+    public Student findByUsernameOrEmail(String username, String email) {
        return studentRepository.findByUsernameOrEmail(username, email);
     }
 

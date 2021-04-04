@@ -3,6 +3,7 @@ package com.nakaradasava.learntogether.entity;
 import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Student implements UserDetails {
 
     @Id
@@ -60,10 +62,6 @@ public class Student implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
-    }
-
-    public String getName() {
         return username;
     }
 
