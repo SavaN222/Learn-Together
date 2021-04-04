@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+<body>
+<h2>Welcome</h2>
+<p>Spring Security Thymeleaf tutorial</p>
+
+<p>Username: <b sec:authentication="principal.name"></b></p>
+<p>Email: <b sec:authentication="principal.username"></b></p>
+
+<p>SAD SA CONTROLLEROM</p>
+<h1>Username: <span th:text="${student.name}"></span></h1>
+</body>
+</html>
