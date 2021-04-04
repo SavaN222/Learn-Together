@@ -1,11 +1,15 @@
 package com.nakaradasava.learntogether.entity;
 
+import com.nakaradasava.learntogether.validation.FieldMatch;
+import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,6 +17,9 @@ import java.util.List;
 @Table(name = "student")
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldMatch.List({
+        @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+})
 public class Student implements UserDetails {
 
     @Id
@@ -21,11 +28,22 @@ public class Student implements UserDetails {
     private Integer id;
 
     @Column(name = "username")
+    @NotNull(message = "is required")
+    @Size(min = 3, message = "minimum length is 3")
     private String username;
 
     @Column(name = "password")
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String password;
 
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
+    private String matchingPassword;
+
+    @ValidEmail
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     @Column(name = "email")
     private String email;
 
