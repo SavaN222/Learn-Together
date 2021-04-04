@@ -26,12 +26,11 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/register/**")
+                    .antMatchers("/register/**", "/login/**", "/resources/**", "/js/**", "/styles/**", "/images/**")
                     .permitAll()
                 .anyRequest()
                 .authenticated().and()
                 .formLogin()
-//                .usernameParameter("email")
                 .defaultSuccessUrl("/test", true);
     }
 
