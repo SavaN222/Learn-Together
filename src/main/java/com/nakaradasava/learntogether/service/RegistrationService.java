@@ -5,9 +5,9 @@ import com.nakaradasava.learntogether.entity.RegistrationStudent;
 import com.nakaradasava.learntogether.entity.Student;
 import com.nakaradasava.learntogether.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 
 @Service
@@ -43,7 +43,7 @@ public class RegistrationService {
         ConfirmationToken confirmationToken = new ConfirmationToken(student);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        sendConfirmationMail(student.getEmail(), confirmationToken.getConfirmationToken());
+        sendConfirmationMail(student.getEmail(), student.getUsername(), confirmationToken.getConfirmationToken());
 
     }
 
@@ -57,15 +57,10 @@ public class RegistrationService {
         confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
     }
 
-    private void sendConfirmationMail(String userMail, String token) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        String link =   "http://localhost:8080/register/confirm?token=" + token;
+    private void sendConfirmationMail(String userMail, String username, String token) {
+        String link ="http://localhost:8080/register/confirm?token=" + token;
 
-        mailMessage.setTo(userMail);
-        mailMessage.setSubject("Learn Together - Confirm Registration");
-        mailMessage.setFrom("jessepickman321@gmail.com");
-        mailMessage.setText(buildEmail(userMail, link));
-        emailService.sendEmail(mailMessage);
+        emailService.sendEmail(userMail, buildEmail(username, link));
     }
 
     private String buildEmail(String name, String link) {
