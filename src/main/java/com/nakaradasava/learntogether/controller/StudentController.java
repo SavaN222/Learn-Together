@@ -72,7 +72,7 @@ public class StudentController {
         Optional<ConfirmationToken> optionalConfirmationToken =
                 confirmationTokenService.findConfirmationTokenByToken(token);
         optionalConfirmationToken.ifPresent(studentService::confirmRegistration);
-        return "login";
+        return "redirect:/login";
     }
 
 //    @GetMapping("/test")
