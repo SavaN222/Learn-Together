@@ -36,6 +36,7 @@ public class RegistrationService {
         student.setEmail(registrationStudent.getEmail());
         student.setPassword(bCryptPasswordEncoder.encode(registrationStudent.getPassword()));
         student.setCollege(registrationStudent.getCollege());
+        student.setStudyField(registrationStudent.getStudyField());
         student.setRole("student");
 
         studentRepository.save(student);

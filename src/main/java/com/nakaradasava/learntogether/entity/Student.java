@@ -1,6 +1,5 @@
 package com.nakaradasava.learntogether.entity;
 
-import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -8,8 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -46,6 +44,10 @@ public class Student implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "college_id", referencedColumnName = "id")
     private College college;
+
+    @ManyToOne
+    @JoinColumn(name = "study_field_id", referencedColumnName = "id")
+    private StudyField studyField;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -132,5 +134,13 @@ public class Student implements UserDetails {
 
     public void setCollege(College college) {
         this.college = college;
+    }
+
+    public StudyField getStudyField() {
+        return studyField;
+    }
+
+    public void setStudyField(StudyField studyField) {
+        this.studyField = studyField;
     }
 }

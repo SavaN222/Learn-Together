@@ -1,13 +1,7 @@
 package com.nakaradasava.learntogether.controller;
 
-import com.nakaradasava.learntogether.entity.College;
-import com.nakaradasava.learntogether.entity.ConfirmationToken;
-import com.nakaradasava.learntogether.entity.RegistrationStudent;
-import com.nakaradasava.learntogether.entity.Student;
-import com.nakaradasava.learntogether.service.CollegeService;
-import com.nakaradasava.learntogether.service.ConfirmationTokenService;
-import com.nakaradasava.learntogether.service.RegistrationService;
-import com.nakaradasava.learntogether.service.StudentService;
+import com.nakaradasava.learntogether.entity.*;
+import com.nakaradasava.learntogether.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -27,15 +21,18 @@ public class RegistrationController {
     private RegistrationService registrationService;
     private ConfirmationTokenService confirmationTokenService;
     private CollegeService collegeService;
+    private StudyFieldService studyService;
 
     @Autowired
     public RegistrationController(StudentService studentService, RegistrationService registrationService,
                                   ConfirmationTokenService confirmationTokenService,
-                                  CollegeService collegeService) {
+                                  CollegeService collegeService,
+                                  StudyFieldService studyService) {
         this.studentService = studentService;
         this.registrationService = registrationService;
         this.confirmationTokenService = confirmationTokenService;
         this.collegeService = collegeService;
+        this.studyService = studyService;
     }
 
     /**
@@ -53,9 +50,11 @@ public class RegistrationController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         List<College> colleges = collegeService.findColleges();
+        List<StudyField> studyFields = studyService.findStudyFields();
 
         model.addAttribute("student", new RegistrationStudent());
         model.addAttribute("colleges", colleges);
+        model.addAttribute("studyFields", studyFields);
 
         return "register";
     }
@@ -65,9 +64,11 @@ public class RegistrationController {
                            BindingResult bindingResult,
                            Model model) {
         List<College> colleges = collegeService.findColleges();
+        List<StudyField> studyFields = studyService.findStudyFields();
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("colleges", colleges);
+            model.addAttribute("studyFields", studyFields);
             return "register";
         }
 
@@ -75,6 +76,7 @@ public class RegistrationController {
         if (studentExist != null) {
             model.addAttribute("student", new RegistrationStudent());
             model.addAttribute("colleges", colleges);
+            model.addAttribute("studyFields", studyFields);
             model.addAttribute("registrationError", "username or email already exists.");
             return "register";
         }

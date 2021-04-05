@@ -41,4 +41,7 @@ public class RegistrationStudent {
 
     @NotNull(message = "is required")
     private College college;
+
+    @NotNull(message = "is required")
+    private StudyField studyField;
 }
