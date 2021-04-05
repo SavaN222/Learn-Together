@@ -29,9 +29,13 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/register/**", "/login/**", "/resources/**", "/js/**", "/styles/**", "/images/**")
                     .permitAll()
                 .anyRequest()
-                .authenticated().and()
+                .authenticated()
+                .and()
                 .formLogin()
-                .defaultSuccessUrl("/test", true);
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/test", true)
+                .and()
+                .logout().permitAll();
     }
 
     @Override

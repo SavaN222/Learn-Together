@@ -75,6 +75,11 @@ public class StudentController {
         return "redirect:/login";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
 //    @GetMapping("/test")
 //    public String home(@AuthenticationPrincipal Student student, Model model) {
 //        model.addAttribute("student", student);
