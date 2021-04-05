@@ -48,6 +48,16 @@
                 <p th:each="err : ${#fields.errors('password')}" th:text="'Password ' + ${err}"></p>
             </div>
         </div>
+        <!-- Colleges -->
+        <div class="form-group">
+            <select class="form-control" name="college" th:field="*{college}">
+                <option th:each="college : ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('college')}"
+                 class="text-danger">
+                <p th:each="err : ${#fields.errors('college')}" th:text="'College ' + ${err}"></p>
+            </div>
+        </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">Register</button>
         </div>

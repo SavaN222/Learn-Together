@@ -4,7 +4,6 @@ import com.nakaradasava.learntogether.entity.ConfirmationToken;
 import com.nakaradasava.learntogether.entity.Student;
 import com.nakaradasava.learntogether.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailMessage;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

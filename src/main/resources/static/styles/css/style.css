@@ -36,6 +36,11 @@
     box-shadow:3px 3px 4px rgba(0,0,0,0.2);
 }
 
+select option {
+    background-color:#1e2833;
+    color: #ffffff;
+}
+
 .login-dark .illustration {
     text-align:center;
     padding:15px 0 20px;

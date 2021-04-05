@@ -50,6 +50,11 @@ public class Student implements UserDetails {
     @Column(name = "role")
     private String role;
 
+    @ManyToOne
+    @JoinColumn(name = "college_id", referencedColumnName = "id")
+    @NotNull(message = "is required")
+    private College college;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> role);
@@ -127,5 +132,13 @@ public class Student implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public College getCollege() {
+        return college;
+    }
+
+    public void setCollege(College college) {
+        this.college = college;
     }
 }

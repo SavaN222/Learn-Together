@@ -1,7 +1,9 @@
 package com.nakaradasava.learntogether.controller;
 
+import com.nakaradasava.learntogether.entity.College;
 import com.nakaradasava.learntogether.entity.ConfirmationToken;
 import com.nakaradasava.learntogether.entity.Student;
+import com.nakaradasava.learntogether.service.CollegeService;
 import com.nakaradasava.learntogether.service.ConfirmationTokenService;
 import com.nakaradasava.learntogether.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -20,11 +23,14 @@ public class StudentController {
 
     private StudentService studentService;
     private ConfirmationTokenService confirmationTokenService;
+    private CollegeService collegeService;
 
     @Autowired
-    public StudentController(StudentService studentService, ConfirmationTokenService confirmationTokenService) {
+    public StudentController(StudentService studentService, ConfirmationTokenService confirmationTokenService,
+                             CollegeService collegeService) {
         this.studentService = studentService;
         this.confirmationTokenService = confirmationTokenService;
+        this.collegeService = collegeService;
     }
 
     /**
@@ -41,7 +47,11 @@ public class StudentController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
+        List<College> colleges = collegeService.findColleges();
+
         model.addAttribute("student", new Student());
+        model.addAttribute("colleges", colleges);
+
         return "register";
     }
 
@@ -49,8 +59,10 @@ public class StudentController {
     public String register(@Valid @ModelAttribute Student student,
                            BindingResult bindingResult,
                            Model model) {
+        List<College> colleges = collegeService.findColleges();
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("colleges", colleges);
             return "register";
         }
 
@@ -58,6 +70,7 @@ public class StudentController {
         System.out.println(studentExist);
         if (studentExist != null) {
             model.addAttribute("student", new Student());
+            model.addAttribute("colleges", colleges);
             model.addAttribute("registrationError", "username or email already exists.");
             return "register";
         }
