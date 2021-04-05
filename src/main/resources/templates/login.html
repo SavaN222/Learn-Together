@@ -15,14 +15,13 @@
             <div class="col-xs-15">
                 <div>
                     <!-- Check for login error -->
-                    <div th:if="${param.error}" class="alert alert-danger col-xs-offset-1 col-xs-10">
-                        <span>Invalid username or password</span>
+                    <div th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="alert alert-danger col-xs-offset-1 col-xs-10">
+                        <span th:text>Error msg</span>
                     </div>
 
                     <div th:if="${param.logout}" class="alert alert-success col-xs-offset-1 col-xs-10">
                         <span>You have been logged out</span>
                     </div>
-
                 </div>
             </div>
         </div>
