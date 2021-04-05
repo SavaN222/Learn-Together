@@ -80,6 +80,11 @@ public class StudentController {
         return "login";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "index";
+    }
+
 //    @GetMapping("/test")
 //    public String home(@AuthenticationPrincipal Student student, Model model) {
 //        model.addAttribute("student", student);

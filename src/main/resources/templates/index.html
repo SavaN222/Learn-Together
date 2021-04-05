@@ -10,11 +10,14 @@
 <div th:insert="/fragments/navbar :: navbar"></div>
 
 <!--content-->
-<p>Username: <b sec:authentication="principal.name"></b></p>
-<p>Email: <b sec:authentication="principal.username"></b></p>
+<p>Username: <b sec:authentication="principal.username"></b></p>
+<p>Email: <b sec:authentication="principal.email"></b></p>
 
-<p>SAD SA CONTROLLEROM</p>
-<h1>Username: <span th:text="${student.name}"></span></h1>
+<!--<p>SAD SA CONTROLLEROM</p>-->
+<!--<h1>Username: <span th:text="${student.name}"></span></h1>-->
+<form th:action="@{/logout}" method="POST">
+        <button class="btn btn-info" name="logout" type="submit">Logout</button>
+</form>
 
 <!--include footer-->
 <div th:insert="/fragments/footer :: footer"></div>

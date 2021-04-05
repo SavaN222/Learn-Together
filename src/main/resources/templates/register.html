@@ -24,7 +24,7 @@
         </div>
         <!-- USERNAME -->
         <div class="form-group">
-            <input type="text" class="form-control" th:field="*{username}" placeholder="username (*)">
+            <input type="text" name="username" class="form-control" th:field="*{username}" placeholder="username (*)">
             <div th:if="${#fields.hasErrors('username')}"
                   class="text-danger">
                 <p th:each="err : ${#fields.errors('username')}" th:text="'User name ' + ${err}"></p>
@@ -32,7 +32,7 @@
         </div>
         <!-- EMAIL -->
         <div class="form-group">
-            <input type="email" class="form-control" th:field="*{email}" placeholder="email (*)"
+            <input type="email" name="email" class="form-control" th:field="*{email}" placeholder="email (*)"
                    th:errorclass="fieldError">
             <div th:if="${#fields.hasErrors('email')}"
                  class="text-danger">
@@ -41,7 +41,7 @@
         </div>
         <!-- PASSWORD -->
         <div class="form-group">
-            <input type="password" class="form-control" th:field="*{password}" placeholder="password (*)"
+            <input type="password" name="password" class="form-control" th:field="*{password}" placeholder="password (*)"
                    th:errorclass="fieldError">
             <div th:if="${#fields.hasErrors('password')}"
                  class="text-danger">
