@@ -26,18 +26,11 @@ public class Student implements UserDetails {
     private Integer id;
 
     @Column(name = "username")
-    @NotNull(message = "is required")
-    @Size(min = 3, message = "minimum length is 3")
     private String username;
 
     @Column(name = "password")
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
     private String password;
 
-    @ValidEmail
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
     @Column(name = "email")
     private String email;
 
@@ -52,7 +45,6 @@ public class Student implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "college_id", referencedColumnName = "id")
-    @NotNull(message = "is required")
     private College college;
 
     @Override
