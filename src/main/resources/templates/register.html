@@ -51,7 +51,6 @@
         <!-- Colleges -->
         <div class="form-group">
             <select class="form-control" name="college" th:field="*{college}">
-                <option value="select college" selected="selected">Select College</option>
                 <option th:each="college : ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
             </select>
             <div th:if="${#fields.hasErrors('college')}"
@@ -62,7 +61,6 @@
         <!-- Study Field -->
         <div class="form-group">
             <select class="form-control" name="studyField" th:field="*{studyField}">
-                <option value="select study" selected="selected">Select Study Field</option>
                 <option th:each="study : ${studyFields}" th:value="${study.id}" th:text="${study.name}"></option>
             </select>
             <div th:if="${#fields.hasErrors('studyField')}"

@@ -60,7 +60,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute RegistrationStudent student,
+    public String register(@Valid @ModelAttribute("student") RegistrationStudent student,
                            BindingResult bindingResult,
                            Model model) {
         List<College> colleges = collegeService.findColleges();

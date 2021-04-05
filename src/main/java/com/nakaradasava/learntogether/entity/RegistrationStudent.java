@@ -39,9 +39,7 @@ public class RegistrationStudent {
 
     private String role;
 
-    @NotNull(message = "is required")
     private College college;
 
-    @NotNull(message = "is required")
     private StudyField studyField;
 }
