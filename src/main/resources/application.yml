@@ -23,7 +23,3 @@ spring:
             enable: true
     protocol: smtp
     test-connection: false
-
-  # debug
-server:
-  port : 8081
