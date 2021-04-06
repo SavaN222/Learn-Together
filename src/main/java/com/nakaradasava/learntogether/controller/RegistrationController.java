@@ -81,6 +81,8 @@ public class RegistrationController {
             return "register";
         }
 
+        student.setProfilePic("Male".equals(student.getGender()) ? "male.png" : "female.png");
+
         registrationService.registerStudent(student);
 
         return "redirect:/login";
