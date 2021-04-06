@@ -187,7 +187,7 @@ public class RegistrationService {
                 "                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 600px;\">\n" +
                 "                    <tr>\n" +
                 "                        <td bgcolor=\"#ffffff\" align=\"center\" valign=\"top\" style=\"padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;\">\n" +
-                "                            <h1 style=\"font-size: 48px; font-weight: 400; margin: 2;\">Hello " + name + "</h1> <img src=\"https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.6435-9/147409202_357570721987731_5408969352625120172_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=ieyt63vm9_gAX9A17n-&_nc_ht=scontent.fbeg2-1.fna&oh=2b448066c7f62eb78215b6bfb2b585e5&oe=6092B658\" width=\"125\" height=\"120\" style=\"display: block; border: 0px;\" />\n" +
+                "                            <h1 style=\"font-size: 48px; font-weight: 400; margin: 2;\">Hello " + name + "</h1> <img src=\"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80\" width=\"225\" height=\"200\" style=\"display: block; border: 0px;\" />\n" +
                 "                        </td>\n" +
                 "                    </tr>\n" +
                 "                </table>\n" +
