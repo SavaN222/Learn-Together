@@ -37,7 +37,7 @@ public class RegistrationService {
         student.setCollege(registrationStudent.getCollege());
         student.setStudyField(registrationStudent.getStudyField());
         student.setRole("student");
-
+        student.setGender(registrationStudent.getGender());
         studentRepository.save(student);
 
         ConfirmationToken confirmationToken = new ConfirmationToken(student);

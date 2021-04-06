@@ -49,6 +49,9 @@ public class Student implements UserDetails {
     @JoinColumn(name = "study_field_id", referencedColumnName = "id")
     private StudyField studyField;
 
+    @Column(name = "gender")
+    private String gender;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> role);
@@ -142,5 +145,13 @@ public class Student implements UserDetails {
 
     public void setStudyField(StudyField studyField) {
         this.studyField = studyField;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

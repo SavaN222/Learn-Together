@@ -42,4 +42,6 @@ public class RegistrationStudent {
     private College college;
 
     private StudyField studyField;
+
+    private String gender;
 }
