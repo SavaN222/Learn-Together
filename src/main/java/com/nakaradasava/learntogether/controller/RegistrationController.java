@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -62,7 +63,8 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("student") RegistrationStudent student,
                            BindingResult bindingResult,
-                           Model model) {
+                           Model model,
+                           RedirectAttributes redirectAttributes) {
         List<College> colleges = collegeService.findColleges();
         List<StudyField> studyFields = studyService.findStudyFields();
 
@@ -87,6 +89,8 @@ public class RegistrationController {
 
         registrationService.registerStudent(student);
 
+        redirectAttributes.addFlashAttribute("confirmTokenMsg", "You are register, but you must" +
+                " confirm your mail( " + student.getEmail() + " ) to login");
         return "redirect:/login";
     }
 

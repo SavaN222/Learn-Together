@@ -22,6 +22,10 @@
                     <div th:if="${param.logout}" class="alert alert-success col-xs-offset-1 col-xs-10">
                         <span>You have been logged out</span>
                     </div>
+
+                    <div th:if="${confirmTokenMsg}" class="alert alert-info col-xs-offset-1 col-xs-10">
+                        <span>confirmTokenMsg</span>
+                    </div>
                 </div>
             </div>
         </div>
