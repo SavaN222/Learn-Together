@@ -11,6 +11,20 @@
 .bg-main-light {
     background-color: #1ED760;
 }
+body {
+    background-color: #18191A;
+    color: #ffffff;
+}
+a {
+    color: #1ED760;
+}
+a:hover {
+    color: #078f37;
+}
+::selection {
+    color: #1ED760;
+    background: #1e2833;
+}
 
 /** REGISTER AND LOGIN **/
 .login-dark {
@@ -97,4 +111,21 @@ select option, optgroup {
 
 .login-dark form .btn-primary:active {
     transform:translateY(1px);
+}
+/* NAVBAR */
+.navbar-bg-color, .dropdown-menu {
+    background-color: #242526; /* fb color */
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-brand:hover{
+    color: #078f37 !important;
+}
+.dropdown-item:hover {
+    color: #078f37 !important;
+    background-color: #000 !important;
+}
+.brand-letter {
+    color: #078f37;
+}
+.brand-letter:hover {
+    color: #ffffff;
 }
