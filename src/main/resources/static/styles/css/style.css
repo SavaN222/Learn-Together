@@ -127,6 +127,6 @@ select option, optgroup {
 .brand-letter {
     color: #078f37;
 }
-.brand-letter:hover {
+.navbar-brand:hover .brand-letter {
     color: #ffffff;
 }

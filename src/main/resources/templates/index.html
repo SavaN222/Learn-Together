@@ -15,11 +15,7 @@
 <p>College: <b sec:authentication="principal.college.name"></b></p>
 <hr>
 <br>
-<img th:src="@{${profilePic}}" />
 
-
-<!--<p>SAD SA CONTROLLEROM</p>-->
-<!--<h1>Username: <span th:text="${student.name}"></span></h1>-->
 <form th:action="@{/logout}" method="POST">
         <button class="btn btn-info" name="logout" type="submit">Logout</button>
 </form>
