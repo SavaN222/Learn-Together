@@ -21,18 +21,18 @@ public class RegistrationController {
     private StudentService studentService;
     private RegistrationService registrationService;
     private ConfirmationTokenService confirmationTokenService;
-    private CollegeService collegeService;
+    private UniversityService universityService;
     private StudyFieldService studyService;
 
     @Autowired
     public RegistrationController(StudentService studentService, RegistrationService registrationService,
                                   ConfirmationTokenService confirmationTokenService,
-                                  CollegeService collegeService,
+                                  UniversityService universityService,
                                   StudyFieldService studyService) {
         this.studentService = studentService;
         this.registrationService = registrationService;
         this.confirmationTokenService = confirmationTokenService;
-        this.collegeService = collegeService;
+        this.universityService = universityService;
         this.studyService = studyService;
     }
 
@@ -50,11 +50,11 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        List<College> colleges = collegeService.findColleges();
+        List<University> universities = universityService.findUniversities();
         List<StudyField> studyFields = studyService.findStudyFields();
 
         model.addAttribute("student", new RegistrationStudent());
-        model.addAttribute("colleges", colleges);
+        model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
 
         return "register";
@@ -65,11 +65,11 @@ public class RegistrationController {
                            BindingResult bindingResult,
                            Model model,
                            RedirectAttributes redirectAttributes) {
-        List<College> colleges = collegeService.findColleges();
+        List<University> universities = universityService.findUniversities();
         List<StudyField> studyFields = studyService.findStudyFields();
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("colleges", colleges);
+            model.addAttribute("colleges", universities);
             model.addAttribute("studyFields", studyFields);
             return "register";
         }
@@ -77,7 +77,7 @@ public class RegistrationController {
         Student studentExist = studentService.findByUsernameOrEmail(student.getUsername(), student.getEmail());
         if (studentExist != null) {
             model.addAttribute("student", new RegistrationStudent());
-            model.addAttribute("colleges", colleges);
+            model.addAttribute("colleges", universities);
             model.addAttribute("studyFields", studyFields);
             model.addAttribute("registrationError", "username or email already exists.");
             return "register";

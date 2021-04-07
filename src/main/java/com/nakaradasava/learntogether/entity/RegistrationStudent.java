@@ -2,14 +2,9 @@ package com.nakaradasava.learntogether.entity;
 
 import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,7 +34,7 @@ public class RegistrationStudent {
 
     private String role;
 
-    private College college;
+    private University university;
 
     @NotNull(message = "is required")
     private StudyField studyField;

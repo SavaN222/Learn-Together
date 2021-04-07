@@ -13,8 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "college")
-public class College {
+@Table(name = "university")
+public class University {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,6 @@ public class College {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "college")
+    @OneToMany(mappedBy = "university")
     private List<Student> students;
 }

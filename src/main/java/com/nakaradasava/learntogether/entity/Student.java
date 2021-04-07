@@ -42,8 +42,8 @@ public class Student implements UserDetails {
     private String role;
 
     @ManyToOne
-    @JoinColumn(name = "college_id", referencedColumnName = "id")
-    private College college;
+    @JoinColumn(name = "university_id", referencedColumnName = "id")
+    private University university;
 
     @ManyToOne
     @JoinColumn(name = "study_field_id", referencedColumnName = "id")
@@ -131,12 +131,12 @@ public class Student implements UserDetails {
         this.role = role;
     }
 
-    public College getCollege() {
-        return college;
+    public University getUniversity() {
+        return university;
     }
 
-    public void setCollege(College college) {
-        this.college = college;
+    public void setUniversity(University university) {
+        this.university = university;
     }
 
     public StudyField getStudyField() {

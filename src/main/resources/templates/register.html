@@ -50,14 +50,14 @@
         </div>
         <!-- Colleges -->
         <div class="form-group">
-            <select class="form-control" name="college" th:field="*{college}">
-                <optgroup label="Choose College">
-                <option th:each="college : ${colleges}" th:value="${college.id}" th:text="${college.name}"></option>
+            <select class="form-control" name="university" th:field="*{university}">
+                <optgroup label="Choose university">
+                <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.name}"></option>
                 </optgroup>
             </select>
-            <div th:if="${#fields.hasErrors('college')}"
+            <div th:if="${#fields.hasErrors('university')}"
                  class="text-danger">
-                <p th:each="err : ${#fields.errors('college')}" th:text="'College ' + ${err}"></p>
+                <p th:each="err : ${#fields.errors('university')}" th:text="'College ' + ${err}"></p>
             </div>
         </div>
         <!-- Study Field -->
