@@ -23,8 +23,8 @@
                         <span>You have been logged out</span>
                     </div>
 
-                    <div th:if="${confirmTokenMsg}" class="alert alert-info col-xs-offset-1 col-xs-10">
-                        <span>confirmTokenMsg</span>
+                    <div th:if="${confirmTokenMsg}" th:text="${confirmTokenMsg}" class="alert alert-info col-xs-offset-1 col-xs-10">
+                        <span>Confirm Token msg</span>
                     </div>
                 </div>
             </div>
