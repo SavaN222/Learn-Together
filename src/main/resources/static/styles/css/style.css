@@ -141,3 +141,8 @@ select option, optgroup {
 .fas:hover {
     color: #078f37;
 }
+textarea {
+    resize: none;
+    background-color: #1e2833 !important;
+    color: #1ED760 !important;
+}
