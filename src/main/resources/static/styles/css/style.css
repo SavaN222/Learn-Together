@@ -150,3 +150,7 @@ textarea::selection {
     background-color: black;
     color: #1ED760;
 }
+/** study field **/
+.jumbotron {
+    background-color: #1e2833;
+}

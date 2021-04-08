@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4 mt-4 text-white">Hello <span sec:authentication="principal.username" class="text-main-light">user name</span>!</h1>
+        <p class="lead text-white">
+            This is the topic where you can ask other students from their study field, regardless of they university.
+            Your study field is <b sec:authentication="principal.studyField.name">studyField name</b>
+            but if you want, you can ask questions in other study fields.
+        </p>
+        <hr class="my-4">
+        <p class="text-white">Select study fields where you want to ask question.</p>
+        <form action="">
+            <!-- Study Field -->
+            <div class="form-group">
+                <select class="form-control" name="studyField">
+                        <option th:each="study : ${studyFields}" th:value="${study.id}" th:text="${study.name}"></option>
+                </select>
+                <button class="btn btn-success">Go to study field</button>
+            </div>
+        </form>
+    </div>
+</div> <!-- end of container -->
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>
