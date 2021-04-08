@@ -10,15 +10,61 @@
 <div th:insert="/fragments/navbar :: navbar"></div>
 
 <!--content-->
-<p>Username: <b sec:authentication="principal.username"></b></p>
-<p>Email: <b sec:authentication="principal.email"></b></p>
-<p>College: <b sec:authentication="principal.university.name"></b></p>
-<hr>
-<br>
+<div class="container-fluid">
+        <div class="row mt-5">
+                <div class="col-lg-3 border border-secondary rounded">
+                        <div id="profile-card" class="card" style="width: 18rem;">
+                                <img th:if="${#authentication.principal.profilePic}"
+                                     th:src="@{${#authentication.principal.profilePic}}"
+                                     class="card-img-top rounded" alt="...">
+                                <div class="icons mt-2"></div>
+                                <p>
+                                        <i class="fas fa-university fa-lg"></i>
+                                        <span sec:authentication="principal.university.name"></span>
+                                </p>
+                                <p>
+                                        <i class="fas fa-graduation-cap fa-lg"></i>
+                                        <span sec:authentication="principal.studyField.name"></span>
+                                </p>
+                        </div>
+                                <div class="card-body border-top border-success" style="width: 18rem;">
+                                        <blockquote class="blockquote mb-0">
+                                                <p>A well-known quote, contained in a blockquote element.</p>
+                                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                        </blockquote>
+                                </div>
+                                <div class="card-body border-top border-success" style="width: 18rem;">
+                                       <div class="row">
+                                               <div class="col-lg-3">
+                                                       <img th:src="@{/images/profile_pictures/female.png}"
+                                                       width="35" height="35" class="rounded-circle">
+                                               </div>
+                                               <div class="col-lg-3">
+                                                       <img th:src="@{/images/profile_pictures/male.png}"
+                                                       width="35" height="35" class="rounded-circle">
+                                               </div>
+                                               <div class="col-lg-3">
+                                                       <img th:src="@{/images/profile_pictures/male.png}"
+                                                       width="35" height="35" class="rounded-circle">
+                                               </div>
+                                               <div class="col-lg-3">
+                                                       <img th:src="@{/images/profile_pictures/female.png}"
+                                                       width="35" height="35" class="rounded-circle">
+                                               </div>
+                                       </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-lg-8">
 
-<form th:action="@{/logout}" method="POST">
-        <button class="btn btn-info" name="logout" type="submit">Logout</button>
-</form>
+                </div>
+        </div>
+
+</div> <!-- end of container -->
+
+<!--<form th:action="@{/logout}" method="POST">-->
+<!--        <button class="btn btn-info" name="logout" type="submit">Logout</button>-->
+<!--</form>-->
 
 <!--include footer-->
 <div th:insert="/fragments/footer :: footer"></div>

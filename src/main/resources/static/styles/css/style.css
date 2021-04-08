@@ -130,3 +130,14 @@ select option, optgroup {
 .navbar-brand:hover .brand-letter {
     color: #ffffff;
 }
+/* NEWS FEED */
+#profile-card {
+    background-color: #18191A;
+}
+.fas {
+    color: #1ED760;
+    transition: 0.7s;
+}
+.fas:hover {
+    color: #078f37;
+}
