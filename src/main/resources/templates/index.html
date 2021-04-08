@@ -30,7 +30,7 @@
                                 <div class="card-body border-top border-success" style="width: 18rem;">
                                         <blockquote class="blockquote mb-0">
                                                 <p th:text="${quote.content}">Quote text</p>
-                                                <footer th:text="${quote.author}" class="blockquote-footer">Quote quthor</footer>
+                                                <footer th:text="${quote.author}" class="blockquote-footer">Quote author</footer>
                                         </blockquote>
                                 </div>
                                 <div class="card-body border-top border-success" style="width: 18rem;">
@@ -66,9 +66,44 @@
                                         </div>
                                 </form>
                         </div>
-                </div>
-        </div> <!-- row end-->
-
+                                <div class="clear-fix mb-5 pb-5"></div>
+                        <div id="friends-posts-card">
+                                <!-- other friend post static -->
+                                <div class="friends-posts mb-5">
+                                        <div class="card mb-3 border-top border-bottom border-secondary rounded" style="max-width: 700px;">
+                                                <div class="row no-gutters">
+                                                        <div class="col-md-4">
+                                                                <img th:src="@{/images/profile_pictures/female.png}" alt="...">
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                        <h5 class="card-title">Card title</h5>
+                                                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- other friend post static -->
+                                <div class="friends-posts mb-5">
+                                        <div class="card mb-3 border-top border-bottom border-secondary rounded" style="max-width: 700px;">
+                                                <div class="row no-gutters">
+                                                        <div class="col-md-4">
+                                                                <img th:src="@{/images/profile_pictures/female.png}" alt="...">
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                        <h5 class="card-title">Card title</h5>
+                                                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div><!-- col-lg-8 end -->
+                </div> <!-- row end-->
         </div> <!-- end of container -->
 
 
