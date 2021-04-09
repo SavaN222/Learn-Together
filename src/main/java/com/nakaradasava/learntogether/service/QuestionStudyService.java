@@ -24,6 +24,10 @@ public class QuestionStudyService {
 
     public List<QuestionStudy> findQuestionStudiesByStudyFieldId(int studyFieldId) {
 
-        return questionStudyRepository.findQuestionStudiesByStudyFieldId(studyFieldId);
+        return questionStudyRepository.findQuestionStudiesByStudyFieldIdOrderByIdDesc(studyFieldId);
+    }
+
+    public QuestionStudy findById(int questionId) {
+        return questionStudyRepository.findById(questionId).get();
     }
 }

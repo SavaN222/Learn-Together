@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container">
+<div id="questions">
+<div class="card">
+    <h5 class="card-header">Question title</h5>
+    <div class="card-body">
+        <p class="card-text">Question description</p>
+    </div>
+    <div class="card-footer ">
+        <p> Created by <b th:text="${question.student.username}">author</b>
+            <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
+            <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
+        </p>
+    </div>
+</div>
+</div>
+</div> <!-- end of container -->
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>

@@ -65,7 +65,9 @@
                         <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
                         <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
                     </p>
-                        <button class="btn btn-success float-right"><a class="text-white" href="#">View topic</a></button>
+                        <button class="btn btn-success float-right">
+                            <a class="text-white" th:href="@{/question/${question.id}}">View topic</a>
+                        </button>
                     <div class="clearfix"></div>
                 </div>
             </div>
