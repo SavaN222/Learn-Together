@@ -27,6 +27,10 @@ a:hover {
     background: #1e2833;
 }
 
+.bg-facebook {
+    background-color: #242526;
+}
+
 /** REGISTER AND LOGIN **/
 .login-dark {
     height:1000px;

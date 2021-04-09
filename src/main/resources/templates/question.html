@@ -10,20 +10,22 @@
 <div th:insert="/fragments/navbar :: navbar"></div>
 
 <!--content-->
-<div class="container">
-    <div class="holder">
+<div class="container mt-2">
+    <div class="holder border border-light rounded">
         <div class="question-holder">
             <div class="author">
                 <p>
-                    <a th:text="${question.studyField.name}" class="text-white"
-                       th:href="@{/study-fields/(studyField=${question.studyField.id})}">Study Field</a>
-                    <span th:text="${question.student.username}" class="text-main-light">Posted by
-                        <b class="text-main-light">Author</b>
+                    <a class="text-white font-italic mr-1"
+                       th:href="@{/study-fields/(studyField=${question.studyField.id})}">
+                        study field/ <span class="text-main-light font-weight-bold" th:text="${question.studyField.name}">study field</span>
+                    </a>
+                    <span class="text-main-light">author:
+                        <b th:text="${question.student.username}" class="text-white">Author</b>
                     </span>
                 </p>
             </div>
-            <h3 th:text="${question.title}" class="text-white mb-2"> Question Title </h3>
-            <p th:text="${question.description}" class="text-white">Description</p>
+            <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title </h3>
+            <p th:text="${question.description}" class="text-white m-4">Description</p>
             <div class="question-footer mb-5">
                 <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
                 <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
@@ -44,7 +46,7 @@
             </form>
 
         </div>
-        <hr class="text-main-light">
+        <hr class="bg-main-light">
 
         <div class="comments">
             <div class="media">
