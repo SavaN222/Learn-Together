@@ -11,7 +11,7 @@
 
 <!--content-->
 <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron mt-2">
         <h1 class="display-4 mt-4 text-white">
             <span th:text="${studyField.name}" class="text-main-light">study name</span>
         </h1>
@@ -39,27 +39,25 @@
     </div>
 
     <!-- list questions -->
-    <div id="questions">
-        <div class="card">
+    <div id="questions" th:if="${questions}">
+        <div th:each="question : ${questions}" class="card mb-4">
             <h5 class="card-header">
-                <a data-toggle="collapse" href="#question-id-1" aria-expanded="true" aria-controls="collapse-example" id="heading-example" class="d-block">
+                <a data-toggle="collapse" th:href="'#question-id-' + ${question.id}" aria-expanded="true" aria-controls="collapse-example" id="heading-example" class="d-block">
                     <i class="fa fa-chevron-down pull-right"></i>
-                    Naslov pitanja
+                    <span th:text="${question.title}">Naslov pitanja</span>
                 </a>
             </h5>
-            <div id="question-id-1" class="collapse show" aria-labelledby="heading-example">
+            <div th:id="'question-id-' + ${question.id}" class="collapse show" aria-labelledby="heading-example">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                    you probably haven't heard of them accusamus labore sustainable VHS.
+                   <span th:text="${question.description}">Description</span>
                 </div>
                 <div class="card-footer ">
-                    <p> Created by <b>Sava</b>| Likes:10 | Comments: 10 |</p>
+                    <p> Created by <b th:text="${question.student.username}">author</b>|
+                        <a href=""><i class="fas fa-graduation-cap fa-lg"></i> 10</a>|
+                        <a href=""><i class="fas fa-comment-dots fa-lg"></i> 10</a>
+                    </p>
                     <div class="float-right">
-                        <button class="btn btn-success"><a href="#">View topic</a></button>
+                        <button class="btn btn-success"><a class="text-white" href="#">View topic</a></button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
