@@ -69,7 +69,7 @@ select option, optgroup {
     outline:none;
 }
 
-.login-dark form .form-control {
+form .form-control {
     background:none;
     border:none;
     border-bottom:1px solid #434a52;
@@ -79,7 +79,7 @@ select option, optgroup {
     color:inherit;
 }
 
-.login-dark form .btn-primary {
+form .btn-primary {
     background-color: #078f37;
     border:none;
     border-radius:4px;
@@ -91,12 +91,12 @@ select option, optgroup {
     transition: background 1s;
 }
 
-.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+form .btn-primary:hover, form .btn-primary:active {
     background:#1ED760;
     outline:none;
 }
 
-.login-dark form .forgot {
+form .forgot {
     display:block;
     text-align:center;
     font-size:12px;
@@ -105,13 +105,18 @@ select option, optgroup {
     text-decoration:none;
 }
 
-.login-dark form .forgot:hover, .login-dark form .forgot:active {
+form .forgot:hover, form .forgot:active {
     opacity:1;
     text-decoration:none;
 }
 
-.login-dark form .btn-primary:active {
+form .btn-primary:active {
     transform:translateY(1px);
+}
+
+input:focus {
+    background-color: #1e2833;
+    color: #1ED760;
 }
 /* NAVBAR */
 .navbar-bg-color, .dropdown-menu {

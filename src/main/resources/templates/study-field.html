@@ -34,8 +34,8 @@
                 <div class="buttons">
 
                     <div class="float-left">
-                        <button class="btn btn-danger">
-                            <a class="text-white" th:href="@{/study-fields}">View all study fields</a>
+                        <button class="btn btn-warning">
+                            <a class="text-dark" th:href="@{/study-fields}">View all study fields</a>
                         </button>
                     </div>
 
@@ -61,13 +61,11 @@
                    <span th:text="${question.description}">Description</span>
                 </div>
                 <div class="card-footer ">
-                    <p> Created by <b th:text="${question.student.username}">author</b>
+                    <p class="float-left"> Created by <b th:text="${question.student.username}">author</b>
                         <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
                         <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
                     </p>
-                    <div class="float-right">
-                        <button class="btn btn-success"><a class="text-white" href="#">View topic</a></button>
-                    </div>
+                        <button class="btn btn-success float-right"><a class="text-white" href="#">View topic</a></button>
                     <div class="clearfix"></div>
                 </div>
             </div>
