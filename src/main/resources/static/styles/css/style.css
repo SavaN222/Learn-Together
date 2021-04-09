@@ -151,7 +151,7 @@ textarea {
     background-color: #1e2833 !important;
     color: #1ED760 !important;
 }
-textarea::selection {
+textarea::selection, input::selection {
     background-color: black;
     color: #1ED760;
 }
