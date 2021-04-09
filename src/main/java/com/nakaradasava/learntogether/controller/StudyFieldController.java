@@ -1,16 +1,16 @@
 package com.nakaradasava.learntogether.controller;
 
 import com.nakaradasava.learntogether.entity.QuestionStudy;
+import com.nakaradasava.learntogether.entity.Student;
 import com.nakaradasava.learntogether.entity.StudyField;
 import com.nakaradasava.learntogether.service.QuestionStudyService;
 import com.nakaradasava.learntogether.service.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +28,8 @@ public class StudyFieldController {
     }
 
     @GetMapping("/study-fields")
-    public String showAllStudyFields(@RequestParam(value = "studyField", required = false) Optional<Integer> studyFieldId,
-            Model model) {
+    public String showAllStudyFields(@RequestParam(name = "studyField", required = false) Optional<Integer> studyFieldId,
+                                     Model model) {
 
         if (studyFieldId.isPresent()) {
             List<QuestionStudy> questions = questionStudyService.findQuestionStudiesByStudyFieldId(studyFieldId.get());
@@ -49,12 +49,22 @@ public class StudyFieldController {
         return "study-fields";
     }
 
-    @PostMapping("/study-fields")
-    public String saveQuestion(@ModelAttribute("question") QuestionStudy questionStudy) {
+    @PostMapping("/study-fields/save")
+    public String saveQuestion(@RequestParam(name = "studyField", required = true) int studyFieldId,
+                               @ModelAttribute("question") QuestionStudy questionStudy,
+                               @AuthenticationPrincipal Student student,
+                               RedirectAttributes redirectAttributes) {
+
+        StudyField studyField = studyFieldService.findStudyFieldById(studyFieldId);
+
+        questionStudy.setStudyField(studyField);
+        questionStudy.setStudent(student);
 
         questionStudyService.saveQuestion(questionStudy);
 
-        return "redirect:/study-fields?studyField=" + questionStudy.getStudyField().getId();
+        redirectAttributes.addFlashAttribute("success", "Your question is posted");
+
+        return "redirect:/study-fields?studyField=" + studyFieldId;
     }
     /**
      * Ovo je url link kad neko submituje formu -> http://localhost:8080/study-fields?studyField=2

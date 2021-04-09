@@ -18,9 +18,12 @@
         <p class="lead text-white">
            Ask question in this study field or try to help other student with they problems bellow.
         </p>
+        <div th:if="${success}" th:text="${success}" class="alert alert-info col-xs-offset-1 col-xs-10">
+            <span>Confirm Token msg</span>
+        </div>
         <hr class="my-4">
         <div class="share-something">
-            <form th:action="@{/study-fields}" th:object="${question}" method="POST">
+            <form th:action="@{/study-fields/save(studyField=${studyField.id})}" th:object="${question}" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" name="title" th:field="*{title}">
                 </div>
@@ -28,8 +31,6 @@
                     <textarea class="form-control" th:field="*{description}" name="description" id="exampleFormControlTextarea1" rows="3"
                               placeholder="type your questio...."></textarea>
                 </div>
-                <input type="hidden" th:field="*{student}" th:value="${student.id}" name="student">
-                <input type="hidden" th:field="*{studyField}" th:value="${studyField.id}" name="studyField">
                 <div class="float-right">
                     <button class="btn btn-success">Send</button>
                 </div>
