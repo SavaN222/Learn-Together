@@ -155,9 +155,9 @@ textarea {
     background-color: #1e2833 !important;
     color: #1ED760 !important;
 }
-textarea::selection, input::selection {
-    background-color: black;
-    color: #1ED760;
+textarea::selection, input::selection, select, option {
+    background-color: black !important;
+    color: #1ED760 !important;
 }
 /** study field **/
 .jumbotron {
