@@ -154,3 +154,15 @@ textarea::selection {
 .jumbotron {
     background-color: #1e2833;
 }
+#questions .card-header .fa {
+    transition: .3s transform ease-in-out;
+}
+#questions .card-header .collapsed .fa {
+    transform: rotate(90deg);
+}
+#questions .card {
+    background-color: #242526;
+}
+#questions .card-body, #questions .card-footer {
+    color: #1ED760;
+}

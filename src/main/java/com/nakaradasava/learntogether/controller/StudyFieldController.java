@@ -67,13 +67,9 @@ public class StudyFieldController {
         return "redirect:/study-fields?studyField=" + studyFieldId;
     }
     /**
-     * Ovo je url link kad neko submituje formu -> http://localhost:8080/study-fields?studyField=2
-     * if studyField postoji, pozovi kunkciju kloja vraca sva pitanja iz studyFielda sa Id u ovom slucaju 2
-     * else vrati obican study fields
-     * ako postoji return mu study-field html koji ima isti jumbotron ali ime study fielda i forma za ask question
-     * ispod toga izlistaj sva pitanja
-     * kad neko klikne na pitanje otvori MODAL ili stranicu novu
-     * koemntari i lajkovi kao studentska kapica
-     * favorites dugme
+     * Uradi display svih questiona
+     * svaki question nek ide na posebnu stranicu sa komentarima za taj question
+     * uradi komentare lajkove a favorites tj follow topic cemo tek za kasnije
+     * uradi edit i delete
      */
 }
