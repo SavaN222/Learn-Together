@@ -11,20 +11,51 @@
 
 <!--content-->
 <div class="container">
-<div id="questions">
-<div class="card">
-    <h5 class="card-header">Question title</h5>
-    <div class="card-body">
-        <p class="card-text">Question description</p>
+    <div class="holder">
+        <div class="question-holder">
+            <div class="author">
+                <p>
+                    <a th:text="${question.studyField.name}" class="text-white"
+                       th:href="@{/study-fields/(studyField=${question.studyField.id})}">Study Field</a>
+                    <span th:text="${question.student.username}" class="text-main-light">Posted by
+                        <b class="text-main-light">Author</b>
+                    </span>
+                </p>
+            </div>
+            <h3 th:text="${question.title}" class="text-white mb-2"> Question Title </h3>
+            <p th:text="${question.description}" class="text-white">Description</p>
+            <div class="question-footer mb-5">
+                <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
+                <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
+            </div>
+
+            <p class="text-white">Comment as
+                <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
+            </p>
+            <form action="">
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              placeholder="write comment ..."></textarea>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-success">Send</button>
+                </div>
+                <div class="clearfix"></div>
+            </form>
+
+        </div>
+        <hr class="text-main-light">
+
+        <div class="comments">
+            <div class="media">
+                <img src="..." class="mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0">Media heading</h5>
+                    <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-footer ">
-        <p> Created by <b th:text="${question.student.username}">author</b>
-            <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
-            <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
-        </p>
-    </div>
-</div>
-</div>
 </div> <!-- end of container -->
 <!--include footer-->
 <div th:insert="/fragments/footer :: footer"></div>
