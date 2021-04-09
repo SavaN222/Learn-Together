@@ -115,8 +115,8 @@ form .btn-primary:active {
 }
 
 input:focus {
-    background-color: #1e2833;
-    color: #1ED760;
+    background-color: #1e2833 !important;
+    color: #1ED760 !important;
 }
 /* NAVBAR */
 .navbar-bg-color, .dropdown-menu {
