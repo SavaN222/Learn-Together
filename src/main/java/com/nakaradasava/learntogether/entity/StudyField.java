@@ -26,4 +26,8 @@ public class StudyField {
 
     @OneToMany(mappedBy = "studyField")
     private List<Student> students;
+
+    @OneToMany(mappedBy = "studyField")
+    private List<QuestionStudy> questions;
+
 }

@@ -18,4 +18,8 @@ public class StudyFieldService {
     public List<StudyField> findStudyFields() {
         return studyRepository.findAll();
     }
+
+    public StudyField findStudyFieldById(int studyFieldId) {
+        return studyRepository.findStudyFieldById(studyFieldId);
+    }
 }

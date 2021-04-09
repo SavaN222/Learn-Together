@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4 mt-4 text-white">
+            <span th:text="${studyField.name}" class="text-main-light">study name</span>
+        </h1>
+        <p class="lead text-white">
+           Ask question in this study field or try to help other student with they problems bellow.
+        </p>
+        <hr class="my-4">
+        <div class="share-something">
+            <form th:action="@{/study-fields}" th:object="${question}" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" th:field="*{title}">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" th:field="*{description}" name="description" id="exampleFormControlTextarea1" rows="3"
+                              placeholder="type your questio...."></textarea>
+                </div>
+                <input type="hidden" th:field="*{student}" th:value="${student.id}" name="student">
+                <input type="hidden" th:field="*{studyField}" th:value="${studyField.id}" name="studyField">
+                <div class="float-right">
+                    <button class="btn btn-success">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> <!-- end of container -->
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>
