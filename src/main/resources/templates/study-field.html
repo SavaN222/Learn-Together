@@ -31,8 +31,17 @@
                     <textarea class="form-control" th:field="*{description}" name="description" id="exampleFormControlTextarea1" rows="3"
                               placeholder="type your questio...."></textarea>
                 </div>
-                <div class="float-right">
-                    <button class="btn btn-success">Send</button>
+                <div class="buttons">
+
+                    <div class="float-left">
+                        <button class="btn btn-danger">
+                            <a class="text-white" th:href="@{/study-fields}">View all study fields</a>
+                        </button>
+                    </div>
+
+                    <div class="float-right">
+                        <button class="btn btn-success">Send</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -52,9 +61,9 @@
                    <span th:text="${question.description}">Description</span>
                 </div>
                 <div class="card-footer ">
-                    <p> Created by <b th:text="${question.student.username}">author</b>|
-                        <a href=""><i class="fas fa-graduation-cap fa-lg"></i> 10</a>|
-                        <a href=""><i class="fas fa-comment-dots fa-lg"></i> 10</a>
+                    <p> Created by <b th:text="${question.student.username}">author</b>
+                        <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
+                        <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
                     </p>
                     <div class="float-right">
                         <button class="btn btn-success"><a class="text-white" href="#">View topic</a></button>
