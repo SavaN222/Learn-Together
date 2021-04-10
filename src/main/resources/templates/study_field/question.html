@@ -13,7 +13,8 @@
 <div class="container mt-2">
     <div class="holder border border-light rounded p-4">
         <div class="question-holder">
-            <div class="author">
+            <div class="headline d-flex justify-content-between">
+                <div class="author align-left">
                 <p>
                     <a class="text-white font-italic mr-1"
                        th:href="@{/study-fields/(studyField=${question.studyField.id})}">
@@ -23,6 +24,15 @@
                         <b th:text="${question.student.username}" class="text-white">Author</b>
                     </span>
                 </p>
+                </div> <!-- .author end -->
+                <div th:if="${#authentication.principal.id == question.student.id}" class="icons align-right">
+                    <a class="mr-2" href="">
+                        <i class="fas fa-pen fa-lg"></i>
+                    </a>
+                    <a href="">
+                        <i class="fas fa-trash fa-lg text-danger"></i>
+                    </a>
+                </div>
             </div>
             <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title </h3>
             <p th:text="${question.description}" class="text-white m-4">Description</p>
@@ -56,9 +66,21 @@
                 <img th:src="${comment.student.profilePic}" class="mr-3 rounded-circle" style="width: 75px" height="75px" alt="...">
                 <div class="media-body">
                     <h5 class="mt-0">
-                        <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
-                        <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small>
-                        </span>
+                        <div class="body-headline d-flex justify-content-between">
+                            <div class="user-headline align-left">
+                                <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
+                                <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small></span>
+                            </div>
+                            <div th:if="${#authentication.principal.id == comment.student.id}" class="icons align-right">
+                                <a class="mr-2" href="">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fas fa-trash text-danger"></i>
+                                </a>
+                            </div>
+
+                        </div>
                     </h5>
                     <p th:text="${comment.content}">comment text</p>
                 </div>
