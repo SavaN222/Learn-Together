@@ -34,9 +34,9 @@
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
-            <form th:action="@{'/question/save/' + ${question.id}}" th:object="${emptyComment}" method="POST">
+            <form th:action="@{'/question/save/' + ${question.id}}" th:object="${commentObj}" method="POST">
                 <div class="form-group">
-                    <textarea class="form-control" name="comment" th:field="*{emptyComment.comment}" id="exampleFormControlTextarea1" rows="3"
+                    <textarea class="form-control" name="comment" th:field="*{comment}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>
                 </div>
                 <div class="float-right">
@@ -46,15 +46,18 @@
             </form>
 
         </div>
-        <div th:if="${success}" th:text="${success}" class="alert alert-success text-white col-xs-offset-1 col-xs-10">
+        <div th:if="${success}" th:text="${success}" class="alert alert-success col-xs-offset-1 col-xs-10">
             <span>Confirm Comment msg</span>
         </div>
         <hr class="bg-main-light">
 
-        <div th:if="${comments}" class="comments mb-4">
-            <div th:each="comment : ${comments}" class="media">
-                <img th:src="@{'/images/profile_pictures/' + ${comment.student.profilePic}}" class="mr-3" alt="...">
+        <div th:if="${comments}" class="comments">
+            <div th:each="comment : ${comments}" class="media pb-4 border-bottom border-secondary">
+                <img th:src="${comment.student.profilePic}" class="mr-3 rounded-circle" style="width: 75px" height="75px" alt="...">
                 <div class="media-body">
+                    <h5 class="mt-0">
+                        <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
+                    </h5>
                     <p th:text="${comment.comment}">comment text</p>
                 </div>
             </div>

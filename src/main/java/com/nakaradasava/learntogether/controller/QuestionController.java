@@ -37,15 +37,15 @@ public class QuestionController {
 
         model.addAttribute("question", questionStudy);
         model.addAttribute("comments", comments);
-        model.addAttribute("emptyComment", new CommentStudy());
+        model.addAttribute("commentObj", new CommentStudy());
 
         return "study_field/question";
     }
 
     @PostMapping("/question/save/{id}")
-    public String saveQuestion(@ModelAttribute(name = "emptyComment") CommentStudy commentStudy,
+    public String saveQuestion(@ModelAttribute(name = "commentObj") CommentStudy commentStudy,
                                RedirectAttributes redirectAttributes,
-                               @PathVariable int questionId,
+                               @PathVariable(name = "id") int questionId,
                                @AuthenticationPrincipal Student student) {
 
         QuestionStudy questionStudy = questionStudyService.findById(questionId);

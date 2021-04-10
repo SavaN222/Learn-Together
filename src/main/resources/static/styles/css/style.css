@@ -180,3 +180,7 @@ textarea::selection, input::selection, select, option {
 #questions .card-body, #questions .card-footer {
     color: #1ED760;
 }
+.alert-success {
+    background-color: #078f37;
+    color: #1e2833;
+}
