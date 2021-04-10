@@ -1,7 +1,6 @@
 package com.nakaradasava.learntogether.config;
 
-import com.nakaradasava.learntogether.service.RegistrationService;
-import com.nakaradasava.learntogether.service.StudentService;
+import com.nakaradasava.learntogether.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

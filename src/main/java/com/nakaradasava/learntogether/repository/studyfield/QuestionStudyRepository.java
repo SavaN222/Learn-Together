@@ -1,6 +1,6 @@
-package com.nakaradasava.learntogether.repository;
+package com.nakaradasava.learntogether.repository.studyfield;
 
-import com.nakaradasava.learntogether.entity.QuestionStudy;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

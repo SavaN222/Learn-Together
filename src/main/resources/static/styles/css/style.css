@@ -73,6 +73,11 @@ select option, optgroup {
     outline:none;
 }
 
+.login-dark select, .login-dark option {
+    background-color: #1e2833 !important;
+    color: #ffffff;
+}
+
 form .form-control {
     background:none;
     border:none;

@@ -1,7 +1,7 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.studyfield;
 
-import com.nakaradasava.learntogether.entity.StudyField;
-import com.nakaradasava.learntogether.repository.StudyFieldRepository;
+import com.nakaradasava.learntogether.entity.studyfield.StudyField;
+import com.nakaradasava.learntogether.repository.studyfield.StudyFieldRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

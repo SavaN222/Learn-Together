@@ -1,5 +1,6 @@
-package com.nakaradasava.learntogether.entity;
+package com.nakaradasava.learntogether.entity.studyfield;
 
+import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

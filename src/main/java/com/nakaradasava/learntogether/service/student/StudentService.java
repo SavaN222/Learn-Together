@@ -1,7 +1,7 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.student;
 
-import com.nakaradasava.learntogether.entity.Student;
-import com.nakaradasava.learntogether.repository.StudentRepository;
+import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.repository.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

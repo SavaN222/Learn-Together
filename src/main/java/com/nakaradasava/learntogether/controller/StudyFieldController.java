@@ -1,10 +1,10 @@
 package com.nakaradasava.learntogether.controller;
 
-import com.nakaradasava.learntogether.entity.QuestionStudy;
-import com.nakaradasava.learntogether.entity.Student;
-import com.nakaradasava.learntogether.entity.StudyField;
-import com.nakaradasava.learntogether.service.QuestionStudyService;
-import com.nakaradasava.learntogether.service.StudyFieldService;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
+import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.studyfield.StudyField;
+import com.nakaradasava.learntogether.service.token.QuestionStudyService;
+import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -39,14 +39,14 @@ public class StudyFieldController {
             model.addAttribute("questions", questions);
             model.addAttribute("question", new QuestionStudy());
 
-            return "study-field";
+            return "study_field/study-field";
         }
 
         List<StudyField> studyFields = studyFieldService.findStudyFields();
 
         model.addAttribute("studyFields", studyFields);
 
-        return "study-fields";
+        return "study_field/study-fields";
     }
 
     @PostMapping("/study-fields/save")

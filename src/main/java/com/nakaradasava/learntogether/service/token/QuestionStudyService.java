@@ -1,12 +1,11 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.token;
 
-import com.nakaradasava.learntogether.entity.QuestionStudy;
-import com.nakaradasava.learntogether.repository.QuestionStudyRepository;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
+import com.nakaradasava.learntogether.repository.studyfield.QuestionStudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class QuestionStudyService {

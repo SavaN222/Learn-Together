@@ -1,9 +1,11 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.student;
 
-import com.nakaradasava.learntogether.entity.ConfirmationToken;
-import com.nakaradasava.learntogether.entity.RegistrationStudent;
-import com.nakaradasava.learntogether.entity.Student;
-import com.nakaradasava.learntogether.repository.StudentRepository;
+import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
+import com.nakaradasava.learntogether.entity.student.RegistrationStudent;
+import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.repository.student.StudentRepository;
+import com.nakaradasava.learntogether.service.email.EmailService;
+import com.nakaradasava.learntogether.service.token.ConfirmationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,8 @@
 package com.nakaradasava.learntogether.controller;
 
-import com.nakaradasava.learntogether.entity.QuestionStudy;
-import com.nakaradasava.learntogether.entity.Student;
-import com.nakaradasava.learntogether.service.QuestionStudyService;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
+import com.nakaradasava.learntogether.service.token.QuestionStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +25,6 @@ public class QuestionController {
 
         model.addAttribute("question", questionStudy);
 
-        return "question";
+        return "study_field/question";
     }
 }

@@ -1,7 +1,15 @@
 package com.nakaradasava.learntogether.controller;
 
 import com.nakaradasava.learntogether.entity.*;
+import com.nakaradasava.learntogether.entity.student.RegistrationStudent;
+import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.studyfield.StudyField;
+import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
 import com.nakaradasava.learntogether.service.*;
+import com.nakaradasava.learntogether.service.student.RegistrationService;
+import com.nakaradasava.learntogether.service.student.StudentService;
+import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
+import com.nakaradasava.learntogether.service.token.ConfirmationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -57,7 +65,7 @@ public class RegistrationController {
         model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
 
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
@@ -69,18 +77,18 @@ public class RegistrationController {
         List<StudyField> studyFields = studyService.findStudyFields();
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("colleges", universities);
+            model.addAttribute("universities", universities);
             model.addAttribute("studyFields", studyFields);
-            return "register";
+            return "auth/register";
         }
 
         Student studentExist = studentService.findByUsernameOrEmail(student.getUsername(), student.getEmail());
         if (studentExist != null) {
             model.addAttribute("student", new RegistrationStudent());
-            model.addAttribute("colleges", universities);
+            model.addAttribute("universities", universities);
             model.addAttribute("studyFields", studyFields);
             model.addAttribute("registrationError", "username or email already exists.");
-            return "register";
+            return "auth/register";
         }
 
         String profileDirectory = "/images/profile_pictures/";
@@ -101,10 +109,4 @@ public class RegistrationController {
         optionalConfirmationToken.ifPresent(registrationService::confirmRegistration);
         return "redirect:/login";
     }
-
-//    @GetMapping("/test")
-//    public String home(@AuthenticationPrincipal Student student, Model model) {
-//        model.addAttribute("student", student);
-//        return "test";
-//    }
 }

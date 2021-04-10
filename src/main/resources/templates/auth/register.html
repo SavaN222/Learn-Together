@@ -57,7 +57,7 @@
             </select>
             <div th:if="${#fields.hasErrors('university')}"
                  class="text-danger">
-                <p th:each="err : ${#fields.errors('university')}" th:text="'College ' + ${err}"></p>
+                <p th:each="err : ${#fields.errors('university')}" th:text="'University ' + ${err}"></p>
             </div>
         </div>
         <!-- Study Field -->

@@ -1,6 +1,6 @@
-package com.nakaradasava.learntogether.repository;
+package com.nakaradasava.learntogether.repository.token;
 
-import com.nakaradasava.learntogether.entity.ConfirmationToken;
+import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,7 @@
-package com.nakaradasava.learntogether.entity;
+package com.nakaradasava.learntogether.entity.student;
 
+import com.nakaradasava.learntogether.entity.studyfield.StudyField;
+import com.nakaradasava.learntogether.entity.University;
 import com.nakaradasava.learntogether.validation.ValidEmail;
 import lombok.*;
 

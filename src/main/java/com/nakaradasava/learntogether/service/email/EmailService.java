@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.email;
 
 import lombok.AllArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;

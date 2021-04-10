@@ -1,7 +1,7 @@
-package com.nakaradasava.learntogether.service;
+package com.nakaradasava.learntogether.service.token;
 
-import com.nakaradasava.learntogether.entity.ConfirmationToken;
-import com.nakaradasava.learntogether.repository.ConfirmationTokenRepository;
+import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
+import com.nakaradasava.learntogether.repository.token.ConfirmationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
