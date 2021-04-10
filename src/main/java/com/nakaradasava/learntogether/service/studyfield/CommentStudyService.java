@@ -24,4 +24,8 @@ public class CommentStudyService {
     public void saveComment(CommentStudy commentStudy) {
         commentStudyRepository.save(commentStudy);
     }
+
+    public int countCommentStudiesByQuestionStudyId(int questionId) {
+        return commentStudyRepository.countCommentStudiesByQuestionStudyId(questionId);
+    }
 }

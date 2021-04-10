@@ -182,5 +182,6 @@ textarea::selection, input::selection, select, option {
 }
 .alert-success {
     background-color: #078f37;
-    color: #1e2833;
+    color: #ffffff;
+    font-weight: bold;
 }

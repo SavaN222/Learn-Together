@@ -34,10 +34,12 @@ public class QuestionController {
                               Model model) {
         QuestionStudy questionStudy = questionStudyService.findById(id);
         List<CommentStudy> comments = commentStudyService.findCommentsByQuestionId(id);
+        int commentsNumber = commentStudyService.countCommentStudiesByQuestionStudyId(id);
 
         model.addAttribute("question", questionStudy);
         model.addAttribute("comments", comments);
         model.addAttribute("commentObj", new CommentStudy());
+        model.addAttribute("commentsNumber", commentsNumber);
 
         return "study_field/question";
     }

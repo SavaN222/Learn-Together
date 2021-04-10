@@ -9,4 +9,5 @@ import java.util.List;
 @Resource
 public interface CommentStudyRepository extends JpaRepository<CommentStudy, Integer> {
     List<CommentStudy> findCommentStudyByQuestionStudyId(int questionId);
+    int countCommentStudiesByQuestionStudyId(int questionId);
 }

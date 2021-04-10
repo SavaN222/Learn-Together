@@ -18,7 +18,7 @@
         <p class="lead text-white">
            Ask question in this study field or try to help other student with they problems bellow.
         </p>
-        <div th:if="${success}" th:text="${success}" class="alert alert-info col-xs-offset-1 col-xs-10">
+        <div th:if="${success}" th:text="${success}" class="alert alert-success col-xs-offset-1 col-xs-10">
             <span>Confirm Question msg</span>
         </div>
         <hr class="my-4">
@@ -63,7 +63,7 @@
                 <div class="card-footer ">
                     <p class="float-left"> Created by <b th:text="${question.student.username}">author</b>
                         <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
-                        <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
+                        <a class="ml-2" href=""><i th:text="${commentsNumber}" class="fas fa-comment-dots fa-lg">10</i></a>
                     </p>
                         <button class="btn btn-success float-right">
                             <a class="text-white" th:href="@{'/question/' + ${question.id}}">View topic</a>

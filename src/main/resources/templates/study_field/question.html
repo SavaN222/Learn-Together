@@ -28,7 +28,7 @@
             <p th:text="${question.description}" class="text-white m-4">Description</p>
             <div class="question-footer mb-5">
                 <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
-                <a class="ml-2" href=""><i class="fas fa-comment-dots fa-lg">10</i></a>
+                <a class="ml-2" href=""><i th:text="${commentsNumber}" class="fas fa-comment-dots fa-lg">10</i></a>
             </div>
 
             <p class="text-white">Comment as
@@ -52,7 +52,7 @@
         <hr class="bg-main-light">
 
         <div th:if="${comments}" class="comments">
-            <div th:each="comment : ${comments}" class="media pb-4 border-bottom border-secondary">
+            <div th:each="comment : ${comments}" class="media pb-4 mt-3 border-bottom border-secondary">
                 <img th:src="${comment.student.profilePic}" class="mr-3 rounded-circle" style="width: 75px" height="75px" alt="...">
                 <div class="media-body">
                     <h5 class="mt-0">
