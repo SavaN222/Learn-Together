@@ -3,7 +3,7 @@ package com.nakaradasava.learntogether.controller;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
-import com.nakaradasava.learntogether.service.token.QuestionStudyService;
+import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

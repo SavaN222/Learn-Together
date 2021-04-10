@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.service.token;
+package com.nakaradasava.learntogether.service.studyfield;
 
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.repository.studyfield.QuestionStudyRepository;
