@@ -56,15 +56,13 @@ public class QuestionController {
     }
 
     @DeleteMapping("/question/delete/{id}")
-    public String destroy(@PathVariable int id,
-                          @ModelAttribute(name = "question") QuestionStudy questionStudy,
-                          RedirectAttributes redirectAttributes) {
+    public String destroy(@PathVariable int id, RedirectAttributes redirectAttributes) {
 
         questionStudyService.deleteById(id);
 
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your question is deleted");
 
-        return "redirect:/study-fields?studyField=" + questionStudy.getStudyField().getId();
+        return "redirect:/study-fields";
 
     }
 

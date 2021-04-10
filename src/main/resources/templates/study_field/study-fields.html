@@ -32,6 +32,9 @@
             </div>
         </form>
     </div>
+    <div th:if="${deleteSuccess}" th:text="${deleteSuccess}" class="alert alert-success col-xs-offset-1 col-xs-10">
+        <span>delete question success</span>
+    </div>
 </div> <!-- end of container -->
 
 <!--include footer-->
