@@ -29,9 +29,12 @@
                     <a class="mr-2" href="">
                         <i class="fas fa-pen fa-lg"></i>
                     </a>
-                    <a href="">
-                        <i class="fas fa-trash fa-lg text-danger"></i>
-                    </a>
+                    <form th:action="@{'/question/delete/' + ${question.id}}" th:method="delete">
+                        <button type="submit" name="id" class="btn">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+                        </button>
+                        <input type="hidden" name="studyFieldId" th:value="${question.studyField.id}">
+                    </form>
                 </div>
             </div>
             <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title </h3>

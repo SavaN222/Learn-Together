@@ -36,6 +36,6 @@ public class QuestionStudy {
     @JoinColumn(name = "study_field_id", referencedColumnName = "id")
     private StudyField studyField;
 
-    @OneToMany(mappedBy = "questionStudy")
+    @OneToMany(mappedBy = "questionStudy", cascade = CascadeType.ALL)
     private List<CommentStudy> comments;
 }

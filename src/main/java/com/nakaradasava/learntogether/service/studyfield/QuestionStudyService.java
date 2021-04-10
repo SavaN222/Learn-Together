@@ -29,4 +29,8 @@ public class QuestionStudyService {
     public QuestionStudy findById(int questionId) {
         return questionStudyRepository.findById(questionId).get();
     }
+
+    public void deleteById(int id) {
+        questionStudyRepository.deleteById(id);
+    }
 }

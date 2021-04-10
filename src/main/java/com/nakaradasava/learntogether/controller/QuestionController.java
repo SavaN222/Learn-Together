@@ -55,5 +55,15 @@ public class QuestionController {
         return "redirect:/study-fields?studyField=" + id;
     }
 
+    @DeleteMapping("/question/delete/{id}")
+    public String destroy(@PathVariable int id,
+                          @RequestBody int studyFieldId) {
+
+        questionStudyService.deleteById(id);
+
+        return "redirect:/study-fields?studyField=" + studyFieldId;
+
+    }
+
 
 }
