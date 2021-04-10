@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.controller;
+package com.nakaradasava.learntogether.controller.auth;
 
 import com.nakaradasava.learntogether.entity.*;
 import com.nakaradasava.learntogether.entity.student.RegistrationStudent;

@@ -49,10 +49,4 @@ public class StudyFieldController {
 
         return "study_field/study-fields";
     }
-    /**
-     * Uradi display svih questiona
-     * svaki question nek ide na posebnu stranicu sa komentarima za taj question
-     * uradi komentare lajkove a favorites tj follow topic cemo tek za kasnije
-     * uradi edit i delete
-     */
 }

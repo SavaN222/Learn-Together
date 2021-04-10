@@ -4,7 +4,6 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
-import com.nakaradasava.learntogether.service.studyfield.CommentStudyService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +66,4 @@ public class QuestionController {
         return "redirect:/study-fields?studyField=" + studyFieldId;
 
     }
-
-
 }
