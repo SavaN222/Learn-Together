@@ -23,7 +23,7 @@
         </div>
         <hr class="my-4">
         <div class="share-something">
-            <form th:action="@{/study-fields/save(studyField=${studyField.id})}" th:object="${question}" method="POST">
+            <form th:action="@{'/question/' + ${studyField.id}}" th:object="${question}" method="POST">
                 <div class="form-group">
                     <input type="text" placeholder="title for your question" class="form-control" name="title" th:field="*{title}">
                 </div>

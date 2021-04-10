@@ -57,7 +57,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
+    public String index(Model model) {
         List<University> universities = universityService.findUniversities();
         List<StudyField> studyFields = studyService.findStudyFields();
 
@@ -69,7 +69,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute("student") RegistrationStudent student,
+    public String store(@Valid @ModelAttribute("student") RegistrationStudent student,
                            BindingResult bindingResult,
                            Model model,
                            RedirectAttributes redirectAttributes) {

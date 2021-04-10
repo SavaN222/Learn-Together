@@ -49,24 +49,6 @@ public class StudyFieldController {
 
         return "study_field/study-fields";
     }
-
-    @PostMapping("/study-fields/save")
-    public String saveQuestion(@RequestParam(name = "studyField", required = true) int studyFieldId,
-                               @ModelAttribute("question") QuestionStudy questionStudy,
-                               @AuthenticationPrincipal Student student,
-                               RedirectAttributes redirectAttributes) {
-
-        StudyField studyField = studyFieldService.findStudyFieldById(studyFieldId);
-
-        questionStudy.setStudyField(studyField);
-        questionStudy.setStudent(student);
-
-        questionStudyService.saveQuestion(questionStudy);
-
-        redirectAttributes.addFlashAttribute("success", "Your question is posted");
-
-        return "redirect:/study-fields?studyField=" + studyFieldId;
-    }
     /**
      * Uradi display svih questiona
      * svaki question nek ide na posebnu stranicu sa komentarima za taj question

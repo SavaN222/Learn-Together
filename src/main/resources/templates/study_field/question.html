@@ -44,7 +44,7 @@
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
-            <form th:action="@{'/question/save/' + ${question.id}}" th:object="${commentObj}" method="POST">
+            <form th:action="@{'/comments/' + ${question.id}}" th:object="${commentObj}" method="POST">
                 <div class="form-group">
                     <textarea class="form-control" name="comment" th:field="*{content}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>

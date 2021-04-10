@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(Model model) {
+    public String index(Model model) {
         RestTemplate restTemplate = new RestTemplate();
         Quote quote = restTemplate.getForObject("https://api.quotable.io/random", Quote.class);
 
