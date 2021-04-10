@@ -20,4 +20,8 @@ public class CommentStudyService {
     public List<CommentStudy> findCommentsByQuestionId(int questionId) {
         return commentStudyRepository.findCommentStudyByQuestionStudyId(questionId);
     }
+
+    public void saveComment(CommentStudy commentStudy) {
+        commentStudyRepository.save(commentStudy);
+    }
 }

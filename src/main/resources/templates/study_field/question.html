@@ -34,9 +34,9 @@
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
-            <form action="">
+            <form th:action="@{'/question/save/' + ${question.id}}" th:object="${emptyComment}" method="POST">
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    <textarea class="form-control" name="comment" th:field="*{emptyComment.comment}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>
                 </div>
                 <div class="float-right">
@@ -45,6 +45,9 @@
                 <div class="clearfix"></div>
             </form>
 
+        </div>
+        <div th:if="${success}" th:text="${success}" class="alert alert-success text-white col-xs-offset-1 col-xs-10">
+            <span>Confirm Comment msg</span>
         </div>
         <hr class="bg-main-light">
 
