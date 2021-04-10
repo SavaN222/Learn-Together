@@ -18,4 +18,8 @@ public class CommentStudyService {
     public void saveComment(CommentStudy commentStudy) {
         commentStudyRepository.save(commentStudy);
     }
+
+    public void deleteCommentById(int id) {
+        commentStudyRepository.deleteById(id);
+    }
 }

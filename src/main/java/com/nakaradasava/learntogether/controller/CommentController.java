@@ -8,9 +8,7 @@ import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -41,6 +39,19 @@ public class CommentController {
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
         return "redirect:/question/" + id;
+    }
+
+    @DeleteMapping("/comment/delete/{id}")
+    public String destroy(@PathVariable int id,
+                          RedirectAttributes redirectAttributes,
+                          @RequestParam int questionId) {
+
+        commentStudyService.deleteCommentById(id);
+
+        redirectAttributes.addFlashAttribute("deleteSuccess", "Your comment is deleted");
+
+        return "redirect:/question/" + questionId;
+
     }
 
 }

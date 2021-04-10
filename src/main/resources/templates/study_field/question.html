@@ -30,6 +30,7 @@
                         <i class="fas fa-pen fa-lg"></i>
                     </a>
                     <form th:action="@{'/question/delete/' + ${question.id}}" th:method="delete">
+                        <input type="hidden" th:value="${question.studyField.id}" name="studyFieldId">
                         <button type="submit" name="id" class="btn">
                             <i class="fas fa-trash fa-lg text-danger"></i>
                         </button>
@@ -57,6 +58,10 @@
                 <div class="clearfix"></div>
             </form>
 
+            <div th:if="${deleteSuccess}" th:text="${deleteSuccess}" class="alert alert-success col-xs-offset-1 col-xs-10">
+                <span>delete comment success</span>
+            </div>
+
         </div>
         <div th:if="${success}" th:text="${success}" class="alert alert-success col-xs-offset-1 col-xs-10">
             <span>Confirm Comment msg</span>
@@ -77,9 +82,12 @@
                                 <a class="mr-2" href="">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="">
-                                    <i class="fas fa-trash text-danger"></i>
-                                </a>
+                                <form th:action="@{'/comment/delete/' + ${comment.id}}" th:method="delete">
+                                    <input type="hidden" th:value="${question.id}" name="questionId">
+                                    <button type="submit" class="btn">
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </button>
+                                </form>
                             </div>
 
                         </div>
