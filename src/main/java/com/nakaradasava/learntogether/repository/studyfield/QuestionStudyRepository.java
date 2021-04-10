@@ -10,5 +10,4 @@ import java.util.List;
 public interface QuestionStudyRepository extends JpaRepository<QuestionStudy, Integer> {
 
     List<QuestionStudy> findQuestionStudiesByStudyFieldIdOrderByIdDesc(int studyFieldId);
-
 }

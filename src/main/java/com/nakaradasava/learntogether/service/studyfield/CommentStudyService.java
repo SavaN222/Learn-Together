@@ -5,8 +5,6 @@ import com.nakaradasava.learntogether.repository.studyfield.CommentStudyReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CommentStudyService {
 
@@ -17,15 +15,7 @@ public class CommentStudyService {
         this.commentStudyRepository = commentStudyRepository;
     }
 
-    public List<CommentStudy> findCommentsByQuestionId(int questionId) {
-        return commentStudyRepository.findCommentStudyByQuestionStudyId(questionId);
-    }
-
     public void saveComment(CommentStudy commentStudy) {
         commentStudyRepository.save(commentStudy);
-    }
-
-    public int countCommentStudiesByQuestionStudyId(int questionId) {
-        return commentStudyRepository.countCommentStudiesByQuestionStudyId(questionId);
     }
 }

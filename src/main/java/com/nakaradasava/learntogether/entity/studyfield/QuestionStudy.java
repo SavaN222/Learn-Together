@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,4 +35,7 @@ public class QuestionStudy {
     @ManyToOne
     @JoinColumn(name = "study_field_id", referencedColumnName = "id")
     private StudyField studyField;
+
+    @OneToMany(mappedBy = "questionStudy")
+    private List<CommentStudy> comments;
 }

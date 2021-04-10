@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-
 @Controller
 public class QuestionController {
 
@@ -33,13 +31,9 @@ public class QuestionController {
     public String getQuestion(@PathVariable int id,
                               Model model) {
         QuestionStudy questionStudy = questionStudyService.findById(id);
-        List<CommentStudy> comments = commentStudyService.findCommentsByQuestionId(id);
-        int commentsNumber = commentStudyService.countCommentStudiesByQuestionStudyId(id);
 
         model.addAttribute("question", questionStudy);
-        model.addAttribute("comments", comments);
         model.addAttribute("commentObj", new CommentStudy());
-        model.addAttribute("commentsNumber", commentsNumber);
 
         return "study_field/question";
     }

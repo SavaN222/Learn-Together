@@ -3,7 +3,6 @@ package com.nakaradasava.learntogether.controller;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
-import com.nakaradasava.learntogether.service.studyfield.CommentStudyService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,12 @@ public class StudyFieldController {
 
     private StudyFieldService studyFieldService;
     private QuestionStudyService questionStudyService;
-    private CommentStudyService commentStudyService;
 
     @Autowired
     public StudyFieldController(StudyFieldService studyFieldService,
-                                QuestionStudyService questionStudyService,
-                                CommentStudyService commentStudyService) {
+                                QuestionStudyService questionStudyService) {
         this.studyFieldService = studyFieldService;
         this.questionStudyService = questionStudyService;
-        this.commentStudyService = commentStudyService;
     }
 
     @GetMapping("/study-fields")
@@ -39,12 +35,10 @@ public class StudyFieldController {
         if (studyFieldId.isPresent()) {
             List<QuestionStudy> questions = questionStudyService.findQuestionStudiesByStudyFieldId(studyFieldId.get());
             StudyField studyField = studyFieldService.findStudyFieldById(studyFieldId.get());
-            int commentsNumber = commentStudyService.countCommentStudiesByQuestionStudyId(studyFieldId.get());
 
             model.addAttribute("studyField", studyField);
             model.addAttribute("questions", questions);
             model.addAttribute("question", new QuestionStudy());
-            model.addAttribute("commentsNumber", commentsNumber);
 
             return "study_field/study-field";
         }

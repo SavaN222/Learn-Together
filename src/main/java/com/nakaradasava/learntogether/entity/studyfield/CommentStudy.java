@@ -21,14 +21,14 @@ public class CommentStudy {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "content")
+    private String content;
 
-    @OneToOne()
+    @ManyToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     private Student student;
 
-    @OneToOne
+    @ManyToOne()
     @JoinColumn(name = "question_study_id", referencedColumnName = "id")
     private QuestionStudy questionStudy;
 }
