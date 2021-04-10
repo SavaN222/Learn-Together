@@ -57,8 +57,7 @@
                 <div class="media-body">
                     <h5 class="mt-0">
                         <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
-                        <span class="text-white font-italic">/
-                            <small th:text="${comment.student.studyField.name}">student study field</small>
+                        <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small>
                         </span>
                     </h5>
                     <p th:text="${comment.content}">comment text</p>
