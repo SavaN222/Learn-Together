@@ -26,7 +26,7 @@
                 </p>
                 </div> <!-- .author end -->
                 <div th:if="${#authentication.principal.id == question.student.id}" class="icons align-right">
-                    <a class="mr-2" th:href="@{'/question/edit/' + ${question.id}}">
+                    <a class="mr-2 btn" th:href="@{'/question/edit/' + ${question.id}}">
                         <i class="fas fa-pen fa-lg"></i>
                     </a>
                     <form th:action="@{'/question/delete/' + ${question.id}}" th:method="delete">
