@@ -66,4 +66,19 @@ public class QuestionController {
         return "redirect:/study-fields?studyField=" + studyFieldId;
 
     }
+
+    @GetMapping("/question/edit/{id}")
+    public String showEditForm(@PathVariable int id,
+                               Model model,
+                               @AuthenticationPrincipal Student student) {
+        QuestionStudy questionStudy = questionStudyService.findById(id);
+
+        if (!questionStudy.getStudent().getId().equals(student.getId())) {
+            return "redirect:/question/" + questionStudy.getId();
+        }
+
+        model.addAttribute("question", questionStudy);
+
+        return "study_field/question-update";
+    }
 }
