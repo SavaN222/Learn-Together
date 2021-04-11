@@ -7,9 +7,11 @@ import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +25,18 @@ public class QuestionController {
     public QuestionController(QuestionStudyService questionStudyService, StudyFieldService studyFieldService) {
         this.questionStudyService = questionStudyService;
         this.studyFieldService = studyFieldService;
+    }
+
+    /**
+     * Trim all white spaces for user inputs
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @GetMapping("/question/{questionId}")

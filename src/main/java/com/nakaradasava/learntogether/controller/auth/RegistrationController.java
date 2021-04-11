@@ -45,7 +45,7 @@ public class RegistrationController {
     }
 
     /**
-     * Trim all white spaces
+     * Trim all white spaces for user inputs
      * @param dataBinder
      */
     @InitBinder
