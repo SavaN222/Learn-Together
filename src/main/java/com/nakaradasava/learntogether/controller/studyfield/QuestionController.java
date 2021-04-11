@@ -25,10 +25,10 @@ public class QuestionController {
         this.studyFieldService = studyFieldService;
     }
 
-    @GetMapping("/question/{id}")
-    public String show(@PathVariable int id,
+    @GetMapping("/question/{questionId}")
+    public String show(@PathVariable int questionId,
                               Model model) {
-        QuestionStudy questionStudy = questionStudyService.findById(id);
+        QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
         model.addAttribute("question", questionStudy);
         model.addAttribute("commentObj", new CommentStudy());
@@ -36,13 +36,13 @@ public class QuestionController {
         return "study_field/question";
     }
 
-    @PostMapping("/question/{id}")
-    public String store(@PathVariable int id,
+    @PostMapping("/question/{questionId}")
+    public String saveQuestion(@PathVariable int questionId,
                                @ModelAttribute("question") QuestionStudy questionStudy,
                                @AuthenticationPrincipal Student student,
                                RedirectAttributes redirectAttributes) {
 
-        StudyField studyField = studyFieldService.findStudyFieldById(id);
+        StudyField studyField = studyFieldService.findStudyFieldById(questionId);
 
         questionStudy.setStudyField(studyField);
         questionStudy.setStudent(student);
@@ -51,15 +51,15 @@ public class QuestionController {
 
         redirectAttributes.addFlashAttribute("success", "Your question is posted");
 
-        return "redirect:/study-fields?studyField=" + id;
+        return "redirect:/study-fields?studyField=" + questionId;
     }
 
-    @DeleteMapping("/question/delete/{id}")
-    public String destroy(@PathVariable int id,
+    @DeleteMapping("/question/delete/{questionId}")
+    public String delete(@PathVariable int questionId,
                           RedirectAttributes redirectAttributes,
                           @RequestParam int studyFieldId) {
 
-        questionStudyService.deleteById(id);
+        questionStudyService.deleteById(questionId);
 
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your question is deleted");
 
@@ -67,11 +67,11 @@ public class QuestionController {
 
     }
 
-    @GetMapping("/question/edit/{id}")
-    public String showEditForm(@PathVariable int id,
+    @GetMapping("/question/edit/{questionId}")
+    public String showEditForm(@PathVariable int questionId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
-        QuestionStudy questionStudy = questionStudyService.findById(id);
+        QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
         if (!questionStudy.getStudent().getId().equals(student.getId())) {
             return "redirect:/question/" + questionStudy.getId();

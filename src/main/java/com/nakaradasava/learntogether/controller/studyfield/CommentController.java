@@ -24,13 +24,13 @@ public class CommentController {
         this.questionStudyService = questionStudyService;
     }
 
-    @PostMapping("/comments/{id}")
-    public String saveQuestion(@ModelAttribute(name = "commentObj") CommentStudy commentStudy,
+    @PostMapping("/comments/{questionId}")
+    public String saveComment(@ModelAttribute(name = "commentObj") CommentStudy commentStudy,
                                RedirectAttributes redirectAttributes,
-                               @PathVariable(name = "id") int id,
+                               @PathVariable(name = "questionId") int questionId,
                                @AuthenticationPrincipal Student student) {
 
-        QuestionStudy questionStudy = questionStudyService.findById(id);
+        QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
         commentStudy.setQuestionStudy(questionStudy);
         commentStudy.setStudent(student);
@@ -39,26 +39,26 @@ public class CommentController {
 
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
-        return "redirect:/question/" + id;
+        return "redirect:/question/" + questionId;
     }
 
-    @DeleteMapping("/comment/delete/{id}")
-    public String destroy(@PathVariable int id,
+    @DeleteMapping("/comment/delete/{commentId}")
+    public String delete(@PathVariable int commentId,
                           RedirectAttributes redirectAttributes,
                           @RequestParam int questionId) {
 
-        commentStudyService.deleteCommentById(id);
+        commentStudyService.deleteCommentById(commentId);
 
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your comment is deleted");
 
         return "redirect:/question/" + questionId;
     }
 
-    @GetMapping("/comment/edit/{id}")
-    public String showEditForm(@PathVariable int id,
+    @GetMapping("/comment/edit/{commentId}")
+    public String showEditForm(@PathVariable int commentId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
-        CommentStudy commentStudy = commentStudyService.findCommentById(id);
+        CommentStudy commentStudy = commentStudyService.findCommentById(commentId);
 
         if (!commentStudy.getStudent().getId().equals(student.getId())) {
             return "redirect:/question/" + commentStudy.getQuestionStudy().getId();

@@ -69,7 +69,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String store(@Valid @ModelAttribute("student") RegistrationStudent student,
+    public String saveUser(@Valid @ModelAttribute("student") RegistrationStudent student,
                            BindingResult bindingResult,
                            Model model,
                            RedirectAttributes redirectAttributes) {
