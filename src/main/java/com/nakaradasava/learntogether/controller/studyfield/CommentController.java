@@ -38,6 +38,14 @@ public class CommentController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
+    /**
+     * Save/Update comment
+     * @param commentStudy thymeleaf binding object
+     * @param redirectAttributes flash message
+     * @param questionId question post id which hold comments
+     * @param student logged-in student
+     * @return redirect to question post(same page) but with new comment
+     */
     @PostMapping("/comments/{questionId}")
     public String saveComment(@ModelAttribute(name = "commentObj") CommentStudy commentStudy,
                                RedirectAttributes redirectAttributes,
