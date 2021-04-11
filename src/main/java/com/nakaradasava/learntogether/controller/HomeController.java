@@ -9,6 +9,11 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class HomeController {
 
+    /**
+     * Home page with quote api
+     * @param model
+     * @return home page
+     */
     @GetMapping("/")
     public String index(Model model) {
         RestTemplate restTemplate = new RestTemplate();
