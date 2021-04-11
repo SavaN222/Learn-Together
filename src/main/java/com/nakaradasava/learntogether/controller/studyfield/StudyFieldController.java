@@ -39,6 +39,13 @@ public class StudyFieldController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
+    /**
+     * If @RequestParam exist, return selected study field
+     * If not exist, return select menu with available study fields
+     * @param studyFieldId id for specific study field
+     * @param model
+     * @return study field(s)
+     */
     @GetMapping("/study-fields")
     public String showAllStudyFields(@RequestParam(name = "studyField", required = false) Optional<Integer> studyFieldId,
                                      Model model) {
