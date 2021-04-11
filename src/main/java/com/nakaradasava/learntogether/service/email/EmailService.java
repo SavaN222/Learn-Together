@@ -15,6 +15,11 @@ public class EmailService {
 
     private JavaMailSender javaMailSender;
 
+    /**
+     * Send mail for confirmation token to new register student
+     * @param to student mail recipient
+     * @param email content of email - html page
+     */
     @Async
     public void sendEmail(String to, String email) {
         try {
