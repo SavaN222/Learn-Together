@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.controller;
+package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;

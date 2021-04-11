@@ -22,4 +22,8 @@ public class CommentStudyService {
     public void deleteCommentById(int id) {
         commentStudyRepository.deleteById(id);
     }
+
+    public CommentStudy findCommentById(int id) {
+      return commentStudyRepository.findById(id).get();
+    }
 }

@@ -53,7 +53,7 @@
                               placeholder="write comment ..."></textarea>
                 </div>
                 <div class="float-right">
-                    <button class="btn btn-success">Send</button>
+                    <button type="submit" class="btn btn-success">Send</button>
                 </div>
                 <div class="clearfix"></div>
             </form>
@@ -79,9 +79,11 @@
                                 <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small></span>
                             </div>
                             <div th:if="${#authentication.principal.id == comment.student.id}" class="icons align-right">
-                                <a class="mr-2" href="">
+
+                                <a class="mr-2 btn" th:href="@{'/comment/edit/' + ${comment.id}}">
                                     <i class="fas fa-pen"></i>
                                 </a>
+
                                 <form th:action="@{'/comment/delete/' + ${comment.id}}" th:method="delete">
                                     <input type="hidden" th:value="${question.id}" name="questionId">
                                     <button type="submit" class="btn">
