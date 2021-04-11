@@ -56,6 +56,11 @@ public class RegistrationController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
+    /**
+     * Show registration page with list of all universities and study fields
+     * @param model model for thymeleaf binding
+     * @return registration page
+     */
     @GetMapping("/register")
     public String index(Model model) {
         List<University> universities = universityService.findUniversities();
@@ -68,6 +73,15 @@ public class RegistrationController {
         return "auth/register";
     }
 
+    /**
+     * Method perform validation and creating new student, if validation failed, return error message.
+     * Send email with confirmation token, set default image(depends on gender)
+     * @param student thymeleaf binding object for registration
+     * @param bindingResult validation errors
+     * @param model model
+     * @param redirectAttributes if student register send flash message to login page
+     * @return if validation has errors return register page, otherwise redirect to login
+     */
     @PostMapping("/register")
     public String saveUser(@Valid @ModelAttribute("student") RegistrationStudent student,
                            BindingResult bindingResult,
@@ -102,6 +116,11 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
+    /**
+     * Confirm token and enabled student
+     * @param token registration token
+     * @return redirect to login page from email
+     */
     @GetMapping("/register/confirm")
     public String confirmMail(@RequestParam("token") String token) {
         Optional<ConfirmationToken> optionalConfirmationToken =
