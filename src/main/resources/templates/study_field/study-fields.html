@@ -32,6 +32,9 @@
             </div>
         </form>
     </div>
+    <div th:if="${questionCreateError}" th:text="${questionCreateError}" class="alert alert-success col-xs-offset-1 col-xs-10">
+        <span>Confirm Question msg</span>
+    </div>
 </div> <!-- end of container -->
 
 <!--include footer-->

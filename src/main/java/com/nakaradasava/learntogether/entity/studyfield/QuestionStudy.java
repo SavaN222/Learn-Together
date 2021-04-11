@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,9 +23,11 @@ public class QuestionStudy {
     @Column(name = "id")
     private Integer id;
 
+    @NotEmpty(message = "title is required")
     @Column(name = "title")
     private String title;
 
+    @NotEmpty(message = "description is required")
     @Column(name = "description")
     private String description;
 

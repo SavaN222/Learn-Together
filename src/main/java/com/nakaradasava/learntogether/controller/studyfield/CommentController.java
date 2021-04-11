@@ -10,9 +10,12 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class CommentController {
@@ -47,12 +50,19 @@ public class CommentController {
      * @return redirect to question post(same page) but with new comment
      */
     @PostMapping("/comments/{questionId}")
-    public String saveComment(@ModelAttribute(name = "commentObj") CommentStudy commentStudy,
+    public String saveComment(@Valid @ModelAttribute(name = "commentObj") CommentStudy commentStudy,
+                               BindingResult bindingResult,
+                               Model model,
                                RedirectAttributes redirectAttributes,
                                @PathVariable(name = "questionId") int questionId,
                                @AuthenticationPrincipal Student student) {
 
         QuestionStudy questionStudy = questionStudyService.findById(questionId);
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("question", questionStudy);
+            return "study_field/question";
+        }
 
         commentStudy.setQuestionStudy(questionStudy);
         commentStudy.setStudent(student);

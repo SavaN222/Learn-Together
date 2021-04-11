@@ -51,6 +51,7 @@
                 <div class="form-group">
                     <textarea class="form-control" name="comment" th:field="*{content}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
                 </div>
                 <div class="float-right">
                     <button type="submit" class="btn btn-success">Send</button>

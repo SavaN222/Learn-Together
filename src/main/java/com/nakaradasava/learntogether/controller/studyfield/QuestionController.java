@@ -11,9 +11,12 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class QuestionController {
@@ -52,11 +55,19 @@ public class QuestionController {
 
     @PostMapping("/question/{questionId}")
     public String saveQuestion(@PathVariable int questionId,
-                               @ModelAttribute("question") QuestionStudy questionStudy,
+                               @Valid @ModelAttribute("question") QuestionStudy questionStudy,
+                               BindingResult bindingResult,
                                @AuthenticationPrincipal Student student,
                                RedirectAttributes redirectAttributes) {
 
         StudyField studyField = studyFieldService.findStudyFieldById(questionId);
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("questionCreateError",
+                    "Question title or content cannot be null");
+
+            return "redirect:/study-fields";
+        }
 
         questionStudy.setStudyField(studyField);
         questionStudy.setStudent(student);
