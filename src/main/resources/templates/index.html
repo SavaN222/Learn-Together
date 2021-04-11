@@ -12,11 +12,12 @@
 <!--content-->
 <div class="container-fluid">
         <div class="row mt-5">
-                <div class="col-lg-3 border border-secondary rounded">
+                <div class="col-lg-3">
+                        <div class="card-holder border-right border-secondary rounded">
                         <div id="profile-card" class="card">
                                 <img th:if="${#authentication.principal.profilePic}"
                                      th:src="@{${#authentication.principal.profilePic}}"
-                                     class="card-img-top rounded" alt="..." style="height: 18rem; width: 90%;">
+                                     class="card-img-top rounded" alt="..." style="height: 57%; width: 57%;">
                                 <div class="icons mt-2"></div>
                                 <p>
                                         <i class="fas fa-university fa-lg"></i>
@@ -54,6 +55,7 @@
                                        </div>
                                 </div>
                         </div>
+                </div>
                 <div class="col-lg-8">
                         <div class="share-something">
                                 <form action="">
