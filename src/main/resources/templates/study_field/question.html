@@ -37,16 +37,20 @@
                     </form>
                 </div>
             </div>
-            <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title </h3>
+            <div class="heading-question d-flex">
+                <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title</h3>
+                <small th:if="${question.edited}" th:text="edited" class="font-italic text-warning">edited</small>
+            </div>
+
             <p th:text="${question.description}" class="text-white m-4">Description</p>
-            <div class="question-footer mb-5">
+            <div class="question-footer mb-5 d-flex">
                 <form th:action="@{/like}" method="POST" class="likeForm" th:object="${like}">
                     <input type="hidden" th:value="${question.id}" name="questionId">
                     <button type="submit" class="btn ml-2">
                         <i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
                     </button>
                 </form>
-                <a class="btn ml-2" href=""><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></a>
+                <a class="btn" href=""><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></a>
             </div>
 
             <p class="text-white">Comment as
@@ -83,6 +87,8 @@
                             <div class="user-headline align-left">
                                 <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
                                 <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small></span>
+                                <small th:if="${comment.edited}" th:text="edited" class="font-italic text-warning">edited</small>
+
                             </div>
                             <div th:if="${#authentication.principal.id == comment.student.id}" class="icons align-right">
 

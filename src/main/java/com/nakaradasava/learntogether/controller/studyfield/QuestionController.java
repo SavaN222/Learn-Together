@@ -74,9 +74,16 @@ public class QuestionController {
         questionStudy.setStudyField(studyField);
         questionStudy.setStudent(student);
 
+        String saveMsg = "Your question is posted";
+
+        if (null != questionStudy.getId()) {
+            questionStudy.setEdited(true);
+            saveMsg = "Your question is edited";
+        }
+
         questionStudyService.saveQuestion(questionStudy);
 
-        redirectAttributes.addFlashAttribute("success", "Your question is posted");
+        redirectAttributes.addFlashAttribute("success", saveMsg);
 
         return "redirect:/study-fields?studyField=" + questionId;
     }

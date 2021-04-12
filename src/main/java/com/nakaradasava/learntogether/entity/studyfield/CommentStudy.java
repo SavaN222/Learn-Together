@@ -33,4 +33,7 @@ public class CommentStudy {
     @ManyToOne()
     @JoinColumn(name = "question_study_id", referencedColumnName = "id")
     private QuestionStudy questionStudy;
+
+    @Column(name = "edited")
+    private boolean edited;
 }

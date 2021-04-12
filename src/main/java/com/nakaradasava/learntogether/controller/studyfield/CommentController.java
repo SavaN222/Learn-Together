@@ -67,6 +67,10 @@ public class CommentController {
         commentStudy.setQuestionStudy(questionStudy);
         commentStudy.setStudent(student);
 
+        if (null != commentStudy.getId()) {
+            commentStudy.setEdited(true);
+        }
+
         commentStudyService.saveComment(commentStudy);
 
         redirectAttributes.addFlashAttribute("success", "Comment posted");

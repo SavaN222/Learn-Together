@@ -44,4 +44,7 @@ public class QuestionStudy {
 
     @OneToMany(mappedBy = "questionStudy", cascade = CascadeType.ALL)
     private List<LikeStudy> likes;
+
+    @Column(name = "edited")
+    private boolean edited;
 }
