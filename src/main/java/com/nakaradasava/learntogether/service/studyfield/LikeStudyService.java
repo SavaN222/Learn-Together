@@ -7,6 +7,8 @@ import com.nakaradasava.learntogether.repository.studyfield.LikeStudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class LikeStudyService {
 
@@ -23,5 +25,9 @@ public class LikeStudyService {
 
     public void dislike(int id) {
         likeStudyRepository.deleteById(id);
+    }
+
+    public Optional<LikeStudy> findByQuestionStudyAndStudent(QuestionStudy questionStudy, Student student) {
+        return likeStudyRepository.findByQuestionStudyAndStudent(questionStudy, student);
     }
 }

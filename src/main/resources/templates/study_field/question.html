@@ -40,8 +40,13 @@
             <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title </h3>
             <p th:text="${question.description}" class="text-white m-4">Description</p>
             <div class="question-footer mb-5">
-                <a class="ml-2 mr-2" href=""><i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i></a>
-                <a class="ml-2" href=""><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></a>
+                <form th:action="@{/like}" method="POST" class="likeForm" th:object="${like}">
+                    <input type="hidden" th:value="${question.id}" name="questionId">
+                    <button type="submit" class="btn ml-2">
+                        <i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
+                    </button>
+                </form>
+                <a class="btn ml-2" href=""><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></a>
             </div>
 
             <p class="text-white">Comment as
