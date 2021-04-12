@@ -66,8 +66,8 @@
                 </div>
                 <div class="card-footer ">
                     <p class="float-left"> Created by <b th:text="${question.student.username}">author</b>
-                        <a class="ml-2 mr-2" href=""><i class="fas fa-graduation-cap fa-lg">10</i></a>
-                        <a class="ml-2" href=""><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></a>
+                        <span class="ml-2 mr-2"><i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i></span>
+                        <span class="ml-2"><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></span>
                     </p>
                         <button class="btn btn-success float-right">
                             <a class="text-white" th:href="@{'/question/' + ${question.id}}">View topic</a>

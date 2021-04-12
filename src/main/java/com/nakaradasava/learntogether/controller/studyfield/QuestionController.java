@@ -2,6 +2,7 @@ package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;
+import com.nakaradasava.learntogether.entity.studyfield.LikeStudy;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
@@ -49,6 +50,7 @@ public class QuestionController {
 
         model.addAttribute("question", questionStudy);
         model.addAttribute("commentObj", new CommentStudy());
+        model.addAttribute("like", new LikeStudy());
 
         return "study_field/question";
     }
