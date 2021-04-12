@@ -31,8 +31,9 @@ public class RegistrationService {
     }
 
     public void registerStudent(RegistrationStudent registrationStudent) {
-
+        String profileDirectory = "/images/profile_pictures/";
         Student student = new Student();
+
         student.setUsername(registrationStudent.getUsername());
         student.setEmail(registrationStudent.getEmail());
         student.setPassword(bCryptPasswordEncoder.encode(registrationStudent.getPassword()));
@@ -40,7 +41,9 @@ public class RegistrationService {
         student.setStudyField(registrationStudent.getStudyField());
         student.setRole("student");
         student.setGender(registrationStudent.getGender());
-        student.setProfilePic(registrationStudent.getProfilePic());
+        student.setProfilePic("Male".equals(registrationStudent.getGender()) ?
+                profileDirectory + "male.png" : profileDirectory + "female.png");
+
         studentRepository.save(student);
 
         ConfirmationToken confirmationToken = new ConfirmationToken(student);

@@ -105,10 +105,6 @@ public class RegistrationController {
             return "auth/register";
         }
 
-        String profileDirectory = "/images/profile_pictures/";
-        student.setProfilePic("Male".equals(student.getGender()) ?
-                profileDirectory + "male.png" : profileDirectory + "female.png");
-
         registrationService.registerStudent(student);
 
         redirectAttributes.addFlashAttribute("confirmTokenMsg", "You are register, but you must" +
