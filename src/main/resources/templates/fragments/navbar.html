@@ -27,7 +27,8 @@
                         <a class="nav-item nav-link text-white" th:href="@{/study-fields}">Study Field</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link text-white" th:href="@{/university}">University</a>
+                        <a class="nav-item nav-link text-white" th:href="@{'/university/' + ${#authentication.principal.university.id}}">
+                            University</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-item nav-link text-white" href="">Jobs</a>
