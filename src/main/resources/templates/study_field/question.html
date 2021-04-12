@@ -39,7 +39,7 @@
             </div>
             <div class="heading-question d-flex">
                 <h3 th:text="${question.title}" class="text-white m-4 font-weight-bold"> Question Title</h3>
-                <small th:if="${question.edited}" th:text="edited" class="font-italic text-warning">edited</small>
+                <small th:if="${question.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
             </div>
 
             <p th:text="${question.description}" class="text-white m-4">Description</p>
