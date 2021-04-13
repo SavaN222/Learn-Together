@@ -11,6 +11,9 @@
 .bg-main-light {
     background-color: #1ED760;
 }
+.bg-black {
+    background-color: #18191A;
+}
 body {
     background-color: #18191A;
     color: #ffffff;
@@ -165,7 +168,7 @@ textarea::selection, input::selection, select, option {
     color: #1ED760 !important;
 }
 /** study field **/
-.jumbotron {
+.jumbotron, .bg-dark-blue {
     background-color: #1e2833;
 }
 #questions .card-header .fa {
