@@ -46,11 +46,33 @@
                         <p>News feed izlistaj sve evente i objave u sklopu faksa</p>
 
                     </div>
+                    <!-- izlistaj sve ucenike -->
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
-                        <p>Izlistaj sve ucenike</p>
+                        <p class="font-italic">Student Counter:
+                            <span class="text-main-light" th:text="${university.students.size()}">10</span>
+                        </p>
+                      <div class="row">
+                          <div th:each="student : ${university.students}" class="col-lg-4">
+                            <div class="student-holder">
+                                <div class="row d-flex">
+                                    <div class="col-lg-4">
+                                        <img class="rounded-circle" width="75px" height="75px" th:src="${student.profilePic}" alt="">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-info">
+                                            <span th:text="${student.username}">username</span>
+                                            <span>(<span th:text="${student.studyField.name}" class="text-main-light">studyField</span>)</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
 
                     </div>
+                    <!-- izlistaj sve ucenike kraj -->
+
+                    
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 
                         dugmici za kreiranje eventa ili objave
