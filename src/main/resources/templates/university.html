@@ -16,8 +16,10 @@
             <div class="container">
                 <h1 th:text="${university.fullName}" class="display-4 text-center">FullName Name</h1>
                 <p th:if="${university.shortName != 'none'}" class="text-center font-weight-bold" th:text="${university.shortName}">Short name</p>
-                <p th:if="${university.url != 'none'}">
-                    <a th:href="${university.url}"><i class="fas fa-globe"></i></a>
+                <p th:if="${university.url != 'none'}" class="text-center">
+                    <a th:href="${university.url}">
+                        <i th:text="${university.url}" class="fas fa-globe">Website Url</i>
+                    </a>
                 </p>
             </div>
         </div>
