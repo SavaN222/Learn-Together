@@ -14,7 +14,8 @@
     <div class="cover-text">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 th:text="${university.name}" class="display-4 text-center">University Name</h1>
+                <h1 th:text="${university.shortName}" class="display-4 text-center">Short Name</h1>
+                <p th:text="${university.fullName}">Full name</p>
             </div>
         </div>
     </div> <!-- end of cover text -->

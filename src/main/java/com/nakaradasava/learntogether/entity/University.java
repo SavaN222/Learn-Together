@@ -22,9 +22,19 @@ public class University {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "full_name")
+    private String fullName;
+
+    @Column(name = "short_name")
+    private String shortName;
 
     @OneToMany(mappedBy = "university")
     private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
+    private City city;
+
+    @Column(name = "url")
+    private String url;
 }
