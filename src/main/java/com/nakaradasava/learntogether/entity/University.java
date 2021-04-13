@@ -23,6 +23,7 @@ public class University {
     private Integer id;
 
     @Column(name = "full_name")
+    @OrderBy
     private String fullName;
 
     @Column(name = "short_name")

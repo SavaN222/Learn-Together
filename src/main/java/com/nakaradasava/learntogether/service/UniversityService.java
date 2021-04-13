@@ -2,6 +2,7 @@ package com.nakaradasava.learntogether.service;
 
 import com.nakaradasava.learntogether.entity.University;
 import com.nakaradasava.learntogether.repository.UniversityRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,8 @@ public class UniversityService {
     }
 
     public List<University> findUniversities() {
-        return universityRepository.findAll();
+
+        return universityRepository.findAll(Sort.by(Sort.Direction.ASC, "fullName"));
     }
 
     public University findUniversity(int id) {

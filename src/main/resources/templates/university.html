@@ -14,8 +14,11 @@
     <div class="cover-text">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 th:text="${university.shortName}" class="display-4 text-center">Short Name</h1>
-                <p th:text="${university.fullName}">Full name</p>
+                <h1 th:text="${university.fullName}" class="display-4 text-center">FullName Name</h1>
+                <p th:if="${university.shortName != 'none'}" class="text-center font-weight-bold" th:text="${university.shortName}">Short name</p>
+                <p th:if="${university.url != 'none'}">
+                    <a th:href="${university.url}"><i class="fas fa-globe"></i></a>
+                </p>
             </div>
         </div>
     </div> <!-- end of cover text -->
