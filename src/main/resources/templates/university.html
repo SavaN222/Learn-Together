@@ -15,10 +15,12 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 th:text="${university.fullName}" class="display-4 text-center">FullName Name</h1>
-                <p th:if="${university.shortName != 'none'}" class="text-center font-weight-bold" th:text="${university.shortName}">Short name</p>
+                <p th:if="${university.shortName != 'none'}" class="text-center font-weight-bold">
+                    <span th:text="${university.shortName}">Short name</span> <span class="text-main-light">(<span class="text-white" th:text="${university.city.name}">city</span>)</span>
+                </p>
                 <p th:if="${university.url != 'none'}" class="text-center">
                     <a th:href="${university.url}" target="_blank">
-                        <i th:text="${university.url}" class="fas fa-globe"> Website Url</i>
+                        <i class="fas fa-globe mr-1"> <span th:text="${university.url}">website url</span></i>
                     </a>
                 </p>
             </div>
@@ -28,7 +30,7 @@
 
 <div class="container">
 
-    <div class="holder">
+    <div id="university" class="holder">
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

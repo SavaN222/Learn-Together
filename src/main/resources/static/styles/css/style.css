@@ -185,3 +185,8 @@ textarea::selection, input::selection, select, option {
     color: #ffffff;
     font-weight: bold;
 }
+/* UNIVERSITY */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #e9ecef;
+    background-color: #078f37;
+}
