@@ -45,6 +45,21 @@
         </div>
     </div>
 
+    <!-- delete post created msg -->
+    <div th:if="${deletePostMsg}" class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+            <div class="toast-header bg-danger text-white">
+                <strong>Learn Together <b>Notification</b></strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-dark-blue text-white">
+                <span th:text="${deletePostMsg}">post deleted</span>
+            </div>
+        </div>
+    </div>
+
     <div id="university" class="holder">
         <div class="row">
             <div class="col-3">
@@ -136,9 +151,12 @@
                                             <a class="btn" href="">
                                                 <i class="fas fa-pen fa-lg">10</i>
                                             </a>
-                                            <a class="btn" href="">
-                                                <i class="fas fa-trash fa-lg text-danger">10</i>
-                                            </a>
+                                            <form th:action="@{'/post/delete/' + ${studentPost.id}}" th:method="delete">
+                                                <input type="hidden" th:value="${university.id}" name="universityId">
+                                                <button type="submit" class="btn">
+                                                    <i class="fas fa-trash text-danger"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

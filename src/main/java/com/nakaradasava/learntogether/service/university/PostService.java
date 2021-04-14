@@ -28,4 +28,8 @@ public class PostService {
     public List<Post> findPostsByStudent(Student student) {
         return postRepository.findAllByStudent(student);
     }
+
+    public void deletePostById(int id) {
+       postRepository.deleteById(id);
+    }
 }
