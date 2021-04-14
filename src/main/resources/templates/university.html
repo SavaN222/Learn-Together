@@ -119,6 +119,31 @@
                            Create a new post
                         </button>
 
+                        <!-- list all student posts -->
+                        <h4 class="text-center text-main-light">All your posts:</h4>
+                            <div th:if="${studentPosts}" class="student-posts">
+                                <div class="single-media holder">
+                                    <div th:each="studentPost : ${studentPosts}" class="media border-bottom pb-3 mb-3">
+                                        <img th:src="${studentPost.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                                        <div class="media-body">
+                                            <h5 class="mt-0 text-main-light">
+                                                @<span class="font-weight-bold" th:text="${studentPost.student.username}">Student username</span>
+                                                <span> / <small class="text-white" th:text="${studentPost.student.studyField.name}">studyField</small></span>
+                                            </h5>
+                                            <p th:text="${studentPost.description}">Description</p>
+                                        </div>
+                                        <div class="media-footer d-flex justify-content-between">
+                                            <a class="btn" href="">
+                                                <i class="fas fa-pen fa-lg">10</i>
+                                            </a>
+                                            <a class="btn" href="">
+                                                <i class="fas fa-trash fa-lg text-danger">10</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- end -->
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
