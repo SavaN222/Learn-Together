@@ -42,7 +42,7 @@ public class UniversityController {
         model.addAttribute("like", new LikePost());
         model.addAttribute("studentPosts", posts);
 
-        return "university";
+        return "university/university";
 
     }
 }
