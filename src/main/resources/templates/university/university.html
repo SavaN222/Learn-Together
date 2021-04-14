@@ -81,7 +81,7 @@
                                   <h5 class="mt-0 text-main-light">
                                       @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
                                       <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
-                                      <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                                      <small th:if="${post.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                                   </h5>
                                   <p th:text="${post.description}">Description</p>
                               </div>
