@@ -58,7 +58,18 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                        <p>News feed izlistaj sve evente i objave u sklopu faksa</p>
+                      <div th:if="${university.posts}" class="news-holder">
+                          <div th:each="post : ${university.posts}" class="media">
+                              <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                              <div class="media-body">
+                                  <h5 class="mt-0 text-main-light">
+                                      <span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
+                                      <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
+                                  </h5>
+                                  <p th:text="${post.description}">Description</p>
+                              </div>
+                          </div>
+                      </div>
 
                     </div>
                     <!-- izlistaj sve ucenike -->
@@ -107,9 +118,6 @@
                                     </div>
                                     <form th:action="@{'/post/' + ${university.id}}" th:object="${post}" method="POST">
                                     <div class="modal-body bg-dark-blue">
-                                            <div class="form-group">
-                                                <input th:field="*{title}" name="title" type="text" class="form-control" placeholder="post title">
-                                            </div>
                                             <div class="form-group">
                                                 <textarea th:field="*{description}" name="description" cols="3"
                                                           class="form-control" placeholder="write..."></textarea>

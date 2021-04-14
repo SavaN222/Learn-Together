@@ -21,9 +21,6 @@ public class Post {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "title")
-    private String title;
-
     @Column(name = "description")
     private String description;
 
