@@ -59,11 +59,11 @@
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
                       <div th:if="${university.posts}" class="news-holder">
-                          <div th:each="post : ${university.posts}" class="media">
+                          <div th:each="post : ${university.posts}" class="media border-bottom rounded pb-3 mb-4">
                               <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                               <div class="media-body">
                                   <h5 class="mt-0 text-main-light">
-                                      <span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
+                                      @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
                                       <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
                                   </h5>
                                   <p th:text="${post.description}">Description</p>
