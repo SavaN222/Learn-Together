@@ -35,6 +35,10 @@ public class PostUniversityContoller {
         post.setStudent(student);
         post.setUniversity(university);
 
+        if (null != post.getId()) {
+            post.setEdited(true);
+        }
+
         postService.savePost(post);
 
         redirectAttributes.addFlashAttribute("postMsg", "Post Created");

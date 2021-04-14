@@ -35,4 +35,7 @@ public class Post {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<LikePost> likes;
+
+    @Column(name = "edited")
+    private boolean edited;
 }
