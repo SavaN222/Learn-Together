@@ -40,5 +40,6 @@ public class University {
     private String url;
 
     @OneToMany(mappedBy = "university")
+    @OrderBy("id DESC")
     private List<Post> posts;
 }
