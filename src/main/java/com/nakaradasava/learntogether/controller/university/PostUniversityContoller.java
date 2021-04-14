@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class PostController {
+public class PostUniversityContoller {
 
     private PostService postService;
     private UniversityService universityService;
 
     @Autowired
-    public PostController(PostService postService, UniversityService universityService) {
+    public PostUniversityContoller(PostService postService, UniversityService universityService) {
         this.postService = postService;
         this.universityService = universityService;
     }

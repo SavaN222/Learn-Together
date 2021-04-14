@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.controller.university;
 
+import com.nakaradasava.learntogether.entity.university.LikePost;
 import com.nakaradasava.learntogether.entity.university.Post;
 import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.entity.student.Student;
@@ -32,6 +33,7 @@ public class UniversityController {
         University university = universityService.findUniversity(id);
         model.addAttribute("university", university);
         model.addAttribute("post", new Post());
+        model.addAttribute("like", new LikePost());
 
         return "university";
 

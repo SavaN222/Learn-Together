@@ -70,9 +70,12 @@
                                   <p th:text="${post.description}">Description</p>
                               </div>
                               <div class="media-footer d-flex justify-content-between">
-                                  <button type="submit" class="btn ml-2">
-                                      <i class="fas fa-graduation-cap fa-lg">10</i>
-                                  </button>
+                                  <form th:action="@{/university/like}" method="POST" class="likeForm" th:object="${like}">
+                                      <input type="hidden" th:value="${post.id}" name="postId">
+                                      <button type="submit" class="btn ml-2">
+                                          <i th:text="${post.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
+                                      </button>
+                                  </form>
                                   <a class="btn" href="">
                                       <i class="fas fa-comment-dots fa-lg">10</i>
                                   </a>
