@@ -90,10 +90,10 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="">
+                                    <form action="@{'/university/' + ${university.id}" th:object="${university}">
                                     <div class="modal-body bg-dark-blue">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="post title">
+                                                <input th:field="*{}" type="text" class="form-control" placeholder="post title">
                                             </div>
                                             <div class="form-group">
                                                 <textarea name="" id="" cols="3"

@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.entity;
+package com.nakaradasava.learntogether.entity.university;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

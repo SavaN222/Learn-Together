@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.entity;
+package com.nakaradasava.learntogether.entity.university;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
@@ -38,4 +38,7 @@ public class University {
 
     @Column(name = "url")
     private String url;
+
+    @OneToMany(mappedBy = "university")
+    private List<Post> posts;
 }

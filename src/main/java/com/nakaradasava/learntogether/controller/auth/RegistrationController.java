@@ -1,10 +1,10 @@
 package com.nakaradasava.learntogether.controller.auth;
 
-import com.nakaradasava.learntogether.entity.*;
 import com.nakaradasava.learntogether.entity.student.RegistrationStudent;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
+import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.service.*;
 import com.nakaradasava.learntogether.service.student.RegistrationService;
 import com.nakaradasava.learntogether.service.student.StudentService;

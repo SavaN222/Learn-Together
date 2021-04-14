@@ -1,6 +1,6 @@
 package com.nakaradasava.learntogether.service;
 
-import com.nakaradasava.learntogether.entity.University;
+import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.repository.UniversityRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

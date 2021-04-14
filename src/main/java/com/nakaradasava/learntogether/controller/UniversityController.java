@@ -1,6 +1,6 @@
 package com.nakaradasava.learntogether.controller;
 
-import com.nakaradasava.learntogether.entity.University;
+import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
