@@ -30,6 +30,23 @@
 
 <div class="container">
 
+    <!-- succes post created msg -->
+    <div th:if="${postMsg}" class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+                <img src="..." class="rounded mr-2" alt="...">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                <span th:text="${postMsg}">post created</span>
+            </div>
+        </div>
+    </div>
+
     <div id="university" class="holder">
         <div class="row">
             <div class="col-3">
@@ -90,13 +107,13 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="@{'/university/' + ${university.id}" th:object="${university}">
+                                    <form th:action="@{'/post/' + ${university.id}}" th:object="${post}" method="POST">
                                     <div class="modal-body bg-dark-blue">
                                             <div class="form-group">
-                                                <input th:field="*{}" type="text" class="form-control" placeholder="post title">
+                                                <input th:field="*{title}" name="title" type="text" class="form-control" placeholder="post title">
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="" id="" cols="3"
+                                                <textarea th:field="*{description}" name="description" cols="3"
                                                           class="form-control" placeholder="write..."></textarea>
                                             </div>
                                     </div>

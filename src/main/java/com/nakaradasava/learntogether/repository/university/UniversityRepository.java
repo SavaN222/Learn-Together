@@ -1,4 +1,4 @@
-package com.nakaradasava.learntogether.repository;
+package com.nakaradasava.learntogether.repository.university;
 
 import com.nakaradasava.learntogether.entity.university.University;
 import org.springframework.data.jpa.repository.JpaRepository;
