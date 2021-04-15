@@ -13,7 +13,9 @@
 <div class="container mt-2">
 
     <!-- list all student posts -->
-    <h4 class="text-center text-main-light">All your posts:</h4>
+    <h4 class="text-center text-main-light">
+        <a th:href="@{'/university/' + ${post.university.id}}">Go back</a>
+    </h4>
     <div class="student-posts">
         <div class="single-media holder">
             <div class="media border-bottom pb-3 mb-3">
