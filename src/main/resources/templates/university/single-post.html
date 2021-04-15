@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container mt-2">
+
+    <!-- list all student posts -->
+    <h4 class="text-center text-main-light">All your posts:</h4>
+    <div class="student-posts">
+        <div class="single-media holder">
+            <div class="media border-bottom pb-3 mb-3">
+                <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0 text-main-light">
+                        @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
+                        <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
+                        <small th:if="${post.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                    </h5>
+                    <p th:text="${post.description}">Description</p>
+                </div>
+               <div th:if="${#authentication.principal.id == post.student.id}" class="isUserPost">
+                   <div class="media-footer d-flex justify-content-between">
+                       <a class="btn" th:href="@{'/university/post/edit/' + ${post.id}}">
+                           <i class="fas fa-pen fa-lg"></i>
+                       </a>
+                       <form th:action="@{'/university/post/delete/' + ${post.id}}" th:method="delete">
+                           <input type="hidden" th:value="${post.id}" name="universityId">
+                           <button type="submit" class="btn">
+                               <i class="fas fa-trash text-danger"></i>
+                           </button>
+                       </form>
+               </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end -->
+
+</div> <!-- end of container -->
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>

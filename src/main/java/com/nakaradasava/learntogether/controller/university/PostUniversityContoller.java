@@ -73,4 +73,16 @@ public class PostUniversityContoller {
 
         return "university/edit-post";
     }
+
+    @GetMapping("/university/post/{postId}")
+    public String showSinglePost(@PathVariable int postId,
+                                 Model model,
+                                 @AuthenticationPrincipal Student student) {
+
+        Post post = postService.findPostById(postId);
+
+        model.addAttribute("post", post);
+
+        return "university/single-post";
+    }
 }
