@@ -83,7 +83,7 @@ public class PostUniversityContoller {
         Post post = postService.findPostById(postId);
 
         model.addAttribute("post", post);
-        model.addAttribute("comment", new CommentPost());
+        model.addAttribute("commentObj", new CommentPost());
 
         return "university/single-post";
     }
