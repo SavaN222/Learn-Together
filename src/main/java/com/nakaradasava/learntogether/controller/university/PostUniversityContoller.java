@@ -1,6 +1,7 @@
 package com.nakaradasava.learntogether.controller.university;
 
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.university.CommentPost;
 import com.nakaradasava.learntogether.entity.university.Post;
 import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.service.university.PostService;
@@ -82,6 +83,7 @@ public class PostUniversityContoller {
         Post post = postService.findPostById(postId);
 
         model.addAttribute("post", post);
+        model.addAttribute("comment", new CommentPost());
 
         return "university/single-post";
     }
