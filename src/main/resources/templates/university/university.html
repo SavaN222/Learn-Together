@@ -92,7 +92,7 @@
                                           <i th:text="${post.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
                                       </button>
                                   </form>
-                                  <a class="btn" href="">
+                                  <a class="btn" th:href="@{'/university/post/' + ${post.id}}">
                                       <i class="fas fa-comment-dots fa-lg">10</i>
                                   </a>
                               </div>
@@ -150,10 +150,10 @@
                                             <p th:text="${studentPost.description}">Description</p>
                                         </div>
                                         <div class="media-footer d-flex justify-content-between">
-                                            <a class="btn" th:href="@{'/post/edit/' + ${studentPost.id}}">
+                                            <a class="btn" th:href="@{'/university/post/edit/' + ${studentPost.id}}">
                                                 <i class="fas fa-pen fa-lg"></i>
                                             </a>
-                                            <form th:action="@{'/post/delete/' + ${studentPost.id}}" th:method="delete">
+                                            <form th:action="@{'/university/post/delete/' + ${studentPost.id}}" th:method="delete">
                                                 <input type="hidden" th:value="${university.id}" name="universityId">
                                                 <button type="submit" class="btn">
                                                     <i class="fas fa-trash text-danger"></i>
@@ -174,7 +174,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form th:action="@{'/post/' + ${university.id}}" th:object="${post}" method="POST">
+                                    <form th:action="@{'/university/post/' + ${university.id}}" th:object="${post}" method="POST">
                                     <div class="modal-body bg-dark-blue">
                                             <div class="form-group">
                                                 <textarea th:field="*{description}" name="description" cols="3"

@@ -24,7 +24,7 @@ public class PostUniversityContoller {
         this.universityService = universityService;
     }
 
-    @PostMapping("/post/{universityId}")
+    @PostMapping("/university/post/{universityId}")
     public String savePost(@PathVariable int universityId,
                          @ModelAttribute Post post,
                          @AuthenticationPrincipal Student student,
@@ -46,7 +46,7 @@ public class PostUniversityContoller {
         return "redirect:/university/" + universityId;
     }
 
-    @DeleteMapping("/post/delete/{postId}")
+    @DeleteMapping("/university/post/delete/{postId}")
     public String deletePostById(@PathVariable int postId,
                                  @RequestParam int universityId,
                                  RedirectAttributes redirectAttributes) {
@@ -58,7 +58,7 @@ public class PostUniversityContoller {
         return "redirect:/university/" + universityId;
     }
 
-    @GetMapping("/post/edit/{postId}")
+    @GetMapping("/university/post/edit/{postId}")
     public String showEditForm(@PathVariable int postId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
