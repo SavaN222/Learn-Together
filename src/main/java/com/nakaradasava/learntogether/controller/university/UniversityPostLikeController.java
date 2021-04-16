@@ -46,6 +46,4 @@ public class UniversityPostLikeController {
 
         return "redirect:/university/" + universityPost.getUniversity().getId();
     }
-
-
 }

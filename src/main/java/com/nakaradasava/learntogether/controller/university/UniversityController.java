@@ -43,6 +43,5 @@ public class UniversityController {
         model.addAttribute("studentPosts", universityPosts);
 
         return "university/university";
-
     }
 }
