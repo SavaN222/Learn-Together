@@ -18,13 +18,13 @@
                 <p>Username: @
                     <span th:text="${#authentication.principal.username}" class="text-white font-weight-bold">student username</span>
                 </p>
-                <p>University:
+                <p>
                     <i class="fas fa-university fa-lg"></i>
-                    <span sec:authentication="principal.university.fullName"></span>
+                    <span class="text-white font-weight-bold" sec:authentication="principal.university.fullName"></span>
                 </p>
-                <p>Study Fied:
+                <p>
                     <i class="fas fa-graduation-cap fa-lg"></i>
-                    <span sec:authentication="principal.studyField.name"></span>
+                    <span class="text-white font-weight-bold" sec:authentication="principal.studyField.name"></span>
                 </p>
             </div>
         </div>
