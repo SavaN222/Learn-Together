@@ -1,6 +1,7 @@
 package com.nakaradasava.learntogether.controller.university;
 
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;
 import com.nakaradasava.learntogether.entity.university.CommentPost;
 import com.nakaradasava.learntogether.entity.university.Post;
 import com.nakaradasava.learntogether.service.university.CommentPostService;
@@ -8,6 +9,7 @@ import com.nakaradasava.learntogether.service.university.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,5 +58,20 @@ public class UniversityPostCommentController {
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your comment is deleted");
 
         return "redirect:/university/post/" + postId;
+    }
+
+    @GetMapping("/university/post/comments/edit/{commentId}")
+    public String showEditForm(@PathVariable int commentId,
+                               Model model,
+                               @AuthenticationPrincipal Student student) {
+        CommentPost commentPost = commentPostService.findCommentById(commentId);
+
+        if (!commentPost.getStudent().getId().equals(student.getId())) {
+            return "redirect:/university/post/" + commentPost.getPost().getId();
+        }
+
+        model.addAttribute("comment", commentPost);
+
+        return "university/comment-update";
     }
 }
