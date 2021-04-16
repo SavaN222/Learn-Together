@@ -1,10 +1,10 @@
 package com.nakaradasava.learntogether.controller.university;
 
-import com.nakaradasava.learntogether.entity.university.LikePost;
-import com.nakaradasava.learntogether.entity.university.Post;
+import com.nakaradasava.learntogether.entity.university.UniversityPostLike;
+import com.nakaradasava.learntogether.entity.university.UniversityPost;
 import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.entity.student.Student;
-import com.nakaradasava.learntogether.service.university.PostService;
+import com.nakaradasava.learntogether.service.university.UniversityPostService;
 import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,12 +17,12 @@ import java.util.List;
 @Controller
 public class UniversityController {
     private UniversityService universityService;
-    private PostService postService;
+    private UniversityPostService universityPostService;
 
     @Autowired
-    public UniversityController(UniversityService universityService, PostService postService) {
+    public UniversityController(UniversityService universityService, UniversityPostService universityPostService) {
         this.universityService = universityService;
-        this.postService = postService;
+        this.universityPostService = universityPostService;
     }
 
     @GetMapping("/university/{id}")
@@ -35,12 +35,12 @@ public class UniversityController {
         }
 
         University university = universityService.findUniversity(id);
-        List<Post> posts = postService.findPostsByStudent(student);
+        List<UniversityPost> universityPosts = universityPostService.findPostsByStudent(student);
 
         model.addAttribute("university", university);
-        model.addAttribute("post", new Post());
-        model.addAttribute("like", new LikePost());
-        model.addAttribute("studentPosts", posts);
+        model.addAttribute("post", new UniversityPost());
+        model.addAttribute("like", new UniversityPostLike());
+        model.addAttribute("studentPosts", universityPosts);
 
         return "university/university";
 

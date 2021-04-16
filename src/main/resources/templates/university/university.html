@@ -16,7 +16,7 @@
             <div class="container">
                 <h1 th:text="${university.fullName}" class="display-4 text-center">FullName Name</h1>
                 <p th:if="${university.shortName != 'none'}" class="text-center font-weight-bold">
-                    <span th:text="${university.shortName}">Short name</span> <span class="text-main-light">(<span class="text-white" th:text="${university.city.name}">city</span>)</span>
+                    <span th:text="${university.shortName}">Short name</span> <span class="text-main-light">(<span class="text-white" th:text="${university.getUniversityCity.name}">city</span>)</span>
                 </p>
                 <p th:if="${university.url != 'none'}" class="text-center">
                     <a th:href="${university.url}" target="_blank">
@@ -30,7 +30,7 @@
 
 <div class="container">
 
-    <!-- succes post created msg -->
+    <!-- succes universityPost created msg -->
     <div th:if="${postMsg}" class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
         <div id="liveToast1"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
             <div class="toast-header bg-main text-white">
@@ -40,12 +40,12 @@
                 </button>
             </div>
             <div class="toast-body bg-dark-blue text-white">
-                <span th:text="${postMsg}">post created</span>
+                <span th:text="${postMsg}">universityPost created</span>
             </div>
         </div>
     </div>
 
-    <!-- delete post created msg -->
+    <!-- delete universityPost created msg -->
     <div th:if="${deletePostMsg}" class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
         <div id="liveToast2"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
             <div class="toast-header bg-danger text-white">
@@ -55,7 +55,7 @@
                 </button>
             </div>
             <div class="toast-body bg-dark-blue text-white">
-                <span th:text="${deletePostMsg}">post deleted</span>
+                <span th:text="${deletePostMsg}">universityPost deleted</span>
             </div>
         </div>
     </div>
@@ -73,27 +73,27 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                      <div th:if="${university.posts}" class="news-holder">
+                      <div th:if="${university.universityPosts}" class="news-holder">
                           <div class="single-media holder">
-                          <div th:each="post : ${university.posts}" class="media border-bottom pb-3 mb-3">
-                              <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                          <div th:each="universityPost : ${university.universityPosts}" class="media border-bottom pb-3 mb-3">
+                              <img th:src="${universityPost.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                               <div class="media-body">
                                   <h5 class="mt-0 text-main-light">
-                                      @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
-                                      <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
-                                      <small th:if="${post.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                                      @<span class="font-weight-bold" th:text="${universityPost.student.username}">Student username</span>
+                                      <span> / <small class="text-white" th:text="${universityPost.student.studyField.name}">studyField</small></span>
+                                      <small th:if="${universityPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                                   </h5>
-                                  <p th:text="${post.description}">Description</p>
+                                  <p th:text="${universityPost.description}">Description</p>
                               </div>
                               <div class="media-footer d-flex justify-content-between">
                                   <form th:action="@{/university/like}" method="POST" class="likeForm" th:object="${like}">
-                                      <input type="hidden" th:value="${post.id}" name="postId">
+                                      <input type="hidden" th:value="${universityPost.id}" name="postId">
                                       <button type="submit" class="btn ml-2">
-                                          <i th:text="${post.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
+                                          <i th:text="${universityPost.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
                                       </button>
                                   </form>
-                                  <a class="btn" th:href="@{'/university/post/' + ${post.id}}">
-                                      <i th:text="${post.comments.size()}" class="fas fa-comment-dots fa-lg">10</i>
+                                  <a class="btn" th:href="@{'/university/post/' + ${universityPost.id}}">
+                                      <i th:text="${universityPost.comments.size()}" class="fas fa-comment-dots fa-lg">10</i>
                                   </a>
                               </div>
                           </div>
@@ -127,17 +127,17 @@
                     </div>
                     <!-- izlistaj sve ucenike kraj -->
 
-                    <!-- create post modal -->
+                    <!-- create universityPost modal -->
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                           Create a new post
+                           Create a new universityPost
                         </button>
 
-                        <!-- list all student posts -->
-                        <h4 class="text-center text-main-light">All your posts:</h4>
-                            <div th:if="${studentPosts}" class="student-posts">
+                        <!-- list all student universityPosts -->
+                        <h4 class="text-center text-main-light">All your universityPosts:</h4>
+                            <div th:if="${studentPosts}" class="student-universityPosts">
                                 <div class="single-media holder">
                                     <div th:each="studentPost : ${studentPosts}" class="media border-bottom pb-3 mb-3">
                                         <img th:src="${studentPost.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
@@ -191,7 +191,7 @@
                         </div>
 
                     </div>
-                    <!-- end post modal -->
+                    <!-- end universityPost modal -->
                 </div>
             </div>
         </div>

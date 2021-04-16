@@ -12,11 +12,11 @@
 <!--content-->
 <div class="container mt-2">
 
-    <!-- list all student posts -->
+    <!-- list all student universityPosts -->
     <h4 class="text-center text-main-light">
         <a th:href="@{'/university/' + ${post.university.id}}">Go back</a>
     </h4>
-    <div class="student-posts">
+    <div class="student-universityPosts">
         <div class="single-media holder">
             <div class="media border-bottom pb-3 mb-3">
                 <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
@@ -67,7 +67,7 @@
             <hr class="bg-main-light">
 
             <!-- ovde svi komentari izlistaj -->
-            <div class="student-posts">
+            <div class="student-universityPosts">
                 <div th:if="${post.comments}" th:each="comment : ${post.comments}" class="single-media holder">
                     <div class="media border-bottom pb-3 mb-3">
                         <img th:src="${comment.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">

@@ -52,133 +52,133 @@
         <div class="form-group">
             <select class="form-control" name="university" th:field="*{university}">
                 <optgroup label="ALEKSINAC">
-                <option th:each="university : ${universities}" th:if="${university.city.name == 'ALEKSINAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'ALEKSINAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ARANDJELOVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'ARANDJELOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'ARANDJELOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="BACKA TOPOLA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'BACKA TOPOLA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'BACKA TOPOLA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="BEOGRAD">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'BEOGRAD'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'BEOGRAD'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="BLACE">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'BLACE'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'BLACE'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="BOR">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'BOR'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'BOR'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="CACAK">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'CACAK'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'CACAK'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="CUPRIJA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'CUPRIJA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'CUPRIJA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="GNJILANE">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'GNJILANE'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'GNJILANE'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="JAGODINA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'JAGODINA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'JAGODINA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="KIKINDA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'KIKINDA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'KIKINDA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="KOSOVSKA MITROVICA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'KOSOVSKA MITROVICA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'KOSOVSKA MITROVICA'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="KRAGUJEVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'KRAGUJEVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'KRAGUJEVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="KRALJEVO">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'KRALJEVO'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'KRALJEVO'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="KRUSEVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'KRUSEVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'KRUSEVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="LEPOSAVIC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'LEPOSAVIC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'LEPOSAVIC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="LESKOVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'LESKOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'LESKOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="MLADENOVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'MLADENOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'MLADENOVAC'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="NIS">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="NOVI PAZAR">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="NOVI SAD">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="PANCEVO">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="PIROT">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="POZAREVAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="PROKUPLJE">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SABAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SOMBOR">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SREMSKA KAMENICA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SREMSKA MITROVICA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SREMSKI KARLOVCI">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SUBOTICA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="SVILAJNAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="TRSTENIK">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="UZICE">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="VALJEVO">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="VRANJE">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="VRNJACKA BANJA">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="VRSAC">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ZAJECAR">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ZEMUN">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ZRENJANIN">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ZUBIN POTOK">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
                 <optgroup label="ZVECAN">
-                    <option th:each="university : ${universities}" th:if="${university.city.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                    <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == 'NIS'}" th:value="${university.id}" th:text="${university.fullName}"></option>
                 </optgroup>
             </select>
             <div th:if="${#fields.hasErrors('university')}"

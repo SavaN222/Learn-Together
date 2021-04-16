@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "post_university")
-public class Post {
+public class UniversityPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +33,12 @@ public class Post {
     @JoinColumn(name = "university_id", referencedColumnName = "id")
     private University university;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<LikePost> likes;
+    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
+    private List<UniversityPostLike> likes;
 
     @Column(name = "edited")
     private boolean edited;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<CommentPost> comments;
+    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
+    private List<UniversityPostComment> comments;
 }

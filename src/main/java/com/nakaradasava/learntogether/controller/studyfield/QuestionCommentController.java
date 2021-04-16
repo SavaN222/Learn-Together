@@ -1,9 +1,9 @@
 package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.student.Student;
-import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionComment;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
-import com.nakaradasava.learntogether.service.studyfield.CommentStudyService;
+import com.nakaradasava.learntogether.service.studyfield.QuestionCommentService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -18,14 +18,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-public class CommentQuestionController {
+public class QuestionCommentController {
 
-    private CommentStudyService commentStudyService;
+    private QuestionCommentService questionCommentService;
     private QuestionStudyService questionStudyService;
 
     @Autowired
-    public CommentQuestionController(CommentStudyService commentStudyService, QuestionStudyService questionStudyService) {
-        this.commentStudyService = commentStudyService;
+    public QuestionCommentController(QuestionCommentService questionCommentService, QuestionStudyService questionStudyService) {
+        this.questionCommentService = questionCommentService;
         this.questionStudyService = questionStudyService;
     }
 
@@ -43,14 +43,14 @@ public class CommentQuestionController {
 
     /**
      * Save/Update comment
-     * @param commentStudy thymeleaf binding object
+     * @param questionComment thymeleaf binding object
      * @param redirectAttributes flash message
      * @param questionId question post id which hold comments
      * @param student logged-in student
      * @return redirect to question post(same page) but with new comment
      */
     @PostMapping("/questions/comments/{questionId}")
-    public String saveComment(@Valid @ModelAttribute(name = "commentObj") CommentStudy commentStudy,
+    public String saveComment(@Valid @ModelAttribute(name = "commentObj") QuestionComment questionComment,
                                BindingResult bindingResult,
                                Model model,
                                RedirectAttributes redirectAttributes,
@@ -64,14 +64,14 @@ public class CommentQuestionController {
             return "study_field/question";
         }
 
-        commentStudy.setQuestionStudy(questionStudy);
-        commentStudy.setStudent(student);
+        questionComment.setQuestionStudy(questionStudy);
+        questionComment.setStudent(student);
 
-        if (null != commentStudy.getId()) {
-            commentStudy.setEdited(true);
+        if (null != questionComment.getId()) {
+            questionComment.setEdited(true);
         }
 
-        commentStudyService.saveComment(commentStudy);
+        questionCommentService.saveComment(questionComment);
 
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
@@ -83,7 +83,7 @@ public class CommentQuestionController {
                           RedirectAttributes redirectAttributes,
                           @RequestParam int questionId) {
 
-        commentStudyService.deleteCommentById(commentId);
+        questionCommentService.deleteCommentById(commentId);
 
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your comment is deleted");
 
@@ -94,13 +94,13 @@ public class CommentQuestionController {
     public String showEditForm(@PathVariable int commentId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
-        CommentStudy commentStudy = commentStudyService.findCommentById(commentId);
+        QuestionComment questionComment = questionCommentService.findCommentById(commentId);
 
-        if (!commentStudy.getStudent().getId().equals(student.getId())) {
-            return "redirect:/questions/" + commentStudy.getQuestionStudy().getId();
+        if (!questionComment.getStudent().getId().equals(student.getId())) {
+            return "redirect:/questions/" + questionComment.getQuestionStudy().getId();
         }
 
-        model.addAttribute("comment", commentStudy);
+        model.addAttribute("comment", questionComment);
 
         return "study_field/comment-update";
     }

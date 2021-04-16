@@ -34,12 +34,12 @@ public class University {
 
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private City city;
+    private UniversityCity universityCity;
 
     @Column(name = "url")
     private String url;
 
     @OneToMany(mappedBy = "university")
     @OrderBy("id DESC")
-    private List<Post> posts;
+    private List<UniversityPost> universityPosts;
 }

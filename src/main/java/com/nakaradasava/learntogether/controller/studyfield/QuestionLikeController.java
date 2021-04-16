@@ -1,9 +1,9 @@
 package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.student.Student;
-import com.nakaradasava.learntogether.entity.studyfield.LikeStudy;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionLike;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
-import com.nakaradasava.learntogether.service.studyfield.LikeStudyService;
+import com.nakaradasava.learntogether.service.studyfield.QuestionLikeService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-public class LikeQuestionController {
+public class QuestionLikeController {
 
-    private LikeStudyService likeStudyService;
+    private QuestionLikeService questionLikeService;
     private QuestionStudyService questionStudyService;
 
     @Autowired
-    public LikeQuestionController(LikeStudyService likeStudyService, QuestionStudyService questionStudyService) {
-        this.likeStudyService = likeStudyService;
+    public QuestionLikeController(QuestionLikeService questionLikeService, QuestionStudyService questionStudyService) {
+        this.questionLikeService = questionLikeService;
         this.questionStudyService = questionStudyService;
     }
 
     @PostMapping("/like")
-    public String like(@ModelAttribute("like") LikeStudy like,
+    public String like(@ModelAttribute("like") QuestionLike like,
                      @AuthenticationPrincipal Student student,
                      @RequestParam(name = "questionId") int questionId) {
 
@@ -36,12 +36,12 @@ public class LikeQuestionController {
         like.setQuestionStudy(questionStudy);
         like.setStudent(student);
 
-        Optional<LikeStudy> likeExist = likeStudyService.findByQuestionStudyAndStudent(questionStudy, student);
+        Optional<QuestionLike> likeExist = questionLikeService.findByQuestionStudyAndStudent(questionStudy, student);
 
         if (likeExist.isPresent()) {
-            likeStudyService.dislike(likeExist.get().getId());
+            questionLikeService.dislike(likeExist.get().getId());
         } else {
-            likeStudyService.like(like);
+            questionLikeService.like(like);
         }
 
         return "redirect:/questions/" + questionId;

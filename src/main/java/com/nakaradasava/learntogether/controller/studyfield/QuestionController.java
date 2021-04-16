@@ -1,8 +1,8 @@
 package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.student.Student;
-import com.nakaradasava.learntogether.entity.studyfield.CommentStudy;
-import com.nakaradasava.learntogether.entity.studyfield.LikeStudy;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionComment;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionLike;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
@@ -49,8 +49,8 @@ public class QuestionController {
         QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
         model.addAttribute("question", questionStudy);
-        model.addAttribute("commentObj", new CommentStudy());
-        model.addAttribute("like", new LikeStudy());
+        model.addAttribute("commentObj", new QuestionComment());
+        model.addAttribute("like", new QuestionLike());
 
         return "study_field/question";
     }

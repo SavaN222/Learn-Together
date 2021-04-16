@@ -40,10 +40,10 @@ public class QuestionStudy {
     private StudyField studyField;
 
     @OneToMany(mappedBy = "questionStudy", cascade = CascadeType.ALL)
-    private List<CommentStudy> comments;
+    private List<QuestionComment> comments;
 
     @OneToMany(mappedBy = "questionStudy", cascade = CascadeType.ALL)
-    private List<LikeStudy> likes;
+    private List<QuestionLike> likes;
 
     @Column(name = "edited")
     private boolean edited;
