@@ -193,3 +193,8 @@ textarea::selection, input::selection, select, option {
     color: #e9ecef;
     background-color: #078f37;
 }
+/* student profile page */
+#profileJumbo {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(17,28,58,1) 100%);
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<div class="container-fluid">
+
+    <div id="profileJumbo" class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <img th:src="${#authentication.principal.profilePic}" class="rounded-circle" alt="">
+            <div class="student-information p-5 d-flex justify-content-between text-main-light">
+                <p>Username: @
+                    <span th:text="${#authentication.principal.username}" class="text-white font-weight-bold">student username</span>
+                </p>
+                <p>University:
+                    <i class="fas fa-university fa-lg"></i>
+                    <span sec:authentication="principal.university.fullname"></span>
+                </p>
+                <p>Study Fied:
+                    <i class="fas fa-graduation-cap fa-lg"></i>
+                    <span sec:authentication="principal.studyField.name"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end of container-fluid -->
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>
