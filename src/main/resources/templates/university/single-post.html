@@ -60,6 +60,10 @@
             <div th:if="${successComment}" th:text="${successComment}" class="alert alert-success col-xs-offset-1 col-xs-10">
                 <span>Confirm Comment msg</span>
             </div>
+
+            <div th:if="${deleteSuccess}" th:text="${deleteSuccess}" class="alert alert-success col-xs-offset-1 col-xs-10">
+                <span>delete comment success</span>
+            </div>
             <hr class="bg-main-light">
 
             <!-- ovde svi komentari izlistaj -->
@@ -77,11 +81,11 @@
                         </div>
                         <div th:if="${#authentication.principal.id == comment.student.id}" class="isUserPost">
                             <div class="media-footer d-flex justify-content-between">
-                                <a class="btn" th:href="@{'/university/post/comment/edit/' + ${comment.id}}">
+                                <a class="btn" th:href="@{'/university/post/comments/edit/' + ${comment.id}}">
                                     <i class="fas fa-pen fa-lg"></i>
                                 </a>
-                                <form th:action="@{'/university/post/comment/delete/' + ${comment.id}}" th:method="delete">
-                                    <input type="hidden" th:value="${comment.id}" name="universityId">
+                                <form th:action="@{'/university/post/comments/delete/' + ${comment.id}}" th:method="delete">
+                                    <input type="hidden" th:value="${post.id}" name="postId">
                                     <button type="submit" class="btn">
                                         <i class="fas fa-trash text-danger"></i>
                                     </button>

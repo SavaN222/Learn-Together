@@ -93,7 +93,7 @@
                                       </button>
                                   </form>
                                   <a class="btn" th:href="@{'/university/post/' + ${post.id}}">
-                                      <i class="fas fa-comment-dots fa-lg">10</i>
+                                      <i th:text="${post.comments.size()}" class="fas fa-comment-dots fa-lg">10</i>
                                   </a>
                               </div>
                           </div>
