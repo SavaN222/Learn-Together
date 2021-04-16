@@ -49,7 +49,7 @@ public class CommentQuestionController {
      * @param student logged-in student
      * @return redirect to question post(same page) but with new comment
      */
-    @PostMapping("/comments/{questionId}")
+    @PostMapping("/questions/comments/{questionId}")
     public String saveComment(@Valid @ModelAttribute(name = "commentObj") CommentStudy commentStudy,
                                BindingResult bindingResult,
                                Model model,
@@ -75,10 +75,10 @@ public class CommentQuestionController {
 
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
-        return "redirect:/question/" + questionId;
+        return "redirect:/questions/" + questionId;
     }
 
-    @DeleteMapping("/comment/delete/{commentId}")
+    @DeleteMapping("/questions/comments/delete/{commentId}")
     public String delete(@PathVariable int commentId,
                           RedirectAttributes redirectAttributes,
                           @RequestParam int questionId) {
@@ -87,17 +87,17 @@ public class CommentQuestionController {
 
         redirectAttributes.addFlashAttribute("deleteSuccess", "Your comment is deleted");
 
-        return "redirect:/question/" + questionId;
+        return "redirect:/questions/" + questionId;
     }
 
-    @GetMapping("/comment/edit/{commentId}")
+    @GetMapping("/questions/comments/edit/{commentId}")
     public String showEditForm(@PathVariable int commentId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
         CommentStudy commentStudy = commentStudyService.findCommentById(commentId);
 
         if (!commentStudy.getStudent().getId().equals(student.getId())) {
-            return "redirect:/question/" + commentStudy.getQuestionStudy().getId();
+            return "redirect:/questions/" + commentStudy.getQuestionStudy().getId();
         }
 
         model.addAttribute("comment", commentStudy);

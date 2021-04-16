@@ -44,7 +44,7 @@ public class LikeQuestionController {
             likeStudyService.like(like);
         }
 
-        return "redirect:/question/" + questionId;
+        return "redirect:/questions/" + questionId;
     }
 
 

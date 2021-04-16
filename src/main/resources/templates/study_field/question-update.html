@@ -24,14 +24,14 @@
                     </span>
                     </p>
                 </div> <!-- .author end -->
-                    <form th:action="@{'/question/delete/' + ${question.id}}" th:method="delete">
+                    <form th:action="@{'/questions/delete/' + ${question.id}}" th:method="delete">
                         <input type="hidden" th:value="${question.studyField.id}" name="studyFieldId">
                         <button type="submit" name="id" class="btn">
                             <i class="fas fa-trash fa-lg text-danger"></i>
                         </button>
                     </form>
             </div>
-        <form th:action="@{'/question/' + ${question.studyField.id}}" th:object="${question}" method="POST">
+        <form th:action="@{'/questions/' + ${question.studyField.id}}" th:object="${question}" method="POST">
             <div class="form-group">
                 <input type="hidden" th:field="*{id}">
                 <input type="text" class="form-control" name="title" th:field="*{title}">

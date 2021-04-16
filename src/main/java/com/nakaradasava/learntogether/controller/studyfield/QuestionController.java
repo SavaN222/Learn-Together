@@ -43,7 +43,7 @@ public class QuestionController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-    @GetMapping("/question/{questionId}")
+    @GetMapping("/questions/{questionId}")
     public String show(@PathVariable int questionId,
                               Model model) {
         QuestionStudy questionStudy = questionStudyService.findById(questionId);
@@ -55,7 +55,7 @@ public class QuestionController {
         return "study_field/question";
     }
 
-    @PostMapping("/question/{questionId}")
+    @PostMapping("/questions/{questionId}")
     public String saveQuestion(@PathVariable int questionId,
                                @Valid @ModelAttribute("question") QuestionStudy questionStudy,
                                BindingResult bindingResult,
@@ -88,7 +88,7 @@ public class QuestionController {
         return "redirect:/study-fields?studyField=" + questionId;
     }
 
-    @DeleteMapping("/question/delete/{questionId}")
+    @DeleteMapping("/questions/delete/{questionId}")
     public String delete(@PathVariable int questionId,
                           RedirectAttributes redirectAttributes,
                           @RequestParam int studyFieldId) {
@@ -101,14 +101,14 @@ public class QuestionController {
 
     }
 
-    @GetMapping("/question/edit/{questionId}")
+    @GetMapping("/questions/edit/{questionId}")
     public String showEditForm(@PathVariable int questionId,
                                Model model,
                                @AuthenticationPrincipal Student student) {
         QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
         if (!questionStudy.getStudent().getId().equals(student.getId())) {
-            return "redirect:/question/" + questionStudy.getId();
+            return "redirect:/questions/" + questionStudy.getId();
         }
 
         model.addAttribute("question", questionStudy);

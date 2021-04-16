@@ -23,7 +23,7 @@
                             <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
                             <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small></span>
                         </div>
-                            <form th:action="@{'/comment/delete/' + ${comment.id}}" th:method="delete">
+                            <form th:action="@{'/questions/comments/delete/' + ${comment.id}}" th:method="delete">
                                 <input type="hidden" th:value="${comment.questionStudy.id}" name="questionId">
                                 <button type="submit" class="btn">
                                     <i class="fas fa-trash text-danger"></i>
@@ -32,7 +32,7 @@
                         </div>
 
                 </h5>
-                <form th:action="@{'/comments/' + ${comment.questionStudy.id}}" th:object="${comment}" method="POST">
+                <form th:action="@{'/questions/comments/' + ${comment.questionStudy.id}}" th:object="${comment}" method="POST">
                     <div class="form-group">
                         <input type="hidden" th:field="*{id}">
                     <textarea class="form-control" name="comment" th:field="*{content}"

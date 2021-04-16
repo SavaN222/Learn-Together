@@ -26,10 +26,10 @@
                 </p>
                 </div> <!-- .author end -->
                 <div th:if="${#authentication.principal.id == question.student.id}" class="icons align-right">
-                    <a class="mr-2 btn" th:href="@{'/question/edit/' + ${question.id}}">
+                    <a class="mr-2 btn" th:href="@{'/questions/edit/' + ${question.id}}">
                         <i class="fas fa-pen fa-lg"></i>
                     </a>
-                    <form th:action="@{'/question/delete/' + ${question.id}}" th:method="delete">
+                    <form th:action="@{'/questions/delete/' + ${question.id}}" th:method="delete">
                         <input type="hidden" th:value="${question.studyField.id}" name="studyFieldId">
                         <button type="submit" name="id" class="btn">
                             <i class="fas fa-trash fa-lg text-danger"></i>
@@ -56,7 +56,7 @@
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
-            <form th:action="@{'/comments/' + ${question.id}}" th:object="${commentObj}" method="POST">
+            <form th:action="@{'/questions/comments/' + ${question.id}}" th:object="${commentObj}" method="POST">
                 <div class="form-group">
                     <textarea class="form-control" name="comment" th:field="*{content}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>
@@ -92,11 +92,11 @@
                             </div>
                             <div th:if="${#authentication.principal.id == comment.student.id}" class="icons align-right">
 
-                                <a class="mr-2 btn" th:href="@{'/comment/edit/' + ${comment.id}}">
+                                <a class="mr-2 btn" th:href="@{'/questions/comments/edit/' + ${comment.id}}">
                                     <i class="fas fa-pen"></i>
                                 </a>
 
-                                <form th:action="@{'/comment/delete/' + ${comment.id}}" th:method="delete">
+                                <form th:action="@{'/questions/comments/delete/' + ${comment.id}}" th:method="delete">
                                     <input type="hidden" th:value="${question.id}" name="questionId">
                                     <button type="submit" class="btn">
                                         <i class="fas fa-trash text-danger"></i>

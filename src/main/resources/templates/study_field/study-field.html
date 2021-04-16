@@ -23,7 +23,7 @@
         </div>
         <hr class="my-4">
         <div class="share-something">
-            <form th:action="@{'/question/' + ${studyField.id}}" th:object="${question}" method="POST">
+            <form th:action="@{'/questions/' + ${studyField.id}}" th:object="${question}" method="POST">
                 <div class="form-group">
                     <input type="text" placeholder="title for your question" class="form-control" name="title" th:field="*{title}">
                 </div>
@@ -66,11 +66,15 @@
                 </div>
                 <div class="card-footer ">
                     <p class="float-left"> Created by <b th:text="${question.student.username}">author</b>
-                        <span class="ml-2 mr-2"><i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i></span>
-                        <span class="ml-2"><i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i></span>
+                        <a th:href="@{'/questions/' + ${question.id}}" class="ml-2 mr-2">
+                            <i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
+                        </a>
+                        <a th:href="@{'/questions/' + ${question.id}}" class="ml-2">
+                            <i th:text="${question.comments.size()}" class="fas fa-comment-dots fa-lg">10</i>
+                        </a>
                     </p>
                         <button class="btn btn-success float-right">
-                            <a class="text-white" th:href="@{'/question/' + ${question.id}}">View topic</a>
+                            <a class="text-white" th:href="@{'/questions/' + ${question.id}}">View topic</a>
                         </button>
                     <div class="clearfix"></div>
                 </div>
