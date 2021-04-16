@@ -14,8 +14,8 @@
     <div id="profileJumbo" class="jumbotron jumbotron-fluid">
         <div class="container text-center">
             <img th:src="${#authentication.principal.profilePic}" class="rounded-circle" alt="">
-            <div class="student-information p-5 d-flex justify-content-between text-main-light">
-                <p>Username: @
+            <div class="student-information p-lg-5 d-flex justify-content-between text-main-light">
+                <p>@
                     <span th:text="${#authentication.principal.username}" class="text-white font-weight-bold">student username</span>
                 </p>
                 <p>
