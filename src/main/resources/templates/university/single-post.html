@@ -46,7 +46,7 @@
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
-            <form th:action="@{'/university/comments/' + ${post.id}}" th:object="${commentObj}" method="POST">
+            <form th:action="@{'/university/comments/post/' + ${post.id}}" th:object="${commentObj}" method="POST">
                 <div class="form-group">
                     <textarea class="form-control" name="comment" th:field="*{content}" id="exampleFormControlTextarea1" rows="3"
                               placeholder="write comment ..."></textarea>
@@ -57,8 +57,38 @@
                 </div>
                 <div class="clearfix"></div>
             </form>
+            <div th:if="${successComment}" th:text="${successComment}" class="alert alert-success col-xs-offset-1 col-xs-10">
+                <span>Confirm Comment msg</span>
+            </div>
             <hr class="bg-main-light">
 
+            <!-- ovde svi komentari izlistaj -->
+            <div class="student-posts">
+                <div th:if="${post.comments}" th:each="comment : ${post.comments}" class="single-media holder">
+                    <div class="media border-bottom pb-3 mb-3">
+                        <img th:src="${comment.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0 text-main-light">
+                                @<span class="font-weight-bold" th:text="${comment.student.username}">Student username</span>
+                                <span> / <small class="text-white" th:text="${comment.student.studyField.name}">studyField</small></span>
+                                <small th:if="${comment.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                            </h5>
+                            <p th:text="${comment.content}">Comment content</p>
+                        </div>
+                        <div th:if="${#authentication.principal.id == comment.student.id}" class="isUserPost">
+                            <div class="media-footer d-flex justify-content-between">
+                                <a class="btn" th:href="@{'/university/post/comment/edit/' + ${comment.id}}">
+                                    <i class="fas fa-pen fa-lg"></i>
+                                </a>
+                                <form th:action="@{'/university/post/comment/delete/' + ${comment.id}}" th:method="delete">
+                                    <input type="hidden" th:value="${comment.id}" name="universityId">
+                                    <button type="submit" class="btn">
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
             <!-- end komentari -->
         </div>
     </div>
