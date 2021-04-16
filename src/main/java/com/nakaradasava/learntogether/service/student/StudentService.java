@@ -34,4 +34,8 @@ public class StudentService implements UserDetailsService {
     public Student findByUsernameOrEmail(String username, String email) {
         return studentRepository.findByUsernameOrEmail(username, email);
     }
+
+    public Optional<Student> findStudentById(int studentId) {
+        return studentRepository.findById(studentId);
+    }
 }

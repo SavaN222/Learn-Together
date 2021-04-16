@@ -13,18 +13,18 @@
 
     <div id="profileJumbo" class="jumbotron jumbotron-fluid">
         <div class="container text-center">
-            <img th:src="${#authentication.principal.profilePic}" class="rounded-circle mr-lg-5" alt="">
+            <img th:src="${student.profilePic}" class="rounded-circle mr-lg-5" alt="">
             <div class="student-information d-lg-inline-flex text-main-light">
                 <p class="mr-lg-5">@
-                    <span th:text="${#authentication.principal.username}" class="text-white font-weight-bold">student username</span>
+                    <span th:text="${student.username}" class="text-white font-weight-bold">student username</span>
                 </p>
                 <p class="mr-lg-5">
                     <i class="fas fa-university fa-lg"></i>
-                    <span class="text-white font-weight-bold" sec:authentication="principal.university.fullName"></span>
+                    <span class="text-white font-weight-bold" sec:authentication="student.university.fullName"></span>
                 </p>
                 <p class="mr-lg-5">
                     <i class="fas fa-graduation-cap fa-lg"></i>
-                    <span class="text-white font-weight-bold" sec:authentication="principal.studyField.name"></span>
+                    <span class="text-white font-weight-bold" sec:authentication="student.studyField.name"></span>
                 </p>
             </div>
         </div>
@@ -32,22 +32,22 @@
     <div class="profile-nav d-lg-flex justify-content-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Activity</a>
             </li>
-            <li class="nav-item" role="presentation">
+            <li th:if="${student.id == #authentication.principal.id}" class="nav-item" role="presentation">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
             </li>
         </ul>
     </div>
 </div> <!-- end of container-fluid -->
 <div class="container">
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Home</div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">profile</div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">contact</div>
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            Izlistaj sve aktivnosti iz study field i obicni news
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            Ako je ovo od usera profil onda mu prikazi ovo i ovde ce moci da edituje profil ili da kreira novi post
+        </div>
     </div>
 
 </div> <!-- end of container -->
