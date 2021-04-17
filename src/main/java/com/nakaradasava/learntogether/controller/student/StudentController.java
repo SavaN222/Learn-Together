@@ -63,7 +63,6 @@ public class StudentController {
 
         studentService.updateStudent(student, studentInfo, profileImage);
 
-        redirectAttributes.addFlashAttribute("updatedMsg", "Information updated");
-        return "redirect:/profile/" + profileId;
+        return "redirect:/logout";
     }
 }
