@@ -21,7 +21,8 @@
                         study field/ <span class="text-main-light font-weight-bold" th:text="${question.studyField.name}">study field</span>
                     </a>
                     <span class="text-main-light">author:
-                        <b th:text="${question.student.username}" class="text-white">Author</b>
+                       <a th:href="@{'/profile/' + ${question.student.id}}">
+                           <b th:text="${question.student.username}" class="text-white">Author</b></a>
                     </span>
                 </p>
                 </div> <!-- .author end -->
@@ -85,7 +86,9 @@
                     <h5 class="mt-0">
                         <div class="body-headline d-flex justify-content-between">
                             <div class="user-headline align-left">
+                                <a th:href="@{'/profile/' + ${comment.student.id}}">
                                 <span th:text="${comment.student.username}" class="text-main-light font-weight-bold">author</span>
+                                </a>
                                 <span class="text-white font-italic"> /<small th:text="${comment.student.studyField.name}">student study field</small></span>
                                 <small th:if="${comment.edited}" th:text="edited" class="font-italic text-warning">edited</small>
 

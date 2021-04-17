@@ -79,7 +79,9 @@
                               <img th:src="${universityPost.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                               <div class="media-body">
                                   <h5 class="mt-0 text-main-light">
-                                      @<span class="font-weight-bold" th:text="${universityPost.student.username}">Student username</span>
+                                      <a th:href="@{'/profile/' + ${universityPost.student.id}}">
+                                          @<span class="font-weight-bold" th:text="${universityPost.student.username}">Student username</span>
+                                      </a>
                                       <span> / <small class="text-white" th:text="${universityPost.student.studyField.name}">studyField</small></span>
                                       <small th:if="${universityPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                                   </h5>
@@ -115,7 +117,9 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="text-info">
+                                            <a th:href="@{'/profile/' + ${student.id}}">
                                             <span th:text="${student.username}">username</span>
+                                            </a>
                                             <span>(<span th:text="${student.studyField.name}" class="text-main-light">studyField</span>)</span>
                                         </p>
                                     </div>
@@ -136,7 +140,7 @@
                         </button>
 
                         <!-- list all student universityPosts -->
-                        <h4 class="text-center text-main-light">All your universityPosts:</h4>
+                        <h4 class="text-center text-main-light">All your posts:</h4>
                             <div th:if="${studentPosts}" class="student-universityPosts">
                                 <div class="single-media holder">
                                     <div th:each="studentPost : ${studentPosts}" class="media border-bottom pb-3 mb-3">

@@ -22,7 +22,9 @@
                 <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                 <div class="media-body">
                     <h5 class="mt-0 text-main-light">
+                        <a th:href="@{'/profile/' + ${post.student.id}}">
                         @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
+                        </a>
                         <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
                         <small th:if="${post.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                     </h5>
@@ -73,7 +75,9 @@
                         <img th:src="${comment.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                         <div class="media-body">
                             <h5 class="mt-0 text-main-light">
+                                <a th:href="@{'/profile/' + ${comment.student.id}}">
                                 @<span class="font-weight-bold" th:text="${comment.student.username}">Student username</span>
+                                </a>
                                 <span> / <small class="text-white" th:text="${comment.student.studyField.name}">studyField</small></span>
                                 <small th:if="${comment.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                             </h5>

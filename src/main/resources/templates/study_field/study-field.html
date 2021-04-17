@@ -65,7 +65,8 @@
                    <span th:text="${question.description}">Description</span>
                 </div>
                 <div class="card-footer ">
-                    <p class="float-left"> Created by <b th:text="${question.student.username}">author</b>
+                    <p class="float-left"> Created by
+                        <a th:href="@{'/profile/' + ${question.student.id}}"><b th:text="${question.student.username}">author</b></a>
                         <a th:href="@{'/questions/' + ${question.id}}" class="ml-2 mr-2">
                             <i th:text="${question.likes.size()}" class="fas fa-graduation-cap fa-lg">10</i>
                         </a>
