@@ -43,7 +43,22 @@
 <div class="container">
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            Izlistaj sve aktivnosti iz study field i obicni news
+            <div th:if="${questions}" class="student-questions" id="profile-card">
+                <h3 class="text-center text-main-light">
+                    <span th:text="${student.username}">Student username</span>
+                    <span> Questions</span>
+                </h3>
+                <div th:each="question : ${questions}" class="question-holder">
+                    <div class="card">
+                        <div class="card-header">
+                            <a th:text="${question.title}" th:href="@{'/questions/' + ${question.id}}">title and link</a>
+                        </div>
+                        <div class="card-body">
+                            <p th:text="${#strings.abbreviate(question.description, 30)}">question content</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- student-questions end -->
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             Ako je ovo od usera profil onda mu prikazi ovo i ovde ce moci da edituje profil ili da kreira novi post

@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.service.studyfield;
 
+import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.repository.studyfield.QuestionStudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,9 @@ public class QuestionStudyService {
 
     public void deleteById(int id) {
         questionStudyRepository.deleteById(id);
+    }
+
+    public List<QuestionStudy> findQuestionsByStudent(Student student) {
+       return questionStudyRepository.findQuestionStudiesByStudent(student);
     }
 }
