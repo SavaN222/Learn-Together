@@ -38,4 +38,22 @@ public class StudentService implements UserDetailsService {
     public Optional<Student> findStudentById(int studentId) {
         return studentRepository.findById(studentId);
     }
+
+    public Optional<Student> findByUsername(String username) {
+        return studentRepository.findByUsername(username);
+    }
+
+    public void updateStudent(Student student, Student studentInfo) {
+        student.setId(studentInfo.getId());
+        student.setEmail(studentInfo.getEmail());
+        student.setPassword(studentInfo.getPassword());
+        student.setEnabled(studentInfo.isEnabled());
+        student.setProfilePic(studentInfo.getProfilePic());
+        student.setRole(studentInfo.getRole());
+        student.setUniversity(studentInfo.getUniversity());
+        student.setStudyField(studentInfo.getStudyField());
+        student.setGender(studentInfo.getGender());
+
+        studentRepository.save(student);
+    }
 }

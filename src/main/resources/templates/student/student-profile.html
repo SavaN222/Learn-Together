@@ -44,6 +44,16 @@
     </div>
 </div> <!-- end of container-fluid -->
 <div class="container">
+    <!-- username exist check for update -->
+    <div th:if="${usernameErr}" th:text="${usernameErr}" class="alert alert-danger col-xs-offset-1 col-xs-10">
+        <span>Student username exist msg</span>
+    </div>
+    <!-- end err msg -->
+    <!-- successfull msg -->
+    <div th:if="${updatedMsg}" th:text="${updatedMsg}" class="alert alert-danger col-xs-offset-1 col-xs-10">
+        <span>Student update msg</span>
+    </div>
+    <!-- kraj -->
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div th:if="${questions}" class="student-questions" id="friends-posts-card">
@@ -83,20 +93,20 @@
                             <img th:src="${student.profilePic}" class="rounded-circle" height="75px" width="75px">
                         </div>
                         <div class="col-lg-9">
-                            <form action="">
+                            <form th:action="@{'/profile/' + ${student.id}}" th:object="${student}" method="POST">
 
                                 <div class="form-group">
                                     <label for="username">Username:</label>
-                                    <input id="username" type="text" placeholder="username">
+                                    <input id="username" th:field="*{username}" type="text">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <label for="exampleFormControlFile1">Change profile image</label>
+                                    <input type="file" th:field="*{profilePic}" class="form-control-file" id="exampleFormControlFile1">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success form-control" value="submit"></button>
+                                    <button type="submit" class="btn btn-success form-control">Update profile</button>
                                 </div>
 
                             </form>
