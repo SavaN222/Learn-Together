@@ -12,5 +12,5 @@ public interface QuestionStudyRepository extends JpaRepository<QuestionStudy, In
 
     List<QuestionStudy> findQuestionStudiesByStudyFieldIdOrderByIdDesc(int studyFieldId);
 
-    List<QuestionStudy> findQuestionStudiesByStudent(Student student);
+    List<QuestionStudy> findQuestionStudiesByStudentOrderByIdDesc(Student student);
 }
