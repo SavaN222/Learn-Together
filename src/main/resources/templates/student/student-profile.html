@@ -50,7 +50,7 @@
     </div>
     <!-- end err msg -->
     <!-- successfull msg -->
-    <div th:if="${updatedMsg}" th:text="${updatedMsg}" class="alert alert-danger col-xs-offset-1 col-xs-10">
+    <div th:if="${updatedMsg}" th:text="${updatedMsg}" class="alert alert-success col-xs-offset-1 col-xs-10">
         <span>Student update msg</span>
     </div>
     <!-- kraj -->
@@ -93,7 +93,8 @@
                             <img th:src="${student.profilePic}" class="rounded-circle" height="75px" width="75px">
                         </div>
                         <div class="col-lg-9">
-                            <form th:action="@{'/profile/' + ${student.id}}" th:object="${student}" method="POST">
+                            <form th:action="@{'/profile/' + ${student.id}}" th:object="${student}" method="POST"
+                            enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="username">Username:</label>
@@ -102,7 +103,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Change profile image</label>
-                                    <input type="file" th:field="*{profilePic}" class="form-control-file" id="exampleFormControlFile1">
+                                    <input type="file" name="profileImage" accept="image/png, image/jpeg" class="form-control-file" id="exampleFormControlFile1">
                                 </div>
 
                                 <div class="form-group">

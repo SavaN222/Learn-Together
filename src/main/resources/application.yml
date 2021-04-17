@@ -24,6 +24,11 @@ spring:
     protocol: smtp
     test-connection: false
 
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+
   mvc:
     hiddenmethod:
       filter:

@@ -7,7 +7,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 @Service
@@ -43,17 +51,44 @@ public class StudentService implements UserDetailsService {
         return studentRepository.findByUsername(username);
     }
 
-    public void updateStudent(Student student, Student studentInfo) {
+    public void updateStudent(Student student, Student studentInfo, MultipartFile profileImage) {
+        String uploadDir = "/images/user-photos/" + student.getUsername() + "/";
+
+
         student.setId(studentInfo.getId());
         student.setEmail(studentInfo.getEmail());
         student.setPassword(studentInfo.getPassword());
         student.setEnabled(studentInfo.isEnabled());
-        student.setProfilePic(studentInfo.getProfilePic());
+        String fileName = StringUtils.cleanPath(profileImage.getOriginalFilename()); // get image name for database
+        student.setProfilePic(uploadDir + fileName);
         student.setRole(studentInfo.getRole());
         student.setUniversity(studentInfo.getUniversity());
         student.setStudyField(studentInfo.getStudyField());
         student.setGender(studentInfo.getGender());
 
         studentRepository.save(student);
+
+        try {
+            savePicture(profileImage, fileName, student.getUsername());
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+    }
+
+    private void savePicture(MultipartFile profileImage, String fileName, String username) throws IOException {
+        String windowsPath = "C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static";
+        String uploadDir = windowsPath + "\\images\\user-photos\\" + username;
+
+        Path uploadPath = Paths.get(uploadDir);
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try(InputStream inputStream = profileImage.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            throw new IOException("Could not save image file " + fileName, ex);
+        }
     }
 }

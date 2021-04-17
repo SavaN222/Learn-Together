@@ -7,12 +7,11 @@ import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 
 import java.util.Optional;
@@ -48,7 +47,8 @@ public class StudentController {
     @PostMapping("/profile/{profileId}")
     public String updateProfile(@ModelAttribute(name = "student") Student student,
                                 @PathVariable int profileId,
-                                RedirectAttributes redirectAttributes) {
+                                RedirectAttributes redirectAttributes,
+                                @RequestParam(name = "profileImage") MultipartFile profileImage) throws IOException {
 
         Student studentInfo = studentService.findStudentById(profileId).get();
 
@@ -61,7 +61,7 @@ public class StudentController {
             }
         }
 
-        studentService.updateStudent(student, studentInfo);
+        studentService.updateStudent(student, studentInfo, profileImage);
 
         redirectAttributes.addFlashAttribute("updatedMsg", "Information updated");
         return "redirect:/profile/" + profileId;
