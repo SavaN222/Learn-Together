@@ -32,7 +32,10 @@
     <div class="profile-nav d-lg-flex justify-content-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Activity</a>
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Questions</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">News feed</a>
             </li>
             <li th:if="${student.id == #authentication.principal.id}" class="nav-item" role="presentation">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
@@ -43,15 +46,20 @@
 <div class="container">
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div th:if="${questions}" class="student-questions" id="profile-card">
+            <div th:if="${questions}" class="student-questions" id="friends-posts-card">
                 <h3 class="text-center text-main-light">
                     <span th:text="${student.username}">Student username</span>
                     <span> Questions</span>
                 </h3>
-                <div th:each="question : ${questions}" class="question-holder">
+                <div th:each="question : ${questions}" class="question-holder mb-5">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justifty-content-between">
                             <a th:text="${question.title}" th:href="@{'/questions/' + ${question.id}}">title and link</a>
+                            <p>
+                            <a class="text-white" th:href="@{/study-fields(studyField=${question.studyField.id})}">
+                                asked in/<span th:text="${question.studyField.name}" class="text-main-light">study field name</span>
+                            </a>
+                            </p>
                         </div>
                         <div class="card-body">
                             <p th:text="${#strings.abbreviate(question.description, 30)}">question content</p>
@@ -60,6 +68,11 @@
                 </div>
             </div> <!-- student-questions end -->
         </div>
+        <!-- news feed student -->
+        <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+            Student news feed...
+        </div>
+        <!-- end news fedd student -->
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             Ako je ovo od usera profil onda mu prikazi ovo i ovde ce moci da edituje profil ili da kreira novi post
         </div>
