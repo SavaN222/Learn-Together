@@ -96,8 +96,10 @@ public class RegistrationController {
                            RedirectAttributes redirectAttributes) {
         List<University> universities = universityService.findUniversities();
         List<StudyField> studyFields = studyService.findStudyFields();
+        List<UniversityCity> cities = universityCityService.findCities();
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("cities", cities);
             model.addAttribute("universities", universities);
             model.addAttribute("studyFields", studyFields);
             return "auth/register";
@@ -106,6 +108,7 @@ public class RegistrationController {
         Student studentExist = studentService.findByUsernameOrEmail(student.getUsername(), student.getEmail());
         if (studentExist != null) {
             model.addAttribute("student", new RegistrationStudent());
+            model.addAttribute("cities", cities);
             model.addAttribute("universities", universities);
             model.addAttribute("studyFields", studyFields);
             model.addAttribute("registrationError", "username or email already exists.");
