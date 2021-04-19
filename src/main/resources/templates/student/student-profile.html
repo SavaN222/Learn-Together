@@ -13,8 +13,9 @@
 
     <div id="profileJumbo" class="jumbotron jumbotron-fluid bg-light-black">
         <div class="container text-center">
+            <!-- send request -->
             <div class="add-friend" th:if="${student.id != #authentication.principal.id}">
-                <form th:action="@{/friend/add}" method="POST" th:object="${friend}">
+                <form th:if="${student.id != #authentication.principal.id}" th:action="@{/friend/add}" method="POST" th:object="${friend}">
                     <div class="form-group">
                         <button th:unless="${friendshipStatus}" type="submit" class="btn btn-success" name="recipient" th:value="${student.id}">Add friend</button>
                         <button th:if="${friendshipStatus}" type="button" class="btn btn-dark" disabled>
@@ -23,6 +24,8 @@
                     </div>
                 </form>
             </div>
+            <!-- response on request -->
+       
             <img th:src="${student.profilePic}" class="rounded-circle mr-lg-5" height="100px" width="100px" alt="">
             <div class="student-information d-lg-inline-flex text-main-light">
                 <p class="mr-lg-5">@
