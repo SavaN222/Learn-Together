@@ -14,6 +14,9 @@
 .bg-black {
     background-color: #18191A;
 }
+.bg-light-black {
+    background-color: #161718;
+}
 body {
     background-color: #18191A;
     color: #ffffff;
@@ -195,6 +198,5 @@ textarea::selection, input::selection, select, option {
 }
 /* student profile page */
 #profileJumbo {
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(17,28,58,1) 100%);
+    background-color: #161718;
 }
