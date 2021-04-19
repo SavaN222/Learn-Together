@@ -1,10 +1,12 @@
 package com.nakaradasava.learntogether.controller.student;
 
+import com.nakaradasava.learntogether.entity.Friend;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.entity.university.UniversityCity;
+import com.nakaradasava.learntogether.service.FriendService;
 import com.nakaradasava.learntogether.service.student.StudentService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
@@ -12,6 +14,7 @@ import com.nakaradasava.learntogether.service.university.UniversityCityService;
 import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -31,14 +34,21 @@ public class StudentController {
     private UniversityCityService universityCityService;
     private StudyFieldService studyFieldService;
     private UniversityService universityService;
+    private FriendService friendService;
 
     @Autowired
-    public StudentController(StudentService studentService, QuestionStudyService questionStudyService, UniversityCityService universityCityService, StudyFieldService studyFieldService, UniversityService universityService) {
+    public StudentController(StudentService studentService,
+                             QuestionStudyService questionStudyService,
+                             UniversityCityService universityCityService,
+                             StudyFieldService studyFieldService,
+                             UniversityService universityService,
+                             FriendService friendService) {
         this.studentService = studentService;
         this.questionStudyService = questionStudyService;
         this.universityCityService = universityCityService;
         this.studyFieldService = studyFieldService;
         this.universityService = universityService;
+        this.friendService = friendService;
     }
 
     /**
@@ -54,17 +64,37 @@ public class StudentController {
     }
 
     @GetMapping("/profile/{profileId}")
-    public String showProfile(@PathVariable int profileId, Model model) {
+    public String showProfile(@PathVariable int profileId,
+                              @AuthenticationPrincipal Student loggedStudent,
+                              Model model) {
 
         Optional<Student> student = studentService.findStudentById(profileId);
-        List<University> universities = universityService.findUniversities();
-        List<StudyField> studyFields = studyFieldService.findStudyFields();
-        List<UniversityCity> cities = universityCityService.findCities();
 
         if (student.isEmpty()) {
             return "redirect:/";
+
         }
-        
+        int lowerId, higherId;
+
+        if (loggedStudent.getId() > student.get().getId()) {
+            lowerId = student.get().getId();
+            higherId = loggedStudent.getId();
+        } else {
+            lowerId = loggedStudent.getId();
+            higherId = student.get().getId();
+        }
+
+        Student lowerStudent = studentService.findStudentById(lowerId).get();
+        Student higherStudent = studentService.findStudentById(higherId).get();
+        Optional<Friend> requestExist = friendService.findByStudentLowerAndStudentHigher(lowerStudent, higherStudent);
+
+        if (requestExist.isPresent()) {
+            model.addAttribute("friendshipStatus", requestExist.get().getStatus());
+        }
+
+        List<University> universities = universityService.findUniversities();
+        List<StudyField> studyFields = studyFieldService.findStudyFields();
+        List<UniversityCity> cities = universityCityService.findCities();
         List<QuestionStudy> studentQuestions = questionStudyService.findQuestionsByStudent(student.get());
 
         model.addAttribute("student", student.get());
@@ -72,6 +102,7 @@ public class StudentController {
         model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
         model.addAttribute("cities", cities);
+        model.addAttribute("friend", new Friend());
 
         return "student/student-profile";
     }
