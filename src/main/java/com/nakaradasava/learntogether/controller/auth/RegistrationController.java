@@ -5,10 +5,12 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.entity.token.ConfirmationToken;
 import com.nakaradasava.learntogether.entity.university.University;
+import com.nakaradasava.learntogether.entity.university.UniversityCity;
 import com.nakaradasava.learntogether.service.student.RegistrationService;
 import com.nakaradasava.learntogether.service.student.StudentService;
 import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import com.nakaradasava.learntogether.service.token.ConfirmationTokenService;
+import com.nakaradasava.learntogether.service.university.UniversityCityService;
 import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -31,17 +33,20 @@ public class RegistrationController {
     private ConfirmationTokenService confirmationTokenService;
     private UniversityService universityService;
     private StudyFieldService studyService;
+    private UniversityCityService universityCityService;
 
     @Autowired
     public RegistrationController(StudentService studentService, RegistrationService registrationService,
                                   ConfirmationTokenService confirmationTokenService,
                                   UniversityService universityService,
-                                  StudyFieldService studyService) {
+                                  StudyFieldService studyService,
+                                  UniversityCityService universityCityService) {
         this.studentService = studentService;
         this.registrationService = registrationService;
         this.confirmationTokenService = confirmationTokenService;
         this.universityService = universityService;
         this.studyService = studyService;
+        this.universityCityService = universityCityService;
     }
 
     /**
@@ -65,10 +70,12 @@ public class RegistrationController {
     public String index(Model model) {
         List<University> universities = universityService.findUniversities();
         List<StudyField> studyFields = studyService.findStudyFields();
+        List<UniversityCity> cities = universityCityService.findCities();
 
         model.addAttribute("student", new RegistrationStudent());
         model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
+        model.addAttribute("cities", cities);
 
         return "auth/register";
     }
