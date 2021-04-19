@@ -59,6 +59,7 @@ public class Student implements UserDetails {
     private String gender;
 
     @OneToMany(mappedBy = "student")
+    @OrderBy("id DESC")
     private List<StudentPost> posts;
 
     @Override
