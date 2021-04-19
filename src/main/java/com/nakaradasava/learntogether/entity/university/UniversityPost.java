@@ -1,7 +1,6 @@
 package com.nakaradasava.learntogether.entity.university;
 
-import com.nakaradasava.learntogether.entity.student.ForeignStudent;
-import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.dry.ForeignStudent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +16,6 @@ import java.util.List;
 @Entity
 @Table(name = "post_university")
 public class UniversityPost extends ForeignStudent {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
 
     @Column(name = "description")
     private String description;

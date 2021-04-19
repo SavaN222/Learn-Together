@@ -4,6 +4,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Allow spring boot to load static directories without restart application.
+ * Configuration added because image upload.
+ */
 @Configuration
 public class UploadConfig implements WebMvcConfigurer {
 

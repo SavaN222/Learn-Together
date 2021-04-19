@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.token;
 
+import com.nakaradasava.learntogether.entity.dry.IdColumn;
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +17,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "token")
-public class ConfirmationToken {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class ConfirmationToken extends IdColumn {
 
     @Column(name = "confirmation_token")
     private String confirmationToken;

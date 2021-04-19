@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.studyfield;
 
+import com.nakaradasava.learntogether.entity.dry.IdColumn;
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,12 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "study_field")
-public class StudyField {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class StudyField extends IdColumn {
 
     @Column(name = "name")
     private String name;

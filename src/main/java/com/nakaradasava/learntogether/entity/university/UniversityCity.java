@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.university;
 
+import com.nakaradasava.learntogether.entity.dry.IdColumn;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,12 +14,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "city")
-public class UniversityCity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class UniversityCity extends IdColumn {
 
     @Column(name = "name")
     private String name;

@@ -1,5 +1,6 @@
-package com.nakaradasava.learntogether.entity.student;
+package com.nakaradasava.learntogether.entity.dry;
 
+import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import javax.persistence.MappedSuperclass;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public abstract class ForeignStudent {
+public abstract class ForeignStudent extends IdColumn {
     @ManyToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
