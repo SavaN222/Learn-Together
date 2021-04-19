@@ -106,6 +106,23 @@
                                     <input type="file" name="profileImage" accept="image/png, image/jpeg" class="form-control-file" id="exampleFormControlFile1">
                                 </div>
 
+                                <!-- Colleges -->
+                                <div class="form-group">
+                                    <select class="form-control" name="university" th:field="*{university}">
+                                        <optgroup th:each="city : ${cities}" th:label="${city.name}">
+                                            <option th:each="university : ${universities}" th:if="${university.getUniversityCity.name == city.name}" th:value="${university.id}" th:text="${university.fullName}"></option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <!-- Study Field -->
+                                <div class="form-group">
+                                    <select class="form-control" name="studyField" th:field="*{studyField}">
+                                        <optgroup label="Choose Study field">
+                                            <option th:each="study : ${studyFields}" th:value="${study.id}" th:text="${study.name}"></option>
+                                        </optgroup>
+                                    </select>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success form-control">Update profile</button>
                                 </div>

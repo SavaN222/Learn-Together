@@ -72,8 +72,6 @@ public class StudentService implements UserDetailsService {
         student.setPassword(studentInfo.getPassword());
         student.setEnabled(studentInfo.isEnabled());
         student.setRole(studentInfo.getRole());
-        student.setUniversity(studentInfo.getUniversity());
-        student.setStudyField(studentInfo.getStudyField());
         student.setGender(studentInfo.getGender());
 
         studentRepository.save(student);

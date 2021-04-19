@@ -2,8 +2,14 @@ package com.nakaradasava.learntogether.controller.student;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
+import com.nakaradasava.learntogether.entity.studyfield.StudyField;
+import com.nakaradasava.learntogether.entity.university.University;
+import com.nakaradasava.learntogether.entity.university.UniversityCity;
 import com.nakaradasava.learntogether.service.student.StudentService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionStudyService;
+import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
+import com.nakaradasava.learntogether.service.university.UniversityCityService;
+import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,18 +26,31 @@ import java.util.Optional;
 public class StudentController {
     private StudentService studentService;
     private QuestionStudyService questionStudyService;
+    private UniversityCityService universityCityService;
+    private StudyFieldService studyFieldService;
+    private UniversityService universityService;
 
     @Autowired
-    public StudentController(StudentService studentService, QuestionStudyService questionStudyService) {
+    public StudentController(StudentService studentService,
+                             QuestionStudyService questionStudyService,
+                             UniversityCityService universityCityService,
+                             StudyFieldService studyFieldService,
+                             UniversityService universityService) {
         this.studentService = studentService;
         this.questionStudyService = questionStudyService;
+        this.universityCityService = universityCityService;
+        this.studyFieldService = studyFieldService;
+        this.universityService = universityService;
     }
 
     @GetMapping("/profile/{profileId}")
     public String showProfile(@PathVariable int profileId, Model model) {
 
         Optional<Student> student = studentService.findStudentById(profileId);
-        
+        List<University> universities = universityService.findUniversities();
+        List<StudyField> studyFields = studyFieldService.findStudyFields();
+        List<UniversityCity> cities = universityCityService.findCities();
+
         if (student.isEmpty()) {
             return "redirect:/";
         }
@@ -40,6 +59,9 @@ public class StudentController {
 
         model.addAttribute("student", student.get());
         model.addAttribute("questions", studentQuestions);
+        model.addAttribute("universities", universities);
+        model.addAttribute("studyFields", studyFields);
+        model.addAttribute("cities", cities);
 
         return "student/student-profile";
     }
