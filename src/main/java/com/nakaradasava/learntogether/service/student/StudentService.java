@@ -52,16 +52,25 @@ public class StudentService implements UserDetailsService {
     }
 
     public void updateStudent(Student student, Student studentInfo, MultipartFile profileImage) {
-        String studentId = String.valueOf(student.getId());
+        String studentId = String.valueOf(studentInfo.getId());
         String uploadDir = "/images/user-photos/" + studentId + "/";
 
+        if (profileImage.isEmpty()) {
+            student.setProfilePic(studentInfo.getProfilePic());
+        } else {
+            String fileName = StringUtils.cleanPath(profileImage.getOriginalFilename()); // get image name for database
+            student.setProfilePic(uploadDir + fileName);
+            try {
+                savePicture(profileImage, fileName, studentId);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         student.setId(studentInfo.getId());
         student.setEmail(studentInfo.getEmail());
         student.setPassword(studentInfo.getPassword());
         student.setEnabled(studentInfo.isEnabled());
-        String fileName = StringUtils.cleanPath(profileImage.getOriginalFilename()); // get image name for database
-        student.setProfilePic(uploadDir + fileName);
         student.setRole(studentInfo.getRole());
         student.setUniversity(studentInfo.getUniversity());
         student.setStudyField(studentInfo.getStudyField());
@@ -69,11 +78,6 @@ public class StudentService implements UserDetailsService {
 
         studentRepository.save(student);
 
-        try {
-            savePicture(profileImage, fileName, studentId);
-        } catch (IOException e) {
-           e.printStackTrace();
-        }
     }
 
     private void savePicture(MultipartFile profileImage, String fileName, String studentId) throws IOException {
