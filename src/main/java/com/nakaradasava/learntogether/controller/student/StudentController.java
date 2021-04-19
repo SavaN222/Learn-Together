@@ -98,6 +98,11 @@ public class StudentController {
             return "redirect:/profile/" + profileId;
         }
 
+        if (student.getDescription().length() > 128) {
+            redirectAttributes.addFlashAttribute("descriptionErr", "Description can't be longer than 128 chars...");
+            return "redirect:/profile/" + profileId;
+        }
+
         studentService.updateStudent(student, studentInfo, profileImage);
 
         redirectAttributes.addFlashAttribute("updateProfile", "Successfully profile update, please login again!");

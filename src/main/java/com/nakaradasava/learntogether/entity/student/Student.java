@@ -29,6 +29,9 @@ public class Student implements UserDetails {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "password")
     private String password;
 
@@ -167,5 +170,13 @@ public class Student implements UserDetails {
 
     public void setPosts(List<StudentPost> posts) {
         this.posts = posts;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
