@@ -13,10 +13,12 @@ import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -77,6 +79,11 @@ public class StudentController {
                 redirectAttributes.addFlashAttribute("usernameErr", "Student with this username already exist");
                 return "redirect:/profile/" + profileId;
             }
+        }
+
+        if (student.getUsername().length() < 3) {
+            redirectAttributes.addFlashAttribute("usernameErr", "Username must be at least 3 characters");
+            return "redirect:/profile/" + profileId;
         }
 
         studentService.updateStudent(student, studentInfo, profileImage);
