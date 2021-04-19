@@ -18,23 +18,20 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "post_university")
+@Table(name = "student_post")
 public class StudentPost extends ForeignStudent {
 
     @NotEmpty(message = "description is required")
     @Column(name = "description")
     private String description;
 
-    @ManyToOne()
-    @JoinColumn(name = "university_id", referencedColumnName = "id")
-    private University university;
-
-    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
-    private List<UniversityPostLike> likes;
-
     @Column(name = "edited")
     private boolean edited;
 
-    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
-    private List<UniversityPostComment> comments;
+    //    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
+//    private List<UniversityPostLike> likes;
+
+
+//    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
+//    private List<UniversityPostComment> comments;
 }

@@ -1,6 +1,7 @@
 package com.nakaradasava.learntogether.controller;
 
 import com.nakaradasava.learntogether.entity.api.Quote;
+import com.nakaradasava.learntogether.entity.student.StudentPost;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class HomeController {
         }
 
         model.addAttribute("quote", quote);
+        model.addAttribute("studentPostObj", new StudentPost());
         return "index";
     }
 }

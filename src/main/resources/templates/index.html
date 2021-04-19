@@ -58,9 +58,9 @@
                 </div>
                 <div class="col-lg-8">
                         <div class="share-something">
-                                <form action="">
+                                <form th:action="@{/student/post}" method="POST" th:object="${studentPostObj}">
                                         <div class="form-group">
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3"
                                                           placeholder="share something with your friends..."></textarea>
                                         </div>
                                         <div class="float-right">
@@ -68,6 +68,8 @@
                                         </div>
                                 </form>
                         </div>
+                        <div th:if="${errorPost}" class="alert alert-danger" th:text="${errorPost}">Post cannot be null</div>
+                        <div th:if="${successPost}" class="alert alert-success" th:text="${successPost}">Posted...</div>
                                 <div class="clear-fix mb-5 pb-5"></div>
                         <div id="friends-posts-card">
                                 <!-- other friend post static -->

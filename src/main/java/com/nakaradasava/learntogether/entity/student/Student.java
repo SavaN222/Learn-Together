@@ -55,6 +55,9 @@ public class Student implements UserDetails {
     @Column(name = "gender")
     private String gender;
 
+    @OneToMany(mappedBy = "student")
+    private List<StudentPost> posts;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> role);
