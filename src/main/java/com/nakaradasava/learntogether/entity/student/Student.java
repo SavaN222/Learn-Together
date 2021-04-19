@@ -160,4 +160,12 @@ public class Student implements UserDetails {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public List<StudentPost> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<StudentPost> posts) {
+        this.posts = posts;
+    }
 }

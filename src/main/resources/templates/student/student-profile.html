@@ -80,7 +80,23 @@
         </div>
         <!-- news feed student -->
         <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
-            Student news feed...
+            <div th:if="${student.posts}" class="news-holder">
+                <div class="single-media holder">
+                    <div th:each="studentPost : ${student.posts}" class="media border-bottom pb-3 mb-3">
+                        <img th:src="${student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0 text-main-light">
+                                <a th:href="@{'/profile/' + ${student.id}}">
+                                    @<span class="font-weight-bold" th:text="${student.username}">Student username</span>
+                                </a>
+                                <span> / <small class="text-white" th:text="${student.studyField.name}">studyField</small></span>
+                                <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                            </h5>
+                            <p th:text="${studentPost.description}">Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- end news fedd student -->
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
