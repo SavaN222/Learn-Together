@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class QuestionStudy extends ForeignStudent {
 
     @NotEmpty(message = "title is required")
     @Column(name = "title")
+    @Size(max = 45, message = "max size is 45")
     private String title;
 
     @NotEmpty(message = "description is required")

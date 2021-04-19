@@ -18,7 +18,7 @@ public class RegistrationStudent {
     private Integer id;
 
     @NotNull(message = "is required")
-    @Size(min = 3, message = "minimum length is 3")
+    @Size(min = 3, max = 45, message = "minimum length is 3, maximum 45")
     private String username;
 
     @NotNull(message = "is required")
@@ -27,7 +27,7 @@ public class RegistrationStudent {
 
     @ValidEmail
     @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @Size(min = 1, max = 255, message = "is required")
     private String email;
 
     private boolean enabled;

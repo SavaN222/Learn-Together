@@ -81,8 +81,8 @@ public class StudentController {
             }
         }
 
-        if (student.getUsername().length() < 3) {
-            redirectAttributes.addFlashAttribute("usernameErr", "Username must be at least 3 characters");
+        if (student.getUsername().length() < 3 || student.getUsername().length() > 45) {
+            redirectAttributes.addFlashAttribute("usernameErr", "Username must be at least 3 characters and not longer than 45");
             return "redirect:/profile/" + profileId;
         }
 

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotEmpty;
 public class QuestionComment extends ForeignStudent {
 
     @NotEmpty(message = "content is required")
+    @Size(max = 255, message = "max size is 255")
     @Column(name = "content")
     private String content;
 
