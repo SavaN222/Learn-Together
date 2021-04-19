@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.university;
 
+import com.nakaradasava.learntogether.entity.student.ForeignStudent;
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,16 +15,12 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "like_post")
-public class UniversityPostLike {
+public class UniversityPostLike extends ForeignStudent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private Student student;
 
     @ManyToOne()
     @JoinColumn(name = "post_id", referencedColumnName = "id")

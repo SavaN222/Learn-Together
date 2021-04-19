@@ -31,11 +31,7 @@ public class StudentController {
     private UniversityService universityService;
 
     @Autowired
-    public StudentController(StudentService studentService,
-                             QuestionStudyService questionStudyService,
-                             UniversityCityService universityCityService,
-                             StudyFieldService studyFieldService,
-                             UniversityService universityService) {
+    public StudentController(StudentService studentService, QuestionStudyService questionStudyService, UniversityCityService universityCityService, StudyFieldService studyFieldService, UniversityService universityService) {
         this.studentService = studentService;
         this.questionStudyService = questionStudyService;
         this.universityCityService = universityCityService;

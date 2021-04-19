@@ -2,6 +2,7 @@ package com.nakaradasava.learntogether.entity.student;
 
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.entity.university.University;
+import com.nakaradasava.learntogether.entity.university.UniversityPost;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

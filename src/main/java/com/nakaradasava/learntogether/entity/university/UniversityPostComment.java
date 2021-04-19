@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.university;
 
+import com.nakaradasava.learntogether.entity.student.ForeignStudent;
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @Entity
 @Table(name = "comment_post")
-public class UniversityPostComment {
+public class UniversityPostComment extends ForeignStudent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +26,6 @@ public class UniversityPostComment {
     @NotEmpty(message = "content is required")
     @Column(name = "content")
     private String content;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private Student student;
 
     @ManyToOne()
     @JoinColumn(name = "post_id", referencedColumnName = "id")

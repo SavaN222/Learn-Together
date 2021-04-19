@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.entity.university;
 
+import com.nakaradasava.learntogether.entity.student.ForeignStudent;
 import com.nakaradasava.learntogether.entity.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "post_university")
-public class UniversityPost {
+public class UniversityPost extends ForeignStudent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +25,6 @@ public class UniversityPost {
 
     @Column(name = "description")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private Student student;
 
     @ManyToOne()
     @JoinColumn(name = "university_id", referencedColumnName = "id")
