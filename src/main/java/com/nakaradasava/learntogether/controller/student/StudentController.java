@@ -11,9 +11,11 @@ import com.nakaradasava.learntogether.service.studyfield.StudyFieldService;
 import com.nakaradasava.learntogether.service.university.UniversityCityService;
 import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -39,6 +41,18 @@ public class StudentController {
         this.universityCityService = universityCityService;
         this.studyFieldService = studyFieldService;
         this.universityService = universityService;
+    }
+
+    /**
+     * Trim all white spaces for user inputs
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @GetMapping("/profile/{profileId}")

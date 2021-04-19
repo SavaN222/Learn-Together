@@ -7,10 +7,12 @@ import com.nakaradasava.learntogether.entity.university.University;
 import com.nakaradasava.learntogether.service.university.UniversityPostService;
 import com.nakaradasava.learntogether.service.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +28,18 @@ public class UniversityPostController {
     public UniversityPostController(UniversityPostService universityPostService, UniversityService universityService) {
         this.universityPostService = universityPostService;
         this.universityService = universityService;
+    }
+
+    /**
+     * Trim all white spaces for user inputs
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @PostMapping("/university/post/{universityId}")
