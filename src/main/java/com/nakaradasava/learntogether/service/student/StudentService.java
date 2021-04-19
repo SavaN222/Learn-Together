@@ -52,7 +52,8 @@ public class StudentService implements UserDetailsService {
     }
 
     public void updateStudent(Student student, Student studentInfo, MultipartFile profileImage) {
-        String uploadDir = "/images/user-photos/" + student.getUsername() + "/";
+        String studentId = String.valueOf(student.getId());
+        String uploadDir = "/images/user-photos/" + studentId + "/";
 
 
         student.setId(studentInfo.getId());
@@ -69,15 +70,15 @@ public class StudentService implements UserDetailsService {
         studentRepository.save(student);
 
         try {
-            savePicture(profileImage, fileName, student.getUsername());
+            savePicture(profileImage, fileName, studentId);
         } catch (IOException e) {
            e.printStackTrace();
         }
     }
 
-    private void savePicture(MultipartFile profileImage, String fileName, String username) throws IOException {
+    private void savePicture(MultipartFile profileImage, String fileName, String studentId) throws IOException {
         String windowsPath = "C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static";
-        String uploadDir = windowsPath + "\\images\\user-photos\\" + username;
+        String uploadDir = windowsPath + "\\images\\user-photos\\" + studentId;
 
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {

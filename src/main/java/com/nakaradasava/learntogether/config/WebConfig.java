@@ -37,8 +37,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/", true)
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll();
+                .logoutSuccessUrl("/login?logout").permitAll();
     }
 
     @Override
