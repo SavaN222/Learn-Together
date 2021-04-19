@@ -45,6 +45,10 @@
         </div>
     </div>
 
+    <div th:if="${postErr}" th:text="${postErr}" class="alert alert-danger">
+        post cannot be null
+    </div>
+
     <!-- delete universityPost created msg -->
     <div th:if="${deletePostMsg}" class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
         <div id="liveToast2"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">

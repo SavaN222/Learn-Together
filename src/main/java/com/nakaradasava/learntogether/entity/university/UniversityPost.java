@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,6 +18,7 @@ import java.util.List;
 @Table(name = "post_university")
 public class UniversityPost extends ForeignStudent {
 
+    @NotEmpty(message = "description is required")
     @Column(name = "description")
     private String description;
 

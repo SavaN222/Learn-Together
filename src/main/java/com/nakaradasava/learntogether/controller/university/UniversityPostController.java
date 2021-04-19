@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class UniversityPostController {
@@ -27,11 +30,18 @@ public class UniversityPostController {
 
     @PostMapping("/university/post/{universityId}")
     public String savePost(@PathVariable int universityId,
-                         @ModelAttribute(name = "post") UniversityPost universityPost,
+                         @Valid @ModelAttribute(name = "post") UniversityPost universityPost,
+                         BindingResult bindingResult,
                          @AuthenticationPrincipal Student student,
                          RedirectAttributes redirectAttributes) {
 
         University university = universityService.findUniversity(universityId);
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("postErr", "Content cannot be null");
+
+            return "redirect:/university/" + universityId;
+        }
 
         universityPost.setStudent(student);
         universityPost.setUniversity(university);
