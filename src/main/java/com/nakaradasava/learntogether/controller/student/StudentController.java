@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.util.List;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -63,6 +64,13 @@ public class StudentController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
+    /**
+     * Show profile return all information for visited student profile and friendship status
+     * @param profileId visited student profile
+     * @param loggedStudent logged user
+     * @param model
+     * @return html page
+     */
     @GetMapping("/profile/{profileId}")
     public String showProfile(@PathVariable int profileId,
                               @AuthenticationPrincipal Student loggedStudent,
@@ -74,19 +82,10 @@ public class StudentController {
             return "redirect:/";
 
         }
-        int lowerId, higherId;
+        Map<String, Student> students = friendService.swapStudent(loggedStudent.getId(), student.get().getId());
 
-        if (loggedStudent.getId() > student.get().getId()) {
-            lowerId = student.get().getId();
-            higherId = loggedStudent.getId();
-        } else {
-            lowerId = loggedStudent.getId();
-            higherId = student.get().getId();
-        }
-
-        Student lowerStudent = studentService.findStudentById(lowerId).get();
-        Student higherStudent = studentService.findStudentById(higherId).get();
-        Optional<Friend> requestExist = friendService.findByStudentLowerAndStudentHigher(lowerStudent, higherStudent);
+        Optional<Friend> requestExist =
+                friendService.findByStudentLowerAndStudentHigher(students.get("lowerStudent"), students.get("higherStudent"));
 
         if (requestExist.isPresent()) {
             model.addAttribute("friendshipStatus", requestExist.get().getStatus());
@@ -108,6 +107,15 @@ public class StudentController {
         return "student/student-profile";
     }
 
+    /**
+     * Update student information
+     * @param student
+     * @param profileId
+     * @param redirectAttributes
+     * @param profileImage
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/profile/{profileId}")
     public String updateProfile(@ModelAttribute(name = "student") Student student,
                                 @PathVariable int profileId,

@@ -12,9 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
+/**
+ * Friend controller is responsible for add/delete/cancel friend request
+ * Because database table logic we always must check which student have smaller id and put them first
+ */
 public class FriendController {
 
     private FriendService friendService;
@@ -33,26 +38,17 @@ public class FriendController {
                             RedirectAttributes redirectAttributes,
                             Model model) {
 
-        int lowerId, higherId;
+        Map<String, Student> students = friendService.swapStudent(sender.getId(), recipientId);
 
-        if (sender.getId() > recipientId) {
-            lowerId = recipientId;
-            higherId = sender.getId();
-        } else {
-            lowerId = sender.getId();
-            higherId = recipientId;
-        }
-
-        Student lowerStudent = studentService.findStudentById(lowerId).get();
-        Student higherStudent = studentService.findStudentById(higherId).get();
-        Optional<Friend> requestExist = friendService.findByStudentLowerAndStudentHigher(lowerStudent, higherStudent);
+        Optional<Friend> requestExist =
+                friendService.findByStudentLowerAndStudentHigher(students.get("lowerStudent"), students.get("higherStudent"));
 
         if (requestExist.isPresent()) {
             model.addAttribute("status", "ERROR");
             return "redirect:/profile/" + recipientId;
         }
 
-        friendService.save(lowerStudent, higherStudent, sender, friend);
+        friendService.save(students.get("lowerStudent"), students.get("higherStudent"), sender, friend);
 
         return "redirect:/profile/" + recipientId;
     }
@@ -92,15 +88,13 @@ public class FriendController {
             higherId = profileStudent.getId();
         }
 
-        Student lowerStudent = studentService.findStudentById(lowerId).get();
-        Student higherStudent = studentService.findStudentById(higherId).get();
-        Optional<Friend> friend = friendService.findByStudentLowerAndStudentHigher(lowerStudent, higherStudent);
+        Map<String, Student> students = friendService.swapStudent(student.getId(), profileStudent.getId());
+
+        Optional<Friend> friend =
+                friendService.findByStudentLowerAndStudentHigher(students.get("lowerStudent"), students.get("higherStudent"));
 
         friendService.delete(friend.get());
 
         return "redirect:/profile/" + profileId;
-
     }
-
-
 }

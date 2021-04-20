@@ -10,4 +10,5 @@ public class LearnTogetherApplication {
 		SpringApplication.run(LearnTogetherApplication.class, args);
 	}
 
+
 }
