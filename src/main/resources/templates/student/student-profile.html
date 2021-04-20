@@ -68,7 +68,8 @@
             <p class="text-white font-italic" th:utext="${#strings.replace(student.description,'&#10;','&lt;br&gt;')}">student description</p>
         </div>
     </div>
-    <div class="profile-nav d-lg-flex justify-content-center">
+    <div th:if="${friendshipStatus == T(com.nakaradasava.learntogether.entity.Status)
+            .ACCEPT || student.id == #authentication.principal.id}" class="profile-nav d-lg-flex justify-content-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Questions</a>
@@ -80,6 +81,10 @@
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
             </li>
         </ul>
+    </div>
+    <div th:if="${friendshipStatus != T(com.nakaradasava.learntogether.entity.Status)
+            .ACCEPT && student.id != #authentication.principal.id}">
+        <h4 class="text-center text-danger">You must become friend before view user posts</h4>
     </div>
 </div> <!-- end of container-fluid -->
 <div class="container">
@@ -97,7 +102,8 @@
         <span>Student update msg</span>
     </div>
     <!-- kraj -->
-    <div class="tab-content" id="pills-tabContent">
+    <div th:if="${friendshipStatus == T(com.nakaradasava.learntogether.entity.Status)
+            .ACCEPT || student.id == #authentication.principal.id}" class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div th:if="${questions}" class="student-questions">
                 <h3 class="text-center text-main-light">
