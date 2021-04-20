@@ -12,7 +12,6 @@ import javax.mail.internet.MimeMessage;
 @Service
 @AllArgsConstructor
 public class EmailService {
-
     private JavaMailSender javaMailSender;
 
     /**

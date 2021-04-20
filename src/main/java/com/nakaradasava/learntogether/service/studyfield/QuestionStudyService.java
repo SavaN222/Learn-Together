@@ -4,7 +4,6 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.repository.studyfield.QuestionStudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -64,7 +64,7 @@ public class FriendService {
             higherId = recipientId;
         }
 
-        Map<String, Student> students = new HashMap<String, Student>();
+        Map<String, Student> students = new HashMap<>();
 
         students.put("lowerStudent", studentService.findStudentById(lowerId).get());
         students.put("higherStudent", studentService.findStudentById(higherId).get());
