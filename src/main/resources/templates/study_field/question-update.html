@@ -26,7 +26,7 @@
                 </div> <!-- .author end -->
                     <form th:action="@{'/questions/delete/' + ${question.id}}" th:method="delete">
                         <input type="hidden" th:value="${question.studyField.id}" name="studyFieldId">
-                        <button type="submit" name="id" class="btn">
+                        <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" name="id" class="btn">
                             <i class="fas fa-trash fa-lg text-danger"></i>
                         </button>
                     </form>
