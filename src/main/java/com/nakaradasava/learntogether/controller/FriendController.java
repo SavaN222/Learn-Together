@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -77,5 +75,32 @@ public class FriendController {
         }
         return "redirect:/profile/" + friendObj.getActionUser().getId();
     }
+
+    @DeleteMapping("/friend/delete/{profileId}")
+    public String deleteFriend(@PathVariable int profileId,
+                               @AuthenticationPrincipal Student student) {
+
+        Student profileStudent = studentService.findStudentById(profileId).get();
+
+        int lowerId, higherId;
+
+        if (student.getId() > profileStudent.getId()) {
+            lowerId = profileStudent.getId();
+            higherId = student.getId();
+        } else {
+            lowerId = student.getId();
+            higherId = profileStudent.getId();
+        }
+
+        Student lowerStudent = studentService.findStudentById(lowerId).get();
+        Student higherStudent = studentService.findStudentById(higherId).get();
+        Optional<Friend> friend = friendService.findByStudentLowerAndStudentHigher(lowerStudent, higherStudent);
+
+        friendService.delete(friend.get());
+
+        return "redirect:/profile/" + profileId;
+
+    }
+
 
 }

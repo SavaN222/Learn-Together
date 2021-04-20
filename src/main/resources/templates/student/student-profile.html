@@ -42,6 +42,15 @@
                     </div>
                 </form>
             </div>
+            <!-- delete friend -->
+            <div class="unfriend" th:if="${friendshipStatus == T(com.nakaradasava.learntogether.entity.Status)
+            .ACCEPT}">
+
+                <form th:action="@{'/friend/delete/' + ${student.id}}" th:method="delete">
+                    <button type="submit" class="btn btn-danger">Delete friend</button>
+                </form>
+
+            </div>
             <img th:src="${student.profilePic}" class="rounded-circle mr-lg-5" height="100px" width="100px" alt="">
             <div class="student-information d-lg-inline-flex text-main-light">
                 <p class="mr-lg-5">@
