@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class StudyField extends IdColumn {
     private String name;
 
     @OneToMany(mappedBy = "studyField")
-    private List<Student> students;
+    private Set<Student> students;
 
     @OneToMany(mappedBy = "studyField")
     private List<QuestionStudy> questions;

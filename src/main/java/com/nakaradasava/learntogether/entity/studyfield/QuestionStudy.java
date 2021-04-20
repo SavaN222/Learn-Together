@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,7 +37,7 @@ public class QuestionStudy extends ForeignStudent {
     private List<QuestionComment> comments;
 
     @OneToMany(mappedBy = "questionStudy", cascade = CascadeType.ALL)
-    private List<QuestionLike> likes;
+    private Set<QuestionLike> likes;
 
     @Column(name = "edited")
     private boolean edited;

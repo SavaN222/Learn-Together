@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +27,7 @@ public class University extends IdColumn {
     private String shortName;
 
     @OneToMany(mappedBy = "university")
-    private List<Student> students;
+    private Set<Student> students;
 
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")

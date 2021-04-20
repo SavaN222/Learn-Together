@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +28,7 @@ public class UniversityPost extends ForeignStudent {
     private University university;
 
     @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
-    private List<UniversityPostLike> likes;
+    private Set<UniversityPostLike> likes;
 
     @Column(name = "edited")
     private boolean edited;
