@@ -18,7 +18,7 @@
                 <form th:action="@{/friend/add}" method="POST" th:object="${friendObj}">
                     <div class="form-group">
                         <button th:unless="${friendshipStatus}" type="submit" class="btn btn-success" name="recipient" th:value="${student.id}">Add friend</button>
-                        <button th:if="${friendshipStatus != T(com.nakaradasava.learntogether.entity.Status).ACCEPT}" type="button" class="btn btn-dark" disabled>
+                        <button th:if="${friendshipStatus == T(com.nakaradasava.learntogether.entity.Status).PENDING}" type="button" class="btn btn-dark" disabled>
                             <span th:text="${friendshipStatus}">status</span>
                         </button>
                     </div>
