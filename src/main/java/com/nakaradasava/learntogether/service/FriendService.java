@@ -32,4 +32,12 @@ public class FriendService {
 
         friendRepository.save(friend);
     }
+
+    public void update(Friend friend) {
+        friendRepository.save(friend);
+    }
+
+    public void delete(Friend friend) {
+        friendRepository.delete(friend);
+    }
 }

@@ -2,10 +2,7 @@ package com.nakaradasava.learntogether.entity;
 
 import com.nakaradasava.learntogether.entity.dry.IdColumn;
 import com.nakaradasava.learntogether.entity.student.Student;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "friends")
 public class Friend extends IdColumn {

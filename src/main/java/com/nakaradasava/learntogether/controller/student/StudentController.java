@@ -90,6 +90,8 @@ public class StudentController {
 
         if (requestExist.isPresent()) {
             model.addAttribute("friendshipStatus", requestExist.get().getStatus());
+            model.addAttribute("actionStudent", requestExist.get().getActionUser().getId());
+            model.addAttribute("friendObj", requestExist.get());
         }
 
         List<University> universities = universityService.findUniversities();
@@ -102,7 +104,6 @@ public class StudentController {
         model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
         model.addAttribute("cities", cities);
-        model.addAttribute("friend", new Friend());
 
         return "student/student-profile";
     }

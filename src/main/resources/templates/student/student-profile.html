@@ -14,8 +14,8 @@
     <div id="profileJumbo" class="jumbotron jumbotron-fluid bg-light-black">
         <div class="container text-center">
             <!-- send request -->
-            <div class="add-friend" th:if="${student.id != #authentication.principal.id}">
-                <form th:if="${student.id != #authentication.principal.id}" th:action="@{/friend/add}" method="POST" th:object="${friend}">
+            <div class="add-friend" th:if="${student.id != #authentication.principal.id && student.id != actionStudent}">
+                <form th:action="@{/friend/add}" method="POST" th:object="${friendObj}">
                     <div class="form-group">
                         <button th:unless="${friendshipStatus}" type="submit" class="btn btn-success" name="recipient" th:value="${student.id}">Add friend</button>
                         <button th:if="${friendshipStatus}" type="button" class="btn btn-dark" disabled>
@@ -25,7 +25,23 @@
                 </form>
             </div>
             <!-- response on request -->
-       
+            <div class="response-friend" th:if="${student.id == actionStudent &&
+            friendshipStatus != T(com.nakaradasava.learntogether.entity.Status).ACCEPT}">
+                <form th:action="@{/friend/response}" method="POST" th:object="${friendObj}">
+                    <div class="row">
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{studentLower}">
+                        <input type="hidden" th:field="*{studentHigher}">
+                        <input type="hidden" th:field="*{actionUser}">
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-success" name="response" value="YES">Accept</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-success" name="response" value="NO">Decline</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <img th:src="${student.profilePic}" class="rounded-circle mr-lg-5" height="100px" width="100px" alt="">
             <div class="student-information d-lg-inline-flex text-main-light">
                 <p class="mr-lg-5">@

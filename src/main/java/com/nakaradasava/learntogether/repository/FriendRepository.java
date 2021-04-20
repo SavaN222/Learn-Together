@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface FriendRepository extends JpaRepository<Friend, Integer> {
 
     public Optional<Friend> findByStudentLowerAndStudentHigher(Student lowerStudent, Student higherStudent);
+
 }

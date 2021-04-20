@@ -1,6 +1,7 @@
 package com.nakaradasava.learntogether.controller;
 
 import com.nakaradasava.learntogether.entity.Friend;
+import com.nakaradasava.learntogether.entity.Status;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.FriendService;
 import com.nakaradasava.learntogether.service.student.StudentService;
@@ -56,6 +57,25 @@ public class FriendController {
         friendService.save(lowerStudent, higherStudent, sender, friend);
 
         return "redirect:/profile/" + recipientId;
-
     }
+
+    @PostMapping("/friend/response")
+    public String requestResponse(@ModelAttribute(name = "friendObj") Friend friendObj,
+                                  @RequestParam(name = "response") String response,
+                                  RedirectAttributes redirectAttributes) {
+
+        if ("YES".equals(response)) {
+            friendObj.setStatus(Status.ACCEPT);
+
+            redirectAttributes.addFlashAttribute("response", "Congratulations you have a new friend");
+
+            friendService.update(friendObj);
+        } else {
+            redirectAttributes.addFlashAttribute("response", "Friend request reject");
+
+            friendService.delete(friendObj);
+        }
+        return "redirect:/profile/" + friendObj.getActionUser().getId();
+    }
+
 }
