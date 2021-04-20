@@ -2,7 +2,6 @@ package com.nakaradasava.learntogether.controller.student;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
-import com.nakaradasava.learntogether.repository.student.StudentPostRepository;
 import com.nakaradasava.learntogether.service.student.StudentPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;

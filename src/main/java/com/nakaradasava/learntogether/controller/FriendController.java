@@ -16,10 +16,6 @@ import java.util.Map;
 import java.util.Optional;
 
 @Controller
-/**
- * Friend controller is responsible for add/delete/cancel friend request
- * Because database table logic we always must check which student have smaller id and put them first
- */
 public class FriendController {
 
     private FriendService friendService;
@@ -35,7 +31,6 @@ public class FriendController {
     public String addFriend(@ModelAttribute("friend") Friend friend,
                             @RequestParam(name = "recipient") int recipientId,
                             @AuthenticationPrincipal Student sender,
-                            RedirectAttributes redirectAttributes,
                             Model model) {
 
         Map<String, Student> students = friendService.swapStudent(sender.getId(), recipientId);
@@ -77,16 +72,6 @@ public class FriendController {
                                @AuthenticationPrincipal Student student) {
 
         Student profileStudent = studentService.findStudentById(profileId).get();
-
-        int lowerId, higherId;
-
-        if (student.getId() > profileStudent.getId()) {
-            lowerId = profileStudent.getId();
-            higherId = student.getId();
-        } else {
-            lowerId = student.getId();
-            higherId = profileStudent.getId();
-        }
 
         Map<String, Student> students = friendService.swapStudent(student.getId(), profileStudent.getId());
 

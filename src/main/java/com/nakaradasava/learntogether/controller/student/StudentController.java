@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
 import java.util.List;
 
 import java.util.Map;
@@ -114,16 +113,16 @@ public class StudentController {
      * @param redirectAttributes
      * @param profileImage
      * @return
-     * @throws IOException
      */
     @PostMapping("/profile/{profileId}")
     public String updateProfile(@ModelAttribute(name = "student") Student student,
                                 @PathVariable int profileId,
                                 RedirectAttributes redirectAttributes,
-                                @RequestParam(name = "profileImage") MultipartFile profileImage) throws IOException {
+                                @RequestParam(name = "profileImage") MultipartFile profileImage) {
 
         Student studentInfo = studentService.findStudentById(profileId).get();
 
+        /* -------------[ VALIDATION ] ---------------------------------------------- */
         if (!student.getUsername().equals(studentInfo.getUsername())) {
             Optional<Student> studentExist = studentService.findByUsername(student.getUsername());
 
@@ -142,8 +141,9 @@ public class StudentController {
             redirectAttributes.addFlashAttribute("descriptionErr", "Description can't be longer than 128 chars...");
             return "redirect:/profile/" + profileId;
         }
+         /* -------------[ END VALIDATION ] ---------------------------------------------- */
 
-        studentService.updateStudent(student, studentInfo, profileImage);
+         studentService.updateStudent(student, studentInfo, profileImage);
 
         redirectAttributes.addFlashAttribute("updateProfile", "Successfully profile update, please login again!");
         return "redirect:/login?logout";

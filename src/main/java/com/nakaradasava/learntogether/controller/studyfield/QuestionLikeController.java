@@ -46,6 +46,4 @@ public class QuestionLikeController {
 
         return "redirect:/questions/" + questionId;
     }
-
-
 }
