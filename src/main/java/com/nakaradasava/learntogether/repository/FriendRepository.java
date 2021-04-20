@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface FriendRepository extends JpaRepository<Friend, Integer> {
-
-    public Optional<Friend> findByStudentLowerAndStudentHigher(Student lowerStudent, Student higherStudent);
-
+    Optional<Friend> findByStudentLowerAndStudentHigher(Student lowerStudent, Student higherStudent);
 }

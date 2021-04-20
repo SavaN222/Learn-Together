@@ -11,5 +11,4 @@ import java.util.Optional;
 @Repository
 public interface UniversityPostLikeRepository extends JpaRepository<UniversityPostLike, Integer> {
     Optional<UniversityPostLike> findByUniversityPostAndStudent(UniversityPost universityPost, Student student);
-
 }
