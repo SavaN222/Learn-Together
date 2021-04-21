@@ -54,7 +54,7 @@
                         <div id="friends-posts-card">
                                 <!-- other friend post static -->
                                 <div th:if="${friendsPosts}" class="container bootstrap snippets bootdey">
-                                        <div th:each="post : ${friendsPosts}" class="col-sm-8 mb-3">
+                                        <div th:each="post : ${friendsPosts}" th:id="'post' + ${post.id}" class="col-sm-8 mb-3">
                                                 <div class="panel panel-white post panel-shadow border-dark rounded">
                                                         <div class="post-heading d-flex">
                                                                 <div class="pull-left image">
@@ -71,11 +71,15 @@
                                                         </div>
                                                         <div class="post-description border-top border-success">
                                                                 <p class="text-gray" th:text="${post.description}">Post description</p>
-                                                                <div class="stats border-bottom border-success">
-                                                                        <a href="#" class="btn btn-default stat-item">
-                                                                                <i class="fas fa-graduation-cap icon text-main-light"></i>2
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-default stat-item">
+                                                                <div class="stats border-bottom border-success d-flex justify-content-between">
+                                                                        <form th:action="@{/student/post/like}" method="POST" class="likeForm" th:object="${like}">
+                                                                                <input type="hidden" th:value="${post.id}" name="postId">
+                                                                                <button type="submit" class="btn btn-default stat-item">
+                                                                                        <i th:text="${post.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
+                                                                                </button>
+                                                                        </form>
+
+                                                                        <a href="#post5" class="btn btn-default stat-item">
                                                                                 <i class="fas fa-comment-dots text-main-light"></i>12
                                                                         </a>
                                                                 </div>

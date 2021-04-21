@@ -3,6 +3,7 @@ package com.nakaradasava.learntogether.controller;
 import com.nakaradasava.learntogether.entity.api.Quote;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
+import com.nakaradasava.learntogether.entity.student.StudentPostLike;
 import com.nakaradasava.learntogether.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -40,6 +41,7 @@ public class HomeController {
         model.addAttribute("quote", quote);
         model.addAttribute("studentPostObj", new StudentPost());
         model.addAttribute("friendsPosts", friendService.friendsPosts(friendService.getFriends(student.getId())));
+        model.addAttribute("like", new StudentPostLike());
 
 
         return "index";

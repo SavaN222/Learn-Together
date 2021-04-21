@@ -36,8 +36,8 @@ public class StudentPost extends ForeignStudent implements Comparable<StudentPos
         }
     }
 
-    //    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
-//    private List<UniversityPostLike> likes;
+        @OneToMany(mappedBy = "studentPost", cascade = CascadeType.ALL)
+    private List<StudentPostLike> likes;
 
 
 //    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
