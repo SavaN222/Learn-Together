@@ -42,7 +42,7 @@ public class StudentPostController {
                                   RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("errorPost", "You must write something...");
+            redirectAttributes.addFlashAttribute("errorPost", "Post cannot be empty");
             return "redirect:/";
         }
 
