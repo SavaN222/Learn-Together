@@ -138,7 +138,7 @@
         <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
             <div th:if="${student.posts}" class="news-holder">
                 <div class="single-media holder">
-                    <div th:each="studentPost : ${student.posts}" class="media border-bottom pb-3 mb-3">
+                    <div th:each="studentPost : ${student.posts}" class="media border-bottom border-success pb-3 mb-3">
                         <img th:src="${student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                         <div class="media-body">
                             <div class="header-media d-flex justify-content-between">
@@ -162,6 +162,14 @@
                                 </div>
                             </div>
                             <p th:text="${studentPost.description}">Description</p>
+                        </div>
+                        <div class="stats border-bottom border-success d-flex justify-content-between">
+                            <a href="#" class="btn btn-default stat-item">
+                                <i th:text="${studentPost.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
+                            </a>
+                            <a href="#" class="btn btn-default stat-item">
+                                <i class="fas fa-comment-dots text-main-light"></i>12
+                            </a>
                         </div>
                     </div>
                 </div>
