@@ -53,28 +53,36 @@
                         <div th:if="${successPost}" class="alert alert-success" th:text="${successPost}">Posted...</div>
                         <div id="friends-posts-card">
                                 <!-- other friend post static -->
-                                <div th:if="${friends}" th:each="friend : ${friends}" class="friends-posts mb-5">
-                                        <div th:each="post : ${friend.posts}" class="card mb-3 border-top border-bottom border-secondary rounded" style="max-width: 700px;">
-                                                <div class="row no-gutters">
-                                                        <div class="col-md-3">
-                                                                <img width="125px" height="125px" th:src="${friend.profilePic}" alt="...">
+                                <div th:if="${friends}" th:each="friend : ${friends}" class="container bootstrap snippets bootdey">
+                                        <div th:each="post : ${friend.posts}" class="col-sm-8">
+                                                <div class="panel panel-white post panel-shadow">
+                                                        <div class="post-heading d-flex">
+                                                                <div class="pull-left image">
+                                                                        <img height="60px" width="60px" th:src="${friend.profilePic}" class="img-circle avatar" alt="user profile image">
+                                                                </div>
+                                                                <div class="pull-left meta">
+                                                                        <div class="title h5">
+                                                                                <a th:href="@{'/profile/' + ${friend.id}}">
+                                                                                        <b class="text-main-light" th:text="${friend.username}">Username</b><
+                                                                                        </a>
+                                                                        </div>
+                                                                        <h6 th:if="${post.edited}" class="text-muted time">Edited</h6>
+                                                                </div>
                                                         </div>
-                                                        <div class="col-md-9">
-                                                                <div class="card-body">
-                                                                        <h5 class="card_title mb-2">
-                                                                                <span class="text-main-light">
-                                                                                        @<a th:text="${friend.username}" th:href="@{'/profile/' + ${friend.id}}">
-                                                                                        Username
-                                                                                </a>
-                                                                                </span>
-                                                                        </h5>
-                                                                        <p th:text="${post.description}" class="card-text">post content.</p>
-                                                                        <p th:if="${post.edited}" class="card-text"><small class="text-muted">Edited</small></p>
+                                                        <div class="post-description">
+                                                                <p th:text="${post.description}">Post description</p>
+                                                                <div class="stats">
+                                                                        <a href="#" class="btn btn-default stat-item">
+                                                                                <i class="fas fa-graduation-cap icon text-white"></i>2
+                                                                        </a>
+                                                                        <a href="#" class="btn btn-default stat-item">
+                                                                                <i class="fas fa-comment-dots text-white"></i>12
+                                                                        </a>
                                                                 </div>
                                                         </div>
                                                 </div>
                                         </div>
-                                </div>
+                                                </div>
                         </div>
                         </div><!-- col-lg-8 end -->
                 </div> <!-- row end-->
