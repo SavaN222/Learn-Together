@@ -77,6 +77,9 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">News feed</a>
             </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-friends-tab" data-toggle="pill" href="#pills-friends" role="tab" aria-controls="pills-friends" aria-selected="false">Friends</a>
+            </li>
             <li th:if="${student.id == #authentication.principal.id}" class="nav-item" role="presentation">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
             </li>
@@ -142,6 +145,31 @@
                                 <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                             </h5>
                             <p th:text="${studentPost.description}">Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list friends -->
+        <div th:if="${friends}" class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab">
+            <p class="font-italic">Friends Counter:
+                <span class="text-main-light" th:text="${friends.size()}">10</span>
+            </p>
+            <div class="row">
+                <div th:each="student : ${friends}" class="col-lg-4">
+                    <div class="student-holder">
+                        <div class="row d-flex">
+                            <div class="col-lg-4">
+                                <img class="rounded-circle" width="75px" height="75px" th:src="${student.profilePic}" alt="">
+                            </div>
+                            <div class="col-lg-8">
+                                <p class="text-info">@
+                                    <a th:href="@{'/profile/' + ${student.id}}">
+                                        <span th:text="${student.username}">username</span>
+                                    </a>
+                                    <span>(<span th:text="${student.studyField.name}" class="text-main-light">studyField</span>)</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

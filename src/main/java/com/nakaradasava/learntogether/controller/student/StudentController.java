@@ -102,6 +102,7 @@ public class StudentController {
         model.addAttribute("universities", universities);
         model.addAttribute("studyFields", studyFields);
         model.addAttribute("cities", cities);
+        model.addAttribute("friends", friendService.getFriends(profileId));
 
         return "student/student-profile";
     }
