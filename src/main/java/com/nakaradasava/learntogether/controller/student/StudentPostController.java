@@ -54,7 +54,8 @@ public class StudentPostController {
 
         studentPostService.save(studentPost);
 
-        redirectAttributes.addFlashAttribute("successPost", "Your post is published");
+        redirectAttributes.addFlashAttribute("successPost", "Your post is published, now your friends can see " +
+                "this post on their news feed, you can see your post on news feed section on your profile");
 
         return "redirect:/";
     }
