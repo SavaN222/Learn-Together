@@ -23,4 +23,8 @@ public class StudentPostService {
     public void deletePost(int postId) {
         studentPostRepository.deleteById(postId);
     }
+
+    public StudentPost findPostById(int postId) {
+        return studentPostRepository.findById(postId).get();
+    }
 }

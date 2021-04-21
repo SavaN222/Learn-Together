@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container mt-2">
+
+    <div class="comment">
+        <div class="media pb-4 mt-3 border-bottom border-secondary">
+            <img th:src="${post.student.profilePic}" class="mr-3 rounded-circle" style="width: 75px" height="75px" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">
+                    <div class="body-headline d-flex justify-content-between">
+                        <div class="user-headline align-left">
+                            <span th:text="${post.student.username}" class="text-main-light font-weight-bold">author</span>
+                        </div>
+                        <form th:action="@{/student/post/delete/}" th:method="delete">
+                            <input type="hidden" th:value="${post.id}" name="postId">
+                            <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                <i class="fas fa-trash text-danger"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </h5>
+                <form th:action="@{/student/post}" th:object="${post}" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" th:field="*{id}">
+                        <textarea class="form-control" name="comment" th:field="*{description}"
+                                  id="exampleFormControlTextarea1" rows="3"> </textarea>
+                    </div>
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-success">Send</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div> <!-- end of container -->
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>

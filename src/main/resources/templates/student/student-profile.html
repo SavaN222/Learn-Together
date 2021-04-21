@@ -150,7 +150,7 @@
                                 <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                             </h5>
                                 <div th:if="${student.id == #authentication.principal.id}" class="btns">
-                                    <a class="mr-2 btn" href="">
+                                    <a class="mr-2 btn" th:href="@{'/student/post/edit/' + ${studentPost.id}}">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <form th:action="@{'/student/post/delete'}" th:method="delete">

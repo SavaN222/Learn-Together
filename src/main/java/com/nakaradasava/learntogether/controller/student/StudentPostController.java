@@ -2,11 +2,13 @@ package com.nakaradasava.learntogether.controller.student;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
+import com.nakaradasava.learntogether.entity.university.UniversityPost;
 import com.nakaradasava.learntogether.service.student.StudentPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -70,5 +72,21 @@ public class StudentPostController {
         redirectAttributes.addFlashAttribute("deletePost", "Successfully delete post");
 
         return "redirect:/profile/" + student.getId();
+    }
+
+    @GetMapping("/student/post/edit/{postId}")
+    public String showEditForm(@PathVariable int postId,
+                               Model model,
+                               @AuthenticationPrincipal Student student) {
+
+        StudentPost studentPost = studentPostService.findPostById(postId);
+
+        if (!student.getId().equals(studentPost.getStudent().getId())) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("post", studentPost);
+
+        return "student/edit-post";
     }
 }

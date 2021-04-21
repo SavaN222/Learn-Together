@@ -33,6 +33,10 @@ a:hover {
     background: #1e2833;
 }
 
+.text-gray {
+    color: #d0d6d1;
+}
+
 .bg-facebook {
     background-color: #242526;
 }
