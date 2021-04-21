@@ -8,9 +8,8 @@ import com.nakaradasava.learntogether.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Service
 public class FriendService {
@@ -70,5 +69,33 @@ public class FriendService {
         students.put("higherStudent", studentService.findStudentById(higherId).get());
 
         return students;
+    }
+
+    public List<Student> getFriends(int studentId) {
+        Optional<List<Student>> optionalLowerFriends = friendRepository.findLowerFriends(studentId);
+        Optional<List<Student>> optionalHigherFriends = friendRepository.findHigherFriends(studentId);
+
+        List<Student> lowerFriends = null;
+        List<Student> higherFriends = null;
+
+        if (optionalLowerFriends.isPresent()) {
+            lowerFriends = optionalLowerFriends.get();
+        }
+
+        if (optionalHigherFriends.isPresent()) {
+            higherFriends = optionalHigherFriends.get();
+        }
+
+        List<Student> friends =  new ArrayList<>();
+
+        if (lowerFriends != null) {
+            friends.addAll(lowerFriends);
+        }
+
+        if (higherFriends != null) {
+            friends.addAll(higherFriends);
+        }
+
+        return friends;
     }
 }

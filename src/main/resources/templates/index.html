@@ -53,17 +53,23 @@
                         <div th:if="${successPost}" class="alert alert-success" th:text="${successPost}">Posted...</div>
                         <div id="friends-posts-card">
                                 <!-- other friend post static -->
-                                <div class="friends-posts mb-5">
-                                        <div class="card mb-3 border-top border-bottom border-secondary rounded" style="max-width: 700px;">
+                                <div th:if="${friends}" th:each="friend : ${friends}" class="friends-posts mb-5">
+                                        <div th:each="post : ${friend.posts}" class="card mb-3 border-top border-bottom border-secondary rounded" style="max-width: 700px;">
                                                 <div class="row no-gutters">
-                                                        <div class="col-md-4">
-                                                                <img th:src="@{/images/profile_pictures/female.png}" alt="...">
+                                                        <div class="col-md-3">
+                                                                <img width="125px" height="125px" th:src="${friend.profilePic}" alt="...">
                                                         </div>
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-9">
                                                                 <div class="card-body">
-                                                                        <h5 class="card-title">Card title</h5>
-                                                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                        <h5 class="card_title mb-2">
+                                                                                <span class="text-main-light">
+                                                                                        @<a th:text="${friend.username}" th:href="@{'/profile/' + ${friend.id}}">
+                                                                                        Username
+                                                                                </a>
+                                                                                </span>
+                                                                        </h5>
+                                                                        <p th:text="${post.description}" class="card-text">post content.</p>
+                                                                        <p th:if="${post.edited}" class="card-text"><small class="text-muted">Edited</small></p>
                                                                 </div>
                                                         </div>
                                                 </div>
