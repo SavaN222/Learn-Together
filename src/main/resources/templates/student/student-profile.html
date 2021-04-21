@@ -150,6 +150,9 @@
                                 <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                             </h5>
                                 <div th:if="${student.id == #authentication.principal.id}" class="btns">
+                                    <a class="mr-2 btn" href="">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
                                     <form th:action="@{'/student/post/delete'}" th:method="delete">
                                         <input type="hidden" th:value="${studentPost.id}" name="postId">
                                         <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">

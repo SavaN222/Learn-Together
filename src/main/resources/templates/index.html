@@ -55,7 +55,7 @@
                                 <!-- other friend post static -->
                                 <div th:if="${friendsPosts}" class="container bootstrap snippets bootdey">
                                         <div th:each="post : ${friendsPosts}" class="col-sm-8 mb-3">
-                                                <div class="panel panel-white post panel-shadow">
+                                                <div class="panel panel-white post panel-shadow border-dark rounded">
                                                         <div class="post-heading d-flex">
                                                                 <div class="pull-left image">
                                                                         <img height="60px" width="60px" th:src="${post.student.profilePic}" class="img-circle avatar" alt="user profile image">
