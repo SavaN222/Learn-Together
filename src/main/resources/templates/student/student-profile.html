@@ -104,6 +104,10 @@
     <div th:if="${updatedMsg}" th:text="${updatedMsg}" class="alert alert-success col-xs-offset-1 col-xs-10">
         <span>Student update msg</span>
     </div>
+
+    <div th:if="${deletePost}" th:text="${deletePost}" class="alert alert-success col-xs-offset-1 col-xs-10">
+        <span>Student delete post</span>
+    </div>
     <!-- kraj -->
     <div th:if="${friendshipStatus == T(com.nakaradasava.learntogether.entity.Status)
             .ACCEPT || student.id == #authentication.principal.id}" class="tab-content" id="pills-tabContent">
@@ -137,6 +141,7 @@
                     <div th:each="studentPost : ${student.posts}" class="media border-bottom pb-3 mb-3">
                         <img th:src="${student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
                         <div class="media-body">
+                            <div class="header-media d-flex justify-content-between">
                             <h5 class="mt-0 text-main-light">
                                 <a th:href="@{'/profile/' + ${student.id}}">
                                     @<span class="font-weight-bold" th:text="${student.username}">Student username</span>
@@ -144,6 +149,15 @@
                                 <span> / <small class="text-white" th:text="${student.studyField.name}">studyField</small></span>
                                 <small th:if="${studentPost.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
                             </h5>
+                                <div th:if="${student.id == #authentication.principal.id}" class="btns">
+                                    <form th:action="@{'/student/post/delete'}" th:method="delete">
+                                        <input type="hidden" th:value="${studentPost.id}" name="postId">
+                                        <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                            <i class="fas fa-trash text-danger"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                             <p th:text="${studentPost.description}">Description</p>
                         </div>
                     </div>

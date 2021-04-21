@@ -9,9 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -59,5 +57,17 @@ public class StudentPostController {
         redirectAttributes.addFlashAttribute("successPost", "Your post is published");
 
         return "redirect:/";
+    }
+
+    @DeleteMapping("/student/post/delete")
+    public String deleteStudentPost(@RequestParam(name = "postId") int postId,
+                                    RedirectAttributes redirectAttributes,
+                                    @AuthenticationPrincipal Student student) {
+
+        studentPostService.deletePost(postId);
+
+        redirectAttributes.addFlashAttribute("deletePost", "Successfully delete post");
+
+        return "redirect:/profile/" + student.getId();
     }
 }

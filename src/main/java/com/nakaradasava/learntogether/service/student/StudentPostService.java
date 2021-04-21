@@ -19,4 +19,8 @@ public class StudentPostService {
     public void save(StudentPost studentPost) {
         studentPostRepository.save(studentPost);
     }
+
+    public void deletePost(int postId) {
+        studentPostRepository.deleteById(postId);
+    }
 }
