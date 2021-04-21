@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "student_post")
-public class StudentPost extends ForeignStudent {
+public class StudentPost extends ForeignStudent implements Comparable<StudentPost> {
 
     @NotEmpty(message = "description is required")
     @Column(name = "description")
@@ -24,6 +24,17 @@ public class StudentPost extends ForeignStudent {
 
     @Column(name = "edited")
     private boolean edited;
+
+    @Override
+    public int compareTo(StudentPost post) {
+        if (getId().equals(post.getId())) {
+            return 0;
+        } else if (getId() < post.getId()) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 
     //    @OneToMany(mappedBy = "universityPost", cascade = CascadeType.ALL)
 //    private List<UniversityPostLike> likes;

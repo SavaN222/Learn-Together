@@ -39,7 +39,8 @@ public class HomeController {
 
         model.addAttribute("quote", quote);
         model.addAttribute("studentPostObj", new StudentPost());
-        model.addAttribute("friends", friendService.getFriends(student.getId()));
+        model.addAttribute("friendsPosts", friendService.friendsPosts(friendService.getFriends(student.getId())));
+
 
         return "index";
     }

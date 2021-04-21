@@ -3,12 +3,14 @@ package com.nakaradasava.learntogether.service;
 import com.nakaradasava.learntogether.entity.Friend;
 import com.nakaradasava.learntogether.entity.Status;
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.student.StudentPost;
 import com.nakaradasava.learntogether.repository.FriendRepository;
 import com.nakaradasava.learntogether.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -97,5 +99,20 @@ public class FriendService {
         }
 
         return friends;
+    }
+
+    public List<StudentPost> friendsPosts(List<Student> friends) {
+
+        List<List<StudentPost>> friendPosts = new ArrayList<>();
+
+        for (Student student : friends) {
+            friendPosts.add(student.getPosts());
+        }
+
+        return friendPosts
+                .stream()
+                .flatMap(List::stream)
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
