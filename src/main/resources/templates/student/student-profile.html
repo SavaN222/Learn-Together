@@ -164,11 +164,12 @@
                             <p th:text="${studentPost.description}">Description</p>
                         </div>
                         <div class="stats border-bottom border-success d-flex justify-content-between">
-                            <a href="#" class="btn btn-default stat-item">
-                                <i th:text="${studentPost.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
+                            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Lame alert(Easter Egg)" data-content="Hey it's 2021, please don't like your own post"
+                               href="#" class="btn btn-default stat-item">
+                                    <i th:text="${studentPost.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
                             </a>
-                            <a th:href="@{'/student/post/' + ${post.id}}" class="btn btn-default stat-item">
-                                <i th:text="${post.comments.size()}" class="fas fa-comment-dots text-main-light">10</i>
+                            <a th:href="@{'/student/post/' + ${studentPost.id}}" class="btn btn-default stat-item">
+                                <i th:text="${studentPost.comments.size()}" class="fas fa-comment-dots text-main-light">10</i>
                             </a>
                         </div>
                     </div>
@@ -249,7 +250,7 @@
                                 <div class="form-group">
                                     <button type="submit" class="mt-2 form-control bg-success">Update profile</button>
                                 </div>
-
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -263,5 +264,14 @@
 
 <!--include footer-->
 <div th:insert="/fragments/footer :: footer"></div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+        $('.popover-dismiss').popover({
+            trigger: 'focus'
+        });
+    });
+
+</script>
 </body>
 </html>

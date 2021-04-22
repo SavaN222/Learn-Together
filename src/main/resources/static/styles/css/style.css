@@ -264,3 +264,8 @@ textarea::selection, input::selection, select, option {
 .post .post-description .stats .stat-item .icon {
     margin-right: 8px;
 }
+/* POPOVER */
+.popover-header, .popover-body {
+    background-color: #161718 !important;
+    color: #1ED760 !important;
+}
