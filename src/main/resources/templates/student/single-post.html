@@ -1,0 +1,108 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<!--content-->
+<div class="container mt-2">
+
+    <!-- list all student universityPosts -->
+    <h4 class="text-center text-main-light">
+        <a th:href="@{'/student/post/' + ${post.id}}">Go back</a>
+    </h4>
+    <div class="student-universityPosts">
+        <div class="single-media holder">
+            <div class="media border-bottom pb-3 mb-3">
+                <img th:src="${post.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0 text-main-light">
+                        <a th:href="@{'/profile/' + ${post.student.id}}">
+                        @<span class="font-weight-bold" th:text="${post.student.username}">Student username</span>
+                        </a>
+                        <span> / <small class="text-white" th:text="${post.student.studyField.name}">studyField</small></span>
+                        <small th:if="${post.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                    </h5>
+                    <p th:text="${post.description}">Description</p>
+                </div>
+               <div th:if="${#authentication.principal.id == post.student.id}" class="isUserPost">
+                   <div class="media-footer d-flex justify-content-between">
+                       <a class="btn" th:href="@{'/student/post/edit/' + ${post.id}}">
+                           <i class="fas fa-pen fa-lg"></i>
+                       </a>
+                       <form th:action="@{'/student/post/delete/' + ${post.id}}" th:method="delete">
+                           <input type="hidden" th:value="${post.id}" name="universityId">
+                           <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                               <i class="fas fa-trash text-danger"></i>
+                           </button>
+                       </form>
+               </div>
+                </div>
+            </div>
+            <!-- komentari -->
+            <p class="text-white">Comment as
+                <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
+            </p>
+            <form th:action="@{'/student/comments/post/' + ${post.id}}" th:object="${commentObj}" method="POST">
+                <div class="form-group">
+                    <textarea class="form-control" name="comment" th:field="*{content}" id="exampleFormControlTextarea1" rows="3"
+                              placeholder="write comment ..."></textarea>
+                </div>
+                <div class="float-right">
+                    <button type="submit" class="btn btn-success">Send</button>
+                </div>
+                <div class="clearfix"></div>
+            </form>
+            <div th:if="${successComment}" th:text="${successComment}" class="alert alert-success col-xs-offset-1 col-xs-10">
+                <span>Confirm Comment msg</span>
+            </div>
+
+            <div th:if="${deleteSuccess}" th:text="${deleteSuccess}" class="alert alert-success col-xs-offset-1 col-xs-10">
+                <span>delete comment success</span>
+            </div>
+            <hr class="bg-main-light">
+
+            <!-- ovde svi komentari izlistaj -->
+            <div class="student-universityPosts">
+                <div th:if="${post.comments}" th:each="comment : ${post.comments}" class="single-media holder">
+                    <div class="media border-bottom pb-3 mb-3">
+                        <img th:src="${comment.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0 text-main-light">
+                                <a th:href="@{'/profile/' + ${comment.student.id}}">
+                                @<span class="font-weight-bold" th:text="${comment.student.username}">Student username</span>
+                                </a>
+                                <span> / <small class="text-white" th:text="${comment.student.studyField.name}">studyField</small></span>
+                                <small th:if="${comment.edited}" th:text="edited" class="font-italic text-warning btn">edited</small>
+                            </h5>
+                            <p th:text="${comment.content}">Comment content</p>
+                        </div>
+                        <div th:if="${#authentication.principal.id == comment.student.id}" class="isUserPost">
+                            <div class="media-footer d-flex justify-content-between">
+                                <a class="btn" href="">
+                                    <i class="fas fa-pen fa-lg"></i>
+                                </a>
+                                <form th:action="@{'/student/post/comments/delete/' + ${comment.id}}" th:method="delete">
+                                    <input type="hidden" th:value="${post.id}" name="postId">
+                                    <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            <!-- end komentari -->
+        </div>
+    </div>
+    <!-- end -->
+
+</div> <!-- end of container -->
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>

@@ -79,8 +79,8 @@
                                                                                 </button>
                                                                         </form>
 
-                                                                        <a href="#post5" class="btn btn-default stat-item">
-                                                                                <i class="fas fa-comment-dots text-main-light"></i>12
+                                                                        <a th:href="@{'/student/post/' + ${post.id}}" class="btn btn-default stat-item">
+                                                                                <i th:text="${post.comments.size()}" class="fas fa-comment-dots text-main-light">10</i>
                                                                         </a>
                                                                 </div>
                                                         </div>

@@ -2,7 +2,9 @@ package com.nakaradasava.learntogether.controller.student;
 
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
+import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.entity.university.UniversityPost;
+import com.nakaradasava.learntogether.entity.university.UniversityPostComment;
 import com.nakaradasava.learntogether.service.student.StudentPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -88,5 +90,18 @@ public class StudentPostController {
         model.addAttribute("post", studentPost);
 
         return "student/edit-post";
+    }
+
+    @GetMapping("/student/post/{postId}")
+    public String showSinglePost(@PathVariable int postId,
+                                 Model model,
+                                 @AuthenticationPrincipal Student student) {
+
+        StudentPost studentPost = studentPostService.findPostById(postId);
+
+        model.addAttribute("post", studentPost);
+        model.addAttribute("commentObj", new StudentPostComment());
+
+        return "student/single-post";
     }
 }
