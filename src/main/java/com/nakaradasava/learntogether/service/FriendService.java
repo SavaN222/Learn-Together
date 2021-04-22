@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class FriendService {
@@ -73,6 +72,11 @@ public class FriendService {
         return students;
     }
 
+    /**
+     * Combine two database columns to get all student friends
+     * @param studentId student for whom listing friends
+     * @return list of friends
+     */
     public List<Student> getFriends(int studentId) {
         Optional<List<Student>> optionalLowerFriends = friendRepository.findLowerFriends(studentId);
         Optional<List<Student>> optionalHigherFriends = friendRepository.findHigherFriends(studentId);
@@ -101,6 +105,11 @@ public class FriendService {
         return friends;
     }
 
+    /**
+     * Find all post of student friends sorted by post_id
+     * @param friends student friends
+     * @return sorted list of friend posts
+     */
     public List<StudentPost> friendsPosts(List<Student> friends) {
 
         List<List<StudentPost>> friendPosts = new ArrayList<>();

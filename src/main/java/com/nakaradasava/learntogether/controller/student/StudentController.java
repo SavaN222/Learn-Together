@@ -68,7 +68,6 @@ public class StudentController {
      * @param profileId visited student profile
      * @param loggedStudent logged user
      * @param model
-     * @return html page
      */
     @GetMapping("/profile/{profileId}")
     public String showProfile(@PathVariable int profileId,

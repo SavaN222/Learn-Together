@@ -26,6 +26,13 @@ public class StudentPostLikeController {
         this.studentPostService = studentPostService;
     }
 
+    /**
+     * Like student post
+     * @param like like model object
+     * @param student logged in student
+     * @param postId post id which student like
+     * @return scroll homepage to post which is liked
+     */
     @PostMapping("/student/post/like")
     public String like(@ModelAttribute("like") StudentPostLike like,
                      @AuthenticationPrincipal Student student,

@@ -12,7 +12,7 @@
 <!--content-->
 <div class="container mt-2">
 
-    <!-- list all student universityPosts -->
+    <!-- list all student Posts -->
     <div class="student-universityPosts">
         <div class="single-media holder">
             <div class="media border-bottom pb-3 mb-3">
@@ -41,7 +41,7 @@
                </div>
                 </div>
             </div>
-            <!-- komentari -->
+            <!-- create comment -->
             <p class="text-white">Comment as
                 <b sec:authentication="principal.username" class="text-main-light">Logged user</b>
             </p>
@@ -64,8 +64,8 @@
             </div>
             <hr class="bg-main-light">
 
-            <!-- ovde svi komentari izlistaj -->
-            <div class="student-universityPosts">
+            <!-- list all comments -->
+            <div class="student-comments">
                 <div th:if="${post.comments}" th:each="comment : ${post.comments}" class="single-media holder">
                     <div class="media border-bottom pb-3 mb-3">
                         <img th:src="${comment.student.profilePic}" width="75px" height="75px" class="rounded-circle align-self-start mr-3" alt="...">
@@ -93,7 +93,9 @@
                             </div>
                         </div>
                     </div>
-            <!-- end komentari -->
+                </div>
+            </div>
+            <!-- end comment -->
         </div>
     </div>
     <!-- end -->

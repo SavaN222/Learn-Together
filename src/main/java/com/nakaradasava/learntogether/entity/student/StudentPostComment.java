@@ -1,7 +1,6 @@
 package com.nakaradasava.learntogether.entity.student;
 
 import com.nakaradasava.learntogether.entity.dry.ForeignStudent;
-import com.nakaradasava.learntogether.entity.university.UniversityPost;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
