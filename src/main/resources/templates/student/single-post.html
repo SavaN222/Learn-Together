@@ -81,7 +81,7 @@
                         </div>
                         <div th:if="${#authentication.principal.id == comment.student.id}" class="isUserPost">
                             <div class="media-footer d-flex justify-content-between">
-                                <a class="btn" href="">
+                                <a class="btn" th:href="@{'/student/post/comments/edit/' + ${comment.id}}">
                                     <i class="fas fa-pen fa-lg"></i>
                                 </a>
                                 <form th:action="@{'/student/post/comments/delete/' + ${comment.id}}" th:method="delete">

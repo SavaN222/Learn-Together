@@ -77,18 +77,19 @@ public class StudentPostCommentController {
         return "redirect:/student/post/" + postId;
     }
 
-//    @GetMapping("/university/post/comments/edit/{commentId}")
-//    public String showEditForm(@PathVariable int commentId,
-//                               Model model,
-//                               @AuthenticationPrincipal Student student) {
-//        UniversityPostComment universityPostComment = universityPostCommentService.findCommentById(commentId);
-//
-//        if (!universityPostComment.getStudent().getId().equals(student.getId())) {
-//            return "redirect:/university/post/" + universityPostComment.getUniversityPost().getId();
-//        }
-//
-//        model.addAttribute("comment", universityPostComment);
-//
-//        return "university/comment-update";
-//    }
+    @GetMapping("/student/post/comments/edit/{commentId}")
+    public String showEditForm(@PathVariable int commentId,
+                               Model model,
+                               @AuthenticationPrincipal Student student) {
+
+        StudentPostComment studentPostComment = studentPostCommentService.findCommentById(commentId);
+
+        if (!studentPostComment.getStudent().getId().equals(student.getId())) {
+            return "redirect:/student/post/" + studentPostComment.getStudentPost().getId();
+        }
+
+        model.addAttribute("comment", studentPostComment);
+
+        return "student/comment-update";
+    }
 }
