@@ -124,4 +124,8 @@ public class FriendService {
                 .sorted()
                 .collect(Collectors.toList());
     }
+
+    public int countFriendRequests(int studentId) {
+        return friendRepository.countFriendRequests(studentId);
+    }
 }

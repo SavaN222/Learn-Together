@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
 
@@ -28,7 +30,7 @@ public class HomeController {
      * @return home page
      */
     @GetMapping("/")
-    public String index(Model model, @AuthenticationPrincipal Student student) {
+    public String index(Model model, @AuthenticationPrincipal Student student, HttpSession session) {
         RestTemplate restTemplate = new RestTemplate();
         Quote quote;
 
@@ -43,7 +45,7 @@ public class HomeController {
         model.addAttribute("friendsPosts", friendService.friendsPosts(friendService.getFriends(student.getId())));
         model.addAttribute("like", new StudentPostLike());
 
-
+        session.setAttribute("friendRequest", friendService.countFriendRequests(student.getId()));
         return "index";
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Optional;
 
@@ -51,12 +53,12 @@ public class FriendController {
     @PostMapping("/friend/response")
     public String requestResponse(@ModelAttribute(name = "friendObj") Friend friendObj,
                                   @RequestParam(name = "response") String response,
-                                  RedirectAttributes redirectAttributes) {
+                                  RedirectAttributes redirectAttributes,
+                                  HttpServletRequest request,
+                                  @AuthenticationPrincipal Student student) {
 
         if ("YES".equals(response)) {
             friendObj.setStatus(Status.ACCEPT);
-
-            redirectAttributes.addFlashAttribute("response", "Congratulations you have a new friend");
 
             friendService.update(friendObj);
         } else {
@@ -64,6 +66,8 @@ public class FriendController {
 
             friendService.delete(friendObj);
         }
+
+        request.getSession().setAttribute("friendRequest", friendService.countFriendRequests(student.getId()));
         return "redirect:/profile/" + friendObj.getActionUser().getId();
     }
 
