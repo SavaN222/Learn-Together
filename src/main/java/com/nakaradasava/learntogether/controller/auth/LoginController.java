@@ -52,7 +52,7 @@ public class LoginController {
                 questionCommentService.getNotificationsForQuestionPostComment(student.getId()));
 
         session.setAttribute("commentNotificationUniversity",
-                universityPostCommentService.getNotificationsForUniversityPostComment(student));
+                universityPostCommentService.getNotificationsForUniversityPostComment(student.getId()));
 
         return "redirect:/";
     }

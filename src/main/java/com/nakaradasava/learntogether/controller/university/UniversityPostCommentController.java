@@ -67,7 +67,7 @@ public class UniversityPostCommentController {
         universityPostCommentService.saveComment(universityPostComment);
 
         session.setAttribute("commentNotificationUniversity",
-                universityPostCommentService.getNotificationsForUniversityPostComment(student));
+                universityPostCommentService.getNotificationsForUniversityPostComment(student.getId()));
 
         redirectAttributes.addFlashAttribute("successComment", "Comment posted");
 
@@ -86,7 +86,7 @@ public class UniversityPostCommentController {
         universityPostCommentService.saveComment(universityPostComment);
 
         session.setAttribute("commentNotificationUniversity",
-                universityPostCommentService.getNotificationsForUniversityPostComment(student));
+                universityPostCommentService.getNotificationsForUniversityPostComment(student.getId()));
 
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
