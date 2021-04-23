@@ -32,8 +32,8 @@ public class StudentPostCommentService {
       return studentPostCommentRepository.findById(id).get();
     }
 
-    public List<StudentPostComment> getNotificationsForStudentPostComment(Student student) {
-        return studentPostCommentRepository.findAllByStatusAndStudentNotOrderById(CommentStatus.UNSEEN, student);
+    public List<StudentPostComment> getNotificationsForStudentPostComment(int studentId) {
+        return studentPostCommentRepository.findComments(studentId);
     }
 
 }

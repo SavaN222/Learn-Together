@@ -46,7 +46,7 @@ public class LoginController {
         session.setAttribute("requesters", friendService.getFriendRequesters(student.getId()));
 
         session.setAttribute("commentNotificationStudentPost",
-                studentPostCommentService.getNotificationsForStudentPostComment(student));
+                studentPostCommentService.getNotificationsForStudentPostComment(student.getId()));
 
         session.setAttribute("commentNotificationQuestion",
                 questionCommentService.getNotificationsForQuestionPostComment(student));
