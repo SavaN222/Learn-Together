@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface StudentPostCommentRepository extends JpaRepository<StudentPostComment, Integer> {
 
-    List<StudentPostComment> findAllByStatusAndStudentNot(CommentStatus commentStatus, Student student);
+    List<StudentPostComment> findAllByStatusAndStudentNotOrderById(CommentStatus commentStatus, Student student);
 }

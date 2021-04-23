@@ -5,6 +5,7 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.repository.student.StudentPostCommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class StudentPostCommentService {
     }
 
     public List<StudentPostComment> getNotificationsForStudentPostComment(Student student) {
-        return studentPostCommentRepository.findAllByStatusAndStudentNot(CommentStatus.UNSEEN, student);
+        return studentPostCommentRepository.findAllByStatusAndStudentNotOrderById(CommentStatus.UNSEEN, student);
     }
 
 }
