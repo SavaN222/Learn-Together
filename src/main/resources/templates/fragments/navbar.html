@@ -77,6 +77,10 @@
                                 <span th:text="${commentS.student.username}" class="text-main-light font-weight-bold">username</span>
                                 <span class="text-white"> is comment your post</span>
                             </a>
+                            <form th:action="@{/student/post/comments/seen}" method="POST">
+                                <input type="hidden" name="commentId" th:value="${commentS.id}">
+                                <button type="submit" class="btn btn-sm btn-block btn-success">mark as seen</button>
+                            </form>
                             <div class="dropdown-divider"></div>
                         </div>
                     </div>

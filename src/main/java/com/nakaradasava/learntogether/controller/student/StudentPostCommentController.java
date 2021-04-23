@@ -15,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -53,10 +54,11 @@ public class StudentPostCommentController {
 
         studentPostComment.setStudentPost(studentPost);
         studentPostComment.setStudent(student);
-        studentPostComment.setStatus(CommentStatus.UNSEEN);
 
-        session.setAttribute("commentNotificationStudentPost",
-                studentPostCommentService.getNotificationsForStudentPostComment(student));
+        if (studentPostComment.getStatus() == null) {
+            studentPostComment.setStatus(CommentStatus.UNSEEN);
+        }
+
 
         if (null != studentPostComment.getId()) {
             studentPostComment.setEdited(true);
@@ -64,9 +66,29 @@ public class StudentPostCommentController {
 
         studentPostCommentService.saveComment(studentPostComment);
 
+        session.setAttribute("commentNotificationStudentPost",
+                studentPostCommentService.getNotificationsForStudentPostComment(student));
         redirectAttributes.addFlashAttribute("successComment", "Comment posted");
 
         return "redirect:/student/post/" + postId;
+    }
+
+    @PostMapping("/student/post/comments/seen")
+    public String seenComment(@RequestParam(name = "commentId") int commentId,
+                              HttpServletRequest request,
+                              HttpSession session,
+                              @AuthenticationPrincipal Student student) {
+        StudentPostComment studentPostComment = studentPostCommentService.findCommentById(commentId);
+
+        studentPostComment.setStatus(CommentStatus.SEEN);
+
+        studentPostCommentService.saveComment(studentPostComment);
+
+        session.setAttribute("commentNotificationStudentPost",
+                studentPostCommentService.getNotificationsForStudentPostComment(student));
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @DeleteMapping("/student/post/comments/delete/{commentId}")
