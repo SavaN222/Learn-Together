@@ -14,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpSession;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
 
@@ -45,7 +47,8 @@ public class HomeController {
         model.addAttribute("friendsPosts", friendService.friendsPosts(friendService.getFriends(student.getId())));
         model.addAttribute("like", new StudentPostLike());
 
-        session.setAttribute("friendRequest", friendService.countFriendRequests(student.getId()));
+        session.setAttribute("requesters", friendService.getFriendRequesters(student.getId()));
+
         return "index";
     }
 }

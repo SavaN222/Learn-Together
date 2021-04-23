@@ -22,6 +22,13 @@ public interface FriendRepository extends JpaRepository<Friend, Integer> {
     @Query(value = "select count(id) as friend_request from friends where" +
             " (status = 'PENDING' and action_user_id != ?1) and (student_lower_id = ?1 OR student_higher_id = ?1) ",
     nativeQuery = true)
-    Integer countFriendRequests(int studentId);
+    int countFriendRequests(int studentId);
 
+    @Query("SELECT studentLower FROM Friend WHERE " +
+            "(student_higher_id = ?1 AND action_user_id != ?1 ) AND status = 'PENDING'")
+    Optional<List<Student>> findLowerFriendRequests(int studentId);
+
+    @Query("SELECT studentHigher FROM Friend WHERE " +
+            "(student_lower_id = ?1 AND action_user_id != ?1 ) AND status = 'PENDING'")
+    Optional<List<Student>> findHigherFriendRequests(int studentId);
 }

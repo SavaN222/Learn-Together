@@ -73,13 +73,42 @@ public class FriendService {
     }
 
     /**
-     * Combine two database columns to get all student friends
-     * @param studentId student for whom listing friends
+     * Get friends for logged in student
+     * @param studentId logged in student
      * @return list of friends
      */
     public List<Student> getFriends(int studentId) {
+
         Optional<List<Student>> optionalLowerFriends = friendRepository.findLowerFriends(studentId);
         Optional<List<Student>> optionalHigherFriends = friendRepository.findHigherFriends(studentId);
+
+        return mergeFriends(studentId, optionalLowerFriends, optionalHigherFriends);
+    }
+
+    /**
+     * Show friend requester information for logged-in(recipient) student
+     * @param studentId logged-in student
+     * @return list of student who send friend request to logged-in student
+     */
+    public List<Student> getFriendRequesters(int studentId) {
+
+        Optional<List<Student>> optionalLowerFriends = friendRepository.findLowerFriendRequests(studentId);
+        Optional<List<Student>> optionalHigherFriends = friendRepository.findHigherFriendRequests(studentId);
+
+        return mergeFriends(studentId, optionalLowerFriends, optionalHigherFriends);
+    }
+
+
+    /**
+     * Merge two database table columns(student_lower_id and student_higher_id) into one
+     * @param studentId logged in student
+     * @param optionalLowerFriends column1
+     * @param optionalHigherFriends column2
+     * @return list of merged two columns
+     */
+    private List<Student> mergeFriends(int studentId,
+                                     Optional<List<Student>> optionalLowerFriends,
+                                     Optional<List<Student>> optionalHigherFriends) {
 
         List<Student> lowerFriends = null;
         List<Student> higherFriends = null;
@@ -123,9 +152,5 @@ public class FriendService {
                 .flatMap(List::stream)
                 .sorted()
                 .collect(Collectors.toList());
-    }
-
-    public int countFriendRequests(int studentId) {
-        return friendRepository.countFriendRequests(studentId);
     }
 }

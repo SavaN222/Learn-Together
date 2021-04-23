@@ -54,7 +54,7 @@ public class FriendController {
     public String requestResponse(@ModelAttribute(name = "friendObj") Friend friendObj,
                                   @RequestParam(name = "response") String response,
                                   RedirectAttributes redirectAttributes,
-                                  HttpServletRequest request,
+                                  HttpSession session,
                                   @AuthenticationPrincipal Student student) {
 
         if ("YES".equals(response)) {
@@ -67,7 +67,8 @@ public class FriendController {
             friendService.delete(friendObj);
         }
 
-        request.getSession().setAttribute("friendRequest", friendService.countFriendRequests(student.getId()));
+        session.setAttribute("requesters", friendService.getFriendRequesters(student.getId()));
+
         return "redirect:/profile/" + friendObj.getActionUser().getId();
     }
 

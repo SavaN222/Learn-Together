@@ -17,6 +17,10 @@
 .bg-light-black {
     background-color: #161718;
 }
+.friend-dropdown {
+    background-color: #161718 !important;
+
+}
 body {
     background-color: #18191A;
     color: #ffffff;
