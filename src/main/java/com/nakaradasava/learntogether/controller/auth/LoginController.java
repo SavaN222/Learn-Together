@@ -4,6 +4,7 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.FriendService;
 import com.nakaradasava.learntogether.service.student.StudentPostCommentService;
 import com.nakaradasava.learntogether.service.studyfield.QuestionCommentService;
+import com.nakaradasava.learntogether.service.university.UniversityPostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,17 @@ public class LoginController {
     private FriendService friendService;
     private StudentPostCommentService studentPostCommentService;
     private QuestionCommentService questionCommentService;
+    private UniversityPostCommentService universityPostCommentService;
 
     @Autowired
     public LoginController(FriendService friendService,
                            StudentPostCommentService studentPostCommentService,
-                           QuestionCommentService questionCommentService) {
+                           QuestionCommentService questionCommentService,
+                           UniversityPostCommentService universityPostCommentService) {
         this.friendService = friendService;
         this.studentPostCommentService = studentPostCommentService;
         this.questionCommentService = questionCommentService;
+        this.universityPostCommentService = universityPostCommentService;
     }
 
     @GetMapping("/login")
@@ -40,10 +44,15 @@ public class LoginController {
     private String processLogin(HttpSession session, @AuthenticationPrincipal Student student) {
 
         session.setAttribute("requesters", friendService.getFriendRequesters(student.getId()));
+
         session.setAttribute("commentNotificationStudentPost",
                 studentPostCommentService.getNotificationsForStudentPostComment(student));
+
         session.setAttribute("commentNotificationQuestion",
-                questionCommentService.getNotificationsForStudentPostComment(student));
+                questionCommentService.getNotificationsForQuestionPostComment(student));
+
+        session.setAttribute("commentNotificationUniversity",
+                universityPostCommentService.getNotificationsForUniversityPostComment(student));
 
         return "redirect:/";
     }

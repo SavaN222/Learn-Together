@@ -32,7 +32,7 @@ public class QuestionCommentService {
       return questionCommentRepository.findById(id).get();
     }
 
-    public List<QuestionComment> getNotificationsForStudentPostComment(Student student) {
+    public List<QuestionComment> getNotificationsForQuestionPostComment(Student student) {
         return questionCommentRepository.findAllByStatusAndStudentNotOrderById(CommentStatus.UNSEEN, student);
     }
 }

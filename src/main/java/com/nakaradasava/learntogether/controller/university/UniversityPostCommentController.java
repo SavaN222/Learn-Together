@@ -1,6 +1,8 @@
 package com.nakaradasava.learntogether.controller.university;
 
+import com.nakaradasava.learntogether.entity.CommentStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.studyfield.QuestionComment;
 import com.nakaradasava.learntogether.entity.university.UniversityPostComment;
 import com.nakaradasava.learntogether.entity.university.UniversityPost;
 import com.nakaradasava.learntogether.service.university.UniversityPostCommentService;
@@ -13,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UniversityPostCommentController {
@@ -43,12 +48,17 @@ public class UniversityPostCommentController {
             @ModelAttribute(name = "commentObj") UniversityPostComment universityPostComment,
             @PathVariable int postId,
             @AuthenticationPrincipal Student student,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes,
+            HttpSession session) {
 
         UniversityPost universityPost = universityPostService.findPostById(postId);
 
         universityPostComment.setUniversityPost(universityPost);
         universityPostComment.setStudent(student);
+
+        if (universityPostComment.getStatus() == null) {
+            universityPostComment.setStatus(CommentStatus.UNSEEN);
+        }
 
         if (null != universityPostComment.getId()) {
             universityPostComment.setEdited(true);
@@ -56,9 +66,30 @@ public class UniversityPostCommentController {
 
         universityPostCommentService.saveComment(universityPostComment);
 
+        session.setAttribute("commentNotificationUniversity",
+                universityPostCommentService.getNotificationsForUniversityPostComment(student));
+
         redirectAttributes.addFlashAttribute("successComment", "Comment posted");
 
         return "redirect:/university/post/" + postId;
+    }
+
+    @PostMapping("/university/post/comment/seen")
+    public String seenComment(@RequestParam(name = "commentId") int commentId,
+                              HttpServletRequest request,
+                              HttpSession session,
+                              @AuthenticationPrincipal Student student) {
+        UniversityPostComment universityPostComment = universityPostCommentService.findCommentById(commentId);
+
+        universityPostComment.setStatus(CommentStatus.SEEN);
+
+        universityPostCommentService.saveComment(universityPostComment);
+
+        session.setAttribute("commentNotificationUniversity",
+                universityPostCommentService.getNotificationsForUniversityPostComment(student));
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @DeleteMapping("/university/post/comments/delete/{commentId}")
