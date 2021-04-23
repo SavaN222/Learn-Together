@@ -1,6 +1,8 @@
 package com.nakaradasava.learntogether.controller.studyfield;
 
+import com.nakaradasava.learntogether.entity.CommentStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionComment;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.service.studyfield.QuestionCommentService;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -51,11 +55,12 @@ public class QuestionCommentController {
      */
     @PostMapping("/questions/comments/{questionId}")
     public String saveComment(@Valid @ModelAttribute(name = "commentObj") QuestionComment questionComment,
-                               BindingResult bindingResult,
-                               Model model,
-                               RedirectAttributes redirectAttributes,
-                               @PathVariable(name = "questionId") int questionId,
-                               @AuthenticationPrincipal Student student) {
+                              BindingResult bindingResult,
+                              Model model,
+                              RedirectAttributes redirectAttributes,
+                              @PathVariable(name = "questionId") int questionId,
+                              @AuthenticationPrincipal Student student,
+                              HttpSession session) {
 
         QuestionStudy questionStudy = questionStudyService.findById(questionId);
 
@@ -67,15 +72,40 @@ public class QuestionCommentController {
         questionComment.setQuestionStudy(questionStudy);
         questionComment.setStudent(student);
 
+        if (questionComment.getStatus() == null) {
+            questionComment.setStatus(CommentStatus.UNSEEN);
+        }
+
         if (null != questionComment.getId()) {
             questionComment.setEdited(true);
         }
 
         questionCommentService.saveComment(questionComment);
 
+        session.setAttribute("commentNotificationQuestion",
+                questionCommentService.getNotificationsForStudentPostComment(student));
+
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
         return "redirect:/questions/" + questionId;
+    }
+
+    @PostMapping("/question/comments/seen")
+    public String seenComment(@RequestParam(name = "commentId") int commentId,
+                              HttpServletRequest request,
+                              HttpSession session,
+                              @AuthenticationPrincipal Student student) {
+        QuestionComment questionComment = questionCommentService.findCommentById(commentId);
+
+        questionComment.setStatus(CommentStatus.SEEN);
+
+        questionCommentService.saveComment(questionComment);
+
+        session.setAttribute("commentNotificationQuestion",
+                questionCommentService.getNotificationsForStudentPostComment(student));
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @DeleteMapping("/questions/comments/delete/{commentId}")
