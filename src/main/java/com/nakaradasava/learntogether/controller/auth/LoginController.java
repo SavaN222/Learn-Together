@@ -49,7 +49,7 @@ public class LoginController {
                 studentPostCommentService.getNotificationsForStudentPostComment(student.getId()));
 
         session.setAttribute("commentNotificationQuestion",
-                questionCommentService.getNotificationsForQuestionPostComment(student));
+                questionCommentService.getNotificationsForQuestionPostComment(student.getId()));
 
         session.setAttribute("commentNotificationUniversity",
                 universityPostCommentService.getNotificationsForUniversityPostComment(student));

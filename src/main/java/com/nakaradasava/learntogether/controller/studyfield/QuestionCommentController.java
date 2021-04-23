@@ -83,7 +83,7 @@ public class QuestionCommentController {
         questionCommentService.saveComment(questionComment);
 
         session.setAttribute("commentNotificationQuestion",
-                questionCommentService.getNotificationsForQuestionPostComment(student));
+                questionCommentService.getNotificationsForQuestionPostComment(student.getId()));
 
         redirectAttributes.addFlashAttribute("success", "Comment posted");
 
@@ -102,7 +102,7 @@ public class QuestionCommentController {
         questionCommentService.saveComment(questionComment);
 
         session.setAttribute("commentNotificationQuestion",
-                questionCommentService.getNotificationsForQuestionPostComment(student));
+                questionCommentService.getNotificationsForQuestionPostComment(student.getId()));
 
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
