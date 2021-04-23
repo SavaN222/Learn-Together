@@ -1,9 +1,13 @@
 package com.nakaradasava.learntogether.service.student;
 
+import com.nakaradasava.learntogether.entity.CommentStatus;
+import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.repository.student.StudentPostCommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentPostCommentService {
@@ -26,4 +30,9 @@ public class StudentPostCommentService {
     public StudentPostComment findCommentById(int id) {
       return studentPostCommentRepository.findById(id).get();
     }
+
+    public List<StudentPostComment> getNotificationsForStudentPostComment(Student student) {
+        return studentPostCommentRepository.findAllByStatusAndStudentNot(CommentStatus.UNSEEN, student);
+    }
+
 }

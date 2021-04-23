@@ -1,5 +1,6 @@
 package com.nakaradasava.learntogether.controller.student;
 
+import com.nakaradasava.learntogether.entity.CommentStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
 import com.nakaradasava.learntogether.entity.student.StudentPostComment;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class StudentPostCommentController {
@@ -43,12 +46,17 @@ public class StudentPostCommentController {
             @ModelAttribute(name = "commentObj") StudentPostComment studentPostComment,
             @PathVariable int postId,
             @AuthenticationPrincipal Student student,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes,
+            HttpSession session) {
 
         StudentPost studentPost = studentPostService.findPostById(postId);
 
         studentPostComment.setStudentPost(studentPost);
         studentPostComment.setStudent(student);
+        studentPostComment.setStatus(CommentStatus.UNSEEN);
+
+        session.setAttribute("commentNotificationStudentPost",
+                studentPostCommentService.getNotificationsForStudentPostComment(student));
 
         if (null != studentPostComment.getId()) {
             studentPostComment.setEdited(true);

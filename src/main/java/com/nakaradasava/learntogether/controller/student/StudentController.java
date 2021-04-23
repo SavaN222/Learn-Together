@@ -2,6 +2,7 @@ package com.nakaradasava.learntogether.controller.student;
 
 import com.nakaradasava.learntogether.entity.Friend;
 import com.nakaradasava.learntogether.entity.student.Student;
+import com.nakaradasava.learntogether.entity.student.StudentPostLike;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.entity.studyfield.StudyField;
 import com.nakaradasava.learntogether.entity.university.University;
@@ -102,6 +103,7 @@ public class StudentController {
         model.addAttribute("studyFields", studyFields);
         model.addAttribute("cities", cities);
         model.addAttribute("friends", friendService.getFriends(profileId));
+        model.addAttribute("like", new StudentPostLike());
 
         return "student/student-profile";
     }

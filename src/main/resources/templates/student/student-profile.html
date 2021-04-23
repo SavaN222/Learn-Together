@@ -164,10 +164,16 @@
                             <p th:text="${studentPost.description}">Description</p>
                         </div>
                         <div class="stats border-bottom border-success d-flex justify-content-between">
-                            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Lame alert(Easter Egg)" data-content="Hey it's 2021, please don't like your own post"
+                            <a th:if="${student.id == #authentication.principal.id}" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Lame alert(Easter Egg)" data-content="Hey it's 2021, please don't like your own post"
                                href="#" class="btn btn-default stat-item">
                                     <i th:text="${studentPost.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
                             </a>
+                            <form th:if="${student.id != #authentication.principal.id}" th:action="@{/student/post/like}" method="POST" class="likeForm" th:object="${like}">
+                                <input type="hidden" th:value="${studentPost.id}" name="postId">
+                                <button type="submit" class="btn btn-default stat-item">
+                                    <i th:text="${studentPost.likes.size()}" class="fas fa-graduation-cap icon text-main-light">10</i>
+                                </button>
+                            </form>
                             <a th:href="@{'/student/post/' + ${studentPost.id}}" class="btn btn-default stat-item">
                                 <i th:text="${studentPost.comments.size()}" class="fas fa-comment-dots text-main-light">10</i>
                             </a>

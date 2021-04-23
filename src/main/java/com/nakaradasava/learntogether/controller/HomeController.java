@@ -3,8 +3,10 @@ package com.nakaradasava.learntogether.controller;
 import com.nakaradasava.learntogether.entity.api.Quote;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
+import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.entity.student.StudentPostLike;
 import com.nakaradasava.learntogether.service.FriendService;
+import com.nakaradasava.learntogether.service.student.StudentPostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,10 +22,12 @@ import java.util.List;
 public class HomeController {
 
     private FriendService friendService;
+    private StudentPostCommentService studentPostCommentService;
 
     @Autowired
-    public HomeController(FriendService friendService) {
+    public HomeController(FriendService friendService, StudentPostCommentService studentPostCommentService) {
         this.friendService = friendService;
+        this.studentPostCommentService = studentPostCommentService;
     }
 
     /**
@@ -48,6 +52,8 @@ public class HomeController {
         model.addAttribute("like", new StudentPostLike());
 
         session.setAttribute("requesters", friendService.getFriendRequesters(student.getId()));
+        session.setAttribute("commentNotificationStudentPost",
+                studentPostCommentService.getNotificationsForStudentPostComment(student));
 
         return "index";
     }
