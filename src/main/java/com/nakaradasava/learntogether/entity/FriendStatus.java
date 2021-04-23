@@ -1,5 +1,5 @@
 package com.nakaradasava.learntogether.entity;
 
-public enum Status {
+public enum FriendStatus {
     NO, PENDING, ACCEPT;
 }

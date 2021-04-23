@@ -1,7 +1,7 @@
 package com.nakaradasava.learntogether.service;
 
 import com.nakaradasava.learntogether.entity.Friend;
-import com.nakaradasava.learntogether.entity.Status;
+import com.nakaradasava.learntogether.entity.FriendStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.entity.student.StudentPost;
 import com.nakaradasava.learntogether.repository.FriendRepository;
@@ -32,7 +32,7 @@ public class FriendService {
     public void save(Student lowerStudent, Student higherStudent, Student sender, Friend friend) {
         friend.setStudentLower(lowerStudent);
         friend.setStudentHigher(higherStudent);
-        friend.setStatus(Status.PENDING);
+        friend.setStatus(FriendStatus.PENDING);
         friend.setActionUser(sender);
 
         friendRepository.save(friend);

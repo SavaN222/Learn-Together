@@ -22,7 +22,7 @@ public class Friend extends IdColumn {
     private Student studentHigher;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private FriendStatus status;
 
     @ManyToOne
     private Student actionUser;

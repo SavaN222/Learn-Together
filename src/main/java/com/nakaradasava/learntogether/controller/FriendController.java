@@ -1,7 +1,7 @@
 package com.nakaradasava.learntogether.controller;
 
 import com.nakaradasava.learntogether.entity.Friend;
-import com.nakaradasava.learntogether.entity.Status;
+import com.nakaradasava.learntogether.entity.FriendStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.FriendService;
 import com.nakaradasava.learntogether.service.student.StudentService;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Optional;
@@ -58,7 +57,7 @@ public class FriendController {
                                   @AuthenticationPrincipal Student student) {
 
         if ("YES".equals(response)) {
-            friendObj.setStatus(Status.ACCEPT);
+            friendObj.setStatus(FriendStatus.ACCEPT);
 
             friendService.update(friendObj);
         } else {
