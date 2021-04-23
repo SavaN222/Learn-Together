@@ -273,3 +273,6 @@ textarea::selection, input::selection, select, option {
     background-color: #161718 !important;
     color: #1ED760 !important;
 }
+.dropdown-toggle::after {
+    display: none !important;
+}
