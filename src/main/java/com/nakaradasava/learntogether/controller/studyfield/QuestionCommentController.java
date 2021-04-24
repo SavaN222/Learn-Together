@@ -2,7 +2,6 @@ package com.nakaradasava.learntogether.controller.studyfield;
 
 import com.nakaradasava.learntogether.entity.CommentStatus;
 import com.nakaradasava.learntogether.entity.student.Student;
-import com.nakaradasava.learntogether.entity.student.StudentPostComment;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionComment;
 import com.nakaradasava.learntogether.entity.studyfield.QuestionStudy;
 import com.nakaradasava.learntogether.service.studyfield.QuestionCommentService;
