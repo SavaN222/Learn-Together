@@ -24,7 +24,7 @@
                         <a class="nav-item nav-link text-white" th:href="@{/}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <div class="studyField d-flex justify-content-between">
+                        <div class="studyField d-lg-flex justify-content-lg-between">
                             <a class="nav-item nav-link btn text-white" th:href="@{/study-fields}">Study Field</a>
                             <a id="study-drop" role="button" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="mt-3 fas fa-bell"></i>
@@ -46,7 +46,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="university d-flex justify-content-between">
+                        <div class="university d-lg-flex justify-content-lg-between">
                         <a class="nav-item nav-link text-white" th:href="@{'/university/' + ${#authentication.principal.university.id}}">
                             University
                         </a>
