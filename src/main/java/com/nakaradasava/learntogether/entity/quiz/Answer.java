@@ -22,4 +22,7 @@ public class Answer extends IdColumn {
     @ManyToOne
     @JoinColumn(name = "question_id", referencedColumnName = "id")
     private Question question;
+
+    @Column(name = "value")
+    private Boolean value;
 }

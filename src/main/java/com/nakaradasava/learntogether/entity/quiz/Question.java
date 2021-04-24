@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "question")
+@Table(name = "quiz_question")
 public class Question extends IdColumn {
 
     @Column(name = "title")
