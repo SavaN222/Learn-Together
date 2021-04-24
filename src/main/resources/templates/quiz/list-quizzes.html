@@ -1,0 +1,66 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<div class="container-fluid">
+    <div id="profileJumbo" class="jumbotron jumbotron-fluid bg-light-black">
+        <div class="container text-center">
+            <h3 class="text-white font-weight-bold">
+                CREATE YOUR <span class="text-main-light"> (OWN) </span> quiz:
+            </h3>
+            <p class="font-italic text-white">
+                Studying is lot a easier with other students, create your own quiz and challenge all students to
+                achieve highest score and prepare them for exam!
+            </p>
+        </div>
+    </div>
+</div> <!-- end of container-fluid -->
+
+<div class="container align-content-center">
+    <h3 class="text-white text-center">CREATE NEW QUIZ</h3>
+    <form th:action="@{/create-quiz}" method="POST">
+        <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="enter quiz name...">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg">Next</button>
+        </div>
+    </form>
+
+
+    <h3 class="text-center text-main-light">All your quizzes:</h3>
+    <div th:if="${quizzes}">
+        <div class="row">
+            <div th:each="quiz : ${quizzes}"  class="col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-black">
+                        <h5 class="text-main-light">
+                            <a th:text="${quiz.quizName}" href="#linkDoKvizaDaIgra">
+                                quiz name
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="card-body bg-light-black">
+                        <a th:src="@{'/quiz/' + ${quiz.id} + '/add-question'}">Click to add questions</a>
+                    </div>
+                    <div class="card-footer bg-black">
+                        click to edit quiz
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>
