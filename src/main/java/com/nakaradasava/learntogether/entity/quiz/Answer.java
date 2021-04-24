@@ -25,4 +25,8 @@ public class Answer extends IdColumn {
 
     @Column(name = "value")
     private Boolean value;
+
+    public Answer(String text) {
+        this.text = text;
+    }
 }

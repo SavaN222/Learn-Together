@@ -25,4 +25,8 @@ public class QuizService {
     public List<Quiz> getStudentQuizzes(Student student) {
         return quizRepository.findAllByStudent(student);
     }
+
+    public Quiz findQuizById(Integer quizId) {
+        return quizRepository.findById(quizId).get();
+    }
 }
