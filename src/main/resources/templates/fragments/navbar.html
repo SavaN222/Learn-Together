@@ -127,8 +127,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item text-white" th:href="@{'/profile/' + ${#authentication.principal.id}}">My Profile</a>
-                    <a class="dropdown-item text-white" href="#">Favorites</a>
-                    <a class="dropdown-item text-white" href="#">Notes</a>
+                    <a class="dropdown-item text-white" th:href="@{/favorites}">Favorites</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-white" href="#">University Management</a>
                     <form th:action="@{/logout}" method="POST">

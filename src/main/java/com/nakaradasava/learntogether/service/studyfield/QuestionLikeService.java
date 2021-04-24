@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class QuestionLikeService {
@@ -29,5 +30,9 @@ public class QuestionLikeService {
 
     public Optional<QuestionLike> findByQuestionStudyAndStudent(QuestionStudy questionStudy, Student student) {
         return questionLikeRepository.findByQuestionStudyAndStudent(questionStudy, student);
+    }
+
+    public List<QuestionLike> findStudentFavoriteQuestions(Student student) {
+        return questionLikeRepository.findAllByStudent(student);
     }
 }

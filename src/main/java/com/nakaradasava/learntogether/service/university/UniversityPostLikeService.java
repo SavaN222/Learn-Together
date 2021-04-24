@@ -7,6 +7,7 @@ import com.nakaradasava.learntogether.repository.university.UniversityPostLikeRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +30,9 @@ public class UniversityPostLikeService {
 
     public Optional<UniversityPostLike> findByPostAndStudent(UniversityPost universityPost, Student student) {
         return universityPostLikeRepository.findByUniversityPostAndStudent(universityPost, student);
+    }
+
+    public List<UniversityPostLike> findStudentFavoritePosts(Student student) {
+        return universityPostLikeRepository.findAllByStudent(student);
     }
 }

@@ -1,0 +1,96 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--include header-->
+<div th:insert="/fragments/header :: header"></div>
+
+<!--start body-->
+<body>
+<!--include navbar-->
+<div th:insert="/fragments/navbar :: navbar"></div>
+
+<div class="container-fluid">
+    <div id="profileJumbo" class="jumbotron jumbotron-fluid bg-light-black">
+        <div class="container text-center">
+            <h3 class="text-white font-weight-bold">
+                FAVORITES <span class="text-main-light"> (liked) </span> posts:
+            </h3>
+        </div>
+    </div>
+    <div class="profile-nav d-lg-flex justify-content-center">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="pills-question-tab" data-toggle="pill" href="#pills-question" role="tab" aria-controls="pills-question" aria-selected="true">Questions Favorite</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-university-tab" data-toggle="pill" href="#pills-university" role="tab" aria-controls="pills-university" aria-selected="false">University Favorite</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="pills-tabContent">
+        <!-- questions -->
+        <div class="tab-pane fade show active" id="pills-question" role="tabpanel" aria-labelledby="pills-question-tab">
+            <div th:if="${questions}" class="student-questions">
+                <h3 class="text-center text-main-light">
+                    <span> Questions</span>
+                </h3>
+                <div th:each="question : ${questions}" class="question-holder mb-5">
+                    <div class="card border-dark rounded">
+                        <div class="card-header bg-black border-bottom border-success rounded d-flex justify-content-between">
+                            <p>
+                                <a th:text="${question.title}" th:href="@{'/questions/' + ${question.id}}">title and link</a>
+                                <small class="text-white"> posted by:
+                                    <a class="text-main-light" th:text="${question.student.username}" th:href="@{'/profile/' + ${question.student.id}}">
+                                        post author
+                                    </a>
+                                </small>
+                            </p>
+                            <p>
+                                <a class="text-white" th:href="@{/study-fields(studyField=${question.studyField.id})}">
+                                    asked in/<span th:text="${question.studyField.name}" class="text-main-light">study field name</span>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-body bg-light-black">
+                            <p th:text="${#strings.abbreviate(question.description, 30)}">question content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- questions end -->
+
+    <!-- university -->
+        <div class="tab-pane fade" id="pills-university" role="tabpanel" aria-labelledby="pills-university-tab">
+        <div th:if="${universityPosts}" class="student-questions">
+                <h3 class="text-center text-main-light">
+                    <span>University Posts</span>
+                </h3>
+                <div th:each="post : ${universityPosts}" class="question-holder mb-5">
+                    <div class="card border-dark rounded">
+                        <div class="card-header bg-black border-bottom border-success rounded d-flex justify-content-between">
+                          <p class="text-main-light">University Post/
+                            <small class="text-white"> posted by:
+                                <a class="text-main-light" th:text="${post.student.username}" th:href="@{'/profile/' + ${post.student.id}}">
+                                    post author
+                                </a>
+                            </small>
+                          </p>
+                        </div>
+                        <div class="card-body bg-light-black">
+                            <p th:text="${post.description}">question content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- university end -->
+        </div>
+    </div>
+
+</div> <!-- end of container -->
+
+<!--include footer-->
+<div th:insert="/fragments/footer :: footer"></div>
+</body>
+</html>
