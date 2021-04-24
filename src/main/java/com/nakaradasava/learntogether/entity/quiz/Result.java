@@ -6,26 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "quiz")
-public class Quiz extends ForeignStudent {
+@Table(name = "result")
+public class Result extends ForeignStudent {
 
-    @Column(name = "name")
-    private String quizName;
-
-    @OneToMany(mappedBy = "quiz")
-    private List<Question> questions;
-
-    @OneToMany(mappedBy = "results")
-    private List<Result> results;
+    @ManyToOne
+    @JoinColumn(name = "quiz_id", referencedColumnName = "id")
+    private Quiz quiz;
 }
