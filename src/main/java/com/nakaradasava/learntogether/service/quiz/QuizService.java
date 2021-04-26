@@ -4,6 +4,7 @@ import com.nakaradasava.learntogether.entity.quiz.Quiz;
 import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.repository.quiz.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +29,9 @@ public class QuizService {
 
     public Quiz findQuizById(Integer quizId) {
         return quizRepository.findById(quizId).get();
+    }
+
+    public List<Quiz> findall() {
+        return quizRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 }

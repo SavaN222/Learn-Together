@@ -7,14 +7,19 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.quiz.AnswerService;
 import com.nakaradasava.learntogether.service.quiz.QuizQuestionService;
 import com.nakaradasava.learntogether.service.quiz.QuizService;
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -66,7 +71,8 @@ public class QuizController {
                                  @RequestParam(name = "answer3") String answer3,
                                  @RequestParam(name = "answer4") String answer4,
                                  @RequestParam(name = "correctAnswer") Integer correctAnswer,
-                                 @RequestParam(name = "quizId") Integer quizId) {
+                                 @RequestParam(name = "quizId") Integer quizId,
+                                 Model model) {
 
         Question question = new Question();
         question.setTitle(title);
@@ -83,6 +89,51 @@ public class QuizController {
             answersService.save(answer);
         }
 
+        model.addAttribute("created", "QUIZ CREATED");
+
         return "redirect:/list-quizzes";
+    }
+
+    @GetMapping("/quizzes")
+    public String showAllQuizzes(Model model) {
+        model.addAttribute("quizzes", quizService.findall());
+
+        return "quiz/quizzes";
+    }
+
+    @GetMapping("/quiz/{quizId}/question")
+    public String showQuestion(@PathVariable(name = "quizId") int quizId,
+                               @RequestParam(name = "questionId") int questionId,
+                               Model model) {
+
+        Quiz quiz = quizService.findQuizById(quizId);
+
+        Collections.shuffle(quiz.getQuestions().get(questionId).getAnswers());
+
+        model.addAttribute("quiz", quiz);
+
+        return "quiz/quiz";
+
+    }
+
+    @PostMapping("/quiz/{quizId}/question")
+    public String nextQuestion(@PathVariable(name = "quizId") int quizId,
+                               @RequestParam(name = "questionId") int questionId,
+                               @RequestParam(name = "answerId") int answerId,
+                               RedirectAttributes redirectAttributes) {
+
+        Answer answer = answersService.findById(answerId);
+        Quiz quiz = quizService.findQuizById(quizId);
+
+        List<Question> questions = quiz.getQuestions();
+
+        if (answer.getValue()) {
+            redirectAttributes.addAttribute("correct", "CORRECT ANSWER");
+        } else {
+            redirectAttributes.addAttribute("wrong", "WRONG ANSWER");
+        }
+
+        return "redirect:/quiz/" + quizId + "/question?questionId=" + (questionId + 1);
+
     }
 }

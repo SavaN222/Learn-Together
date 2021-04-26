@@ -18,4 +18,5 @@ public class QuizQuestionService {
     public void saveQuestion(Question question) {
         quizQuestionRepository.save(question);
     }
+
 }

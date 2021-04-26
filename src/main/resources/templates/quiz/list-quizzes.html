@@ -23,6 +23,12 @@
     </div>
 </div> <!-- end of container-fluid -->
 
+<div th:if="${created}">
+    <div class="alert alert-success">
+        <span th:text="${created}">quiz created</span>
+    </div>
+</div>
+
 <div class="container align-content-center">
     <h3 class="text-white text-center">CREATE NEW QUIZ</h3>
     <form th:action="@{/create-quiz}" method="POST">

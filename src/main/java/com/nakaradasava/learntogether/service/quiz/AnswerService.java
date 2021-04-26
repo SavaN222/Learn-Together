@@ -53,4 +53,8 @@ public class AnswerService {
     public void save(Answer answer) {
         answerRepository.save(answer);
     }
+
+    public Answer findById(int answerId) {
+        return answerRepository.findById(answerId).get();
+    }
 }
