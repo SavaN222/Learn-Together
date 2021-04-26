@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.Option;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class QuizController {
@@ -57,7 +60,7 @@ public class QuizController {
 
         quizService.saveQuiz(quiz);
 
-        redirectAttributes.addAttribute("created", "Question is added");
+        redirectAttributes.addFlashAttribute("created", "Quiz created");
 
         return "redirect:/list-quizzes";
     }
@@ -90,7 +93,7 @@ public class QuizController {
             answersService.save(answer);
         }
 
-        redirectAttributes.addAttribute("created", "Question is added");
+        redirectAttributes.addFlashAttribute("created", "Question is added");
 
         return "redirect:/list-quizzes";
     }
@@ -120,22 +123,32 @@ public class QuizController {
     @PostMapping("/quiz/{quizId}/question")
     public String nextQuestion(@PathVariable(name = "quizId") int quizId,
                                @RequestParam(name = "questionId") int questionId,
-                               @RequestParam(name = "answerId") int answerId,
-                               RedirectAttributes redirectAttributes) {
+                               @RequestParam(name = "answerId") Optional<Integer> answerOptional,
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request) {
+
+        if (answerOptional.isEmpty()) {
+            redirectAttributes.addFlashAttribute("answerEmpty", "Answer cannot be empty");
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        int answerId = answerOptional.get();
 
         Answer answer = answersService.findById(answerId);
         Quiz quiz = quizService.findQuizById(quizId);
 
         List<Question> questions = quiz.getQuestions();
 
-        if (answer.getValue()) {
-            redirectAttributes.addAttribute("correct", "CORRECT ANSWER");
+        if (answer.getValue() == null) {
+            redirectAttributes.addFlashAttribute("wrong", "WRONG ANSWER");
         } else {
-            redirectAttributes.addAttribute("wrong", "WRONG ANSWER");
+            redirectAttributes.addFlashAttribute("correct", "CORRECT ANSWER");
+
         }
 
-        if (questions.get(questions.size() - 1).getId() < questionId) {
-            redirectAttributes.addAttribute("finish", "Quiz finish");
+        if (questions.size()-1 <= questionId) {
+            redirectAttributes.addFlashAttribute("finish", "Quiz finish");
             return "redirect:/quizzes";
         }
 

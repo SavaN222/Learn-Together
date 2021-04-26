@@ -18,6 +18,9 @@
       <h5 class="text-info text-center" th:if="${quiz.questions.get(param.questionId)}" th:text="${quiz.questions.get(param.questionId).getTitle()}">question</h5>
     </div>
     <div class="card-body bg-light-black text-main-light">
+        <div th:if="${answerEmpty}" class="alert alert-danger">
+            <span th:text="${answerEmpty}">Alert is empty</span>
+        </div>
         <form th:action="@{'/quiz/' + ${quiz.id} + '/question/'(questionId= ${param.questionId})}" method="POST">
 
         <div class="row">
@@ -70,5 +73,10 @@
 
   <!--include footer-->
   <div th:insert="/fragments/footer :: footer"></div>
+<script>
+    $(document).ready(function() {
+        $(".toast").toast('show');
+    });
+</script>
 </body>
 </html>

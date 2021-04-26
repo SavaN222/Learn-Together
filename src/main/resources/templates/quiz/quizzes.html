@@ -16,7 +16,7 @@
                 PLAY<span class="text-main-light"> (QUIZ) </span>
             </h3>
             <p class="font-italic text-white">
-                Studying is lot a easier with other students, create your own quiz and challenge all students to
+                Studying is lot a easier with other students, <a class="text-main-light font-weight-bold" th:href="@{/list-quizzes}">CREATE YOUR OWN QUIZ</a>  and challenge all students to
                 achieve highest score and prepare them for exam!
             </p>
         </div>
@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-header bg-black">
                         <h5 class="text-main-light">
-                            <a th:text="${quiz.quizName}" href="#linkDoKvizaDaIgra">
+                            <a th:text="${quiz.quizName}" th:href="@{'/quiz/' + ${quiz.id} + '/question/'(questionId= 0)}">
                                 quiz name
                             </a>
                         </h5>
