@@ -23,7 +23,7 @@
                         </div>
                             <form th:action="@{'/questions/comments/delete/' + ${comment.id}}" th:method="delete">
                                 <input type="hidden" th:value="${comment.questionStudy.id}" name="questionId">
-                                <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn">
                                     <i class="fas fa-trash text-danger"></i>
                                 </button>
                             </form>

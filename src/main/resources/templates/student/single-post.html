@@ -34,7 +34,7 @@
                        </a>
                        <form th:action="@{'/student/post/delete/' + ${post.id}}" th:method="delete">
                            <input type="hidden" th:value="${post.id}" name="universityId">
-                           <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                           <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn">
                                <i class="fas fa-trash text-danger"></i>
                            </button>
                        </form>
@@ -86,7 +86,7 @@
                                 </a>
                                 <form th:action="@{'/student/post/comments/delete/' + ${comment.id}}" th:method="delete">
                                     <input type="hidden" th:value="${post.id}" name="postId">
-                                    <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                    <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn">
                                         <i class="fas fa-trash text-danger"></i>
                                     </button>
                                 </form>

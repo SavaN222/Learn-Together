@@ -47,7 +47,7 @@
             .ACCEPT}">
 
                 <form th:action="@{'/friend/delete/' + ${student.id}}" th:method="delete">
-                    <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn btn-danger">Delete friend</button>
+                    <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn btn-danger">Delete friend</button>
                 </form>
 
             </div>
@@ -155,7 +155,7 @@
                                     </a>
                                     <form th:action="@{'/student/post/delete'}" th:method="delete">
                                         <input type="hidden" th:value="${studentPost.id}" name="postId">
-                                        <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn">
+                                        <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn">
                                             <i class="fas fa-trash text-danger"></i>
                                         </button>
                                     </form>

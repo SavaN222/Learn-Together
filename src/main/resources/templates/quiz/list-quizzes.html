@@ -163,7 +163,7 @@
                     </div>
                     <div class="card-footer bg-black">
                         <form th:action="@{'/delete/quiz/' + ${quiz.id}}" th:method="delete">
-                            <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn btn-danger">
+                            <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn btn-danger">
                                 DELETE QUIZ
                             </button>
                         </form>
