@@ -50,11 +50,11 @@
                     <div class="card-body bg-light-black">
 <!--                        th:action="@{'/quiz/' + ${quiz.id} + '/add-question'}"-->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#questionLabel">
+                        <button type="button" class="btn btn-success" data-toggle="modal" th:attr="data-target='#questionLabel' + ${quiz.id}">
                             Add question
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="questionLabel" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
+                        <div class="modal fade" th:id="'questionLabel' + ${quiz.id}" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header bg-light-black">
