@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.text.html.Option;
 import java.util.Collections;
 import java.util.List;
@@ -125,7 +126,8 @@ public class QuizController {
                                @RequestParam(name = "questionId") int questionId,
                                @RequestParam(name = "answerId") Optional<Integer> answerOptional,
                                RedirectAttributes redirectAttributes,
-                               HttpServletRequest request) {
+                               HttpServletRequest request,
+                               HttpSession session) {
 
         if (answerOptional.isEmpty()) {
             redirectAttributes.addFlashAttribute("answerEmpty", "Answer cannot be empty");
@@ -140,15 +142,32 @@ public class QuizController {
 
         List<Question> questions = quiz.getQuestions();
 
+        if (questionId == 0) {
+            session.setAttribute("points", 0);
+            session.setAttribute("quizId", quiz.getId());
+        }
+
         if (answer.getValue() == null) {
             redirectAttributes.addFlashAttribute("wrong", "WRONG ANSWER");
         } else {
-            redirectAttributes.addFlashAttribute("correct", "CORRECT ANSWER");
+            int points = (int) session.getAttribute("points");
+            if (session.getAttribute("quizId") != quiz.getId()) {
+                session.removeAttribute("points");
+                session.removeAttribute("quizId");
 
+                redirectAttributes.addFlashAttribute("errorScore", "Previous quiz iz not finished, RESTARTING SCORE.... TRY AGAIN!");
+
+                return "redirect:/quizzes";
+            }
+            session.setAttribute("points", points + 1);
+            redirectAttributes.addFlashAttribute("correct", "CORRECT ANSWER");
         }
 
         if (questions.size()-1 <= questionId) {
-            redirectAttributes.addFlashAttribute("finish", "Quiz finish");
+            redirectAttributes.addFlashAttribute("finish", "Quiz is over");
+            redirectAttributes.addFlashAttribute("score", " your final score is:" + session.getAttribute("points"));
+            session.removeAttribute("points");
+            session.removeAttribute("quizId");
             return "redirect:/quizzes";
         }
 

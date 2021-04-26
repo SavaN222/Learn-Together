@@ -24,8 +24,22 @@
 </div> <!-- end of container-fluid -->
 
 <div th:if="${finish}">
-    <div class="alert alert-success">
-        <span th:text="${finish}">quiz finish</span>
+    <div class="alert bg-dark-blue">
+        <p class="text-center">
+            <span th:text="${finish}" class="text-white">quiz finished</span>
+            <span th:text="${score}" class="text-danger">score</span>
+        </p>
+    </div>
+</div>
+
+
+
+<div th:if="${errorScore}">
+    <div class="alert bg-dark-blue">
+        <p class="text-center">
+            <span class="text-danger">[ERROR]</span>
+            <span th:text="${errorScore}" class="text-white">text for error score</span>
+        </p>
     </div>
 </div>
 

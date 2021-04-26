@@ -25,7 +25,4 @@ public class Quiz extends ForeignStudent {
 
     @OneToMany(mappedBy = "quiz")
     private List<Question> questions;
-
-    @OneToMany(mappedBy = "quiz")
-    private List<Result> results;
 }
