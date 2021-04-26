@@ -34,4 +34,8 @@ public class QuizService {
     public List<Quiz> findall() {
         return quizRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
+
+    public void delete(int quizId) {
+        quizRepository.deleteById(quizId);
+    }
 }

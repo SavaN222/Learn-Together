@@ -120,7 +120,11 @@
                         </div>
                     </div>
                     <div class="card-footer bg-black">
-                            <a href="#deleteId" class="text-danger">Delete quiz</a>
+                        <form th:action="@{'/delete/quiz/' + ${quiz.id}}" th:method="delete">
+                            <button onclick="if (! (confirm('Are you sure you?'))) return false" type="submit" class="btn btn-danger">
+                                DELETE QUIZ
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
