@@ -29,6 +29,12 @@
     </div>
 </div>
 
+<div th:if="${deleted}">
+    <div class="alert bg-dark-blue text-center">
+        <span class="text-danger" th:text="${deleted}">quiz/question deleted</span>
+    </div>
+</div>
+
 <div class="container align-content-center">
     <h3 class="text-white text-center">CREATE NEW QUIZ</h3>
     <form th:action="@{/create-quiz}" method="POST">
@@ -53,13 +59,49 @@
                             </a>
                         </h5>
                     </div>
-                    <div class="card-body bg-light-black">
-<!--                        th:action="@{'/quiz/' + ${quiz.id} + '/add-question'}"-->
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success" data-toggle="modal" th:attr="data-target='#questionLabel' + ${quiz.id}">
-                            Add question
-                        </button>
-                        <!-- Modal -->
+                    <div class="card-body bg-light-black d-flex justify-content-between">
+                        <div class="col-lg-6">
+                            <button type="button" class="btn btn-success" data-toggle="modal" th:attr="data-target='#questionLabel' + ${quiz.id}">
+                                Add question
+                            </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target='#listQuestions' + ${quiz.id}">
+                                List questions
+                            </button>
+                        </div>
+
+                        <!-- MODAL LIST QUESTIONs -->
+                        <div class="modal fade" th:id="'listQuestions' + ${quiz.id}" tabindex="-1" aria-labelledby="listQuestions" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-black">
+                                        <h5 class="modal-title" id="listQuestions">All questions</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body bg-light-black">
+                                        <div th:each="question : ${quiz.questions}" class="question-title d-flex justify-content-between">
+                                        <p class="text-main-light" th:text="${question.title}">question title</p>
+                                            <form th:action="@{'/quiz/question/delete/' + ${question.id}}" th:method="delete">
+                                                <button onclick="if (! (confirm('Are you sure?'))) return false" type="submit" class="btn">
+                                                    <i class="fas fa-trash text-danger"></i>
+                                                </button>
+                                            </form>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer bg-black">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- end modal -->
+
+                        <!-- Modal-CREATING NEW QUESTION -->
                         <div class="modal fade" th:id="'questionLabel' + ${quiz.id}" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">

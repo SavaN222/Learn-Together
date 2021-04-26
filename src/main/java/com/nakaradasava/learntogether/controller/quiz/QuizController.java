@@ -187,9 +187,19 @@ public class QuizController {
     }
 
     @DeleteMapping("/delete/quiz/{quizId}")
-    public String deleteQuiz(@PathVariable(name = "quizId") int quizId) {
+    public String deleteQuiz(@PathVariable(name = "quizId") int quizId, RedirectAttributes redirectAttributes) {
         quizService.delete(quizId);
 
+        redirectAttributes.addFlashAttribute("deleted", "quiz is deleted");
+
+        return "redirect:/list-quizzes";
+    }
+
+    @DeleteMapping("/quiz/question/delete/{questionId}")
+    public String deleteQuestion(@PathVariable(name = "questionId") int questionId, RedirectAttributes redirectAttributes) {
+        quizQuestionService.deleteQuestion(questionId);
+
+        redirectAttributes.addFlashAttribute("deleted", "question is deleted");
         return "redirect:/list-quizzes";
     }
 

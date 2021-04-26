@@ -18,4 +18,8 @@ public class QuizQuestionService {
     public void saveQuestion(Question question) {
         quizQuestionRepository.save(question);
     }
+
+    public void deleteQuestion(int questionId) {
+        quizQuestionRepository.deleteById(questionId);
+    }
 }
