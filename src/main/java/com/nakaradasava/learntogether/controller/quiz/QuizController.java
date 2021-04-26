@@ -7,7 +7,6 @@ import com.nakaradasava.learntogether.entity.student.Student;
 import com.nakaradasava.learntogether.service.quiz.AnswerService;
 import com.nakaradasava.learntogether.service.quiz.QuizQuestionService;
 import com.nakaradasava.learntogether.service.quiz.QuizService;
-import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,13 +48,16 @@ public class QuizController {
 
     @PostMapping("/create-quiz")
     public String saveQuiz(@RequestParam(name = "title") String title,
-                           @AuthenticationPrincipal Student student) {
+                           @AuthenticationPrincipal Student student,
+                           RedirectAttributes redirectAttributes) {
 
         Quiz quiz = new Quiz();
         quiz.setQuizName(title);
         quiz.setStudent(student);
 
         quizService.saveQuiz(quiz);
+
+        redirectAttributes.addAttribute("created", "Question is added");
 
         return "redirect:/list-quizzes";
     }
@@ -72,7 +73,7 @@ public class QuizController {
                                  @RequestParam(name = "answer4") String answer4,
                                  @RequestParam(name = "correctAnswer") Integer correctAnswer,
                                  @RequestParam(name = "quizId") Integer quizId,
-                                 Model model) {
+                                 RedirectAttributes redirectAttributes) {
 
         Question question = new Question();
         question.setTitle(title);
@@ -89,7 +90,7 @@ public class QuizController {
             answersService.save(answer);
         }
 
-        model.addAttribute("created", "QUIZ CREATED");
+        redirectAttributes.addAttribute("created", "Question is added");
 
         return "redirect:/list-quizzes";
     }
@@ -131,6 +132,11 @@ public class QuizController {
             redirectAttributes.addAttribute("correct", "CORRECT ANSWER");
         } else {
             redirectAttributes.addAttribute("wrong", "WRONG ANSWER");
+        }
+
+        if (questions.get(questions.size() - 1).getId() < questionId) {
+            redirectAttributes.addAttribute("finish", "Quiz finish");
+            return "redirect:/quizzes";
         }
 
         return "redirect:/quiz/" + quizId + "/question?questionId=" + (questionId + 1);

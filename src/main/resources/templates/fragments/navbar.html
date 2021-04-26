@@ -70,7 +70,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link text-white" href="">Quiz</a>
+                        <a class="nav-item nav-link" href="#" role="button" id="quizDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown-menu quiz-dropdown" aria-labelledby="quizDropdown">
+                                    <a class="dropdown-item" th:href="@{/quizzes}">Play quizzes</a>
+                                    <a class="dropdown-item" th:href="@{/list-quizzes}">Create quiz</a>
+                                    <div class="dropdown-divider"></div>
+                                </div>
                     </li>
                 </ul>
         </div>

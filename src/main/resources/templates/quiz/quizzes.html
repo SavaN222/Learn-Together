@@ -23,6 +23,12 @@
     </div>
 </div> <!-- end of container-fluid -->
 
+<div th:if="${finish}">
+    <div class="alert alert-success">
+        <span th:text="${finish}">quiz finish</span>
+    </div>
+</div>
+
 <div class="container">
     <h3 class="text-center text-main-light">All Quizzes:</h3>
     <div th:if="${quizzes}">

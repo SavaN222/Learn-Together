@@ -48,7 +48,7 @@
                 <div class="card">
                     <div class="card-header bg-black">
                         <h5 class="text-main-light">
-                            <a th:text="${quiz.quizName}" href="#linkDoKvizaDaIgra">
+                            <a th:text="${quiz.quizName}" th:href="@{'/quiz/' + ${quiz.id} + '/question/'(questionId= 0)}">
                                 quiz name
                             </a>
                         </h5>
