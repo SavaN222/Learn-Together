@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.Option;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +98,9 @@ public class QuizController {
         return "redirect:/list-quizzes";
     }
 
+    /**
+     * Show all quizzes
+     */
     @GetMapping("/quizzes")
     public String showAllQuizzes(Model model) {
         model.addAttribute("quizzes", quizService.findall());
@@ -106,6 +108,11 @@ public class QuizController {
         return "quiz/quizzes";
     }
 
+    /**
+     * Show questions for quiz and answers for question
+     * @URL example: /quiz/1/question?questionId=5
+     * @return question with shuffle answers
+     */
     @GetMapping("/quiz/{quizId}/question")
     public String showQuestion(@PathVariable(name = "quizId") int quizId,
                                @RequestParam(name = "questionId") int questionId,
@@ -121,6 +128,12 @@ public class QuizController {
 
     }
 
+    /**
+     * Go to next question, if quiz doesn't have anymore quesitons, redirect to quizzes(homepage of quizzes).
+     * Check if answer is true/false, send flash message.
+     * Increase point by 1` if answer is true
+     * Restart quiz if previous game is not finished [ANTI-CHEAT]
+     */
     @PostMapping("/quiz/{quizId}/question")
     public String nextQuestion(@PathVariable(name = "quizId") int quizId,
                                @RequestParam(name = "questionId") int questionId,
@@ -152,7 +165,9 @@ public class QuizController {
         } else {
             int points = (int) session.getAttribute("points");
             if (session.getAttribute("quizId") != quiz.getId()) {
+
                 session.removeAttribute("points");
+
                 session.removeAttribute("quizId");
 
                 redirectAttributes.addFlashAttribute("errorScore", "Previous quiz iz not finished, RESTARTING SCORE.... TRY AGAIN!");
