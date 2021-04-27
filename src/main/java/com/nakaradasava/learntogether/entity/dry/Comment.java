@@ -21,7 +21,6 @@ import javax.validation.constraints.Size;
 public abstract class Comment extends ForeignStudent {
 
     @NotEmpty(message = "content is required")
-    @Size(max = 255, message = "max size is 255")
     @Column(name = "content")
     private String content;
 

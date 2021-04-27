@@ -129,7 +129,6 @@
                     <a class="dropdown-item text-white" th:href="@{'/profile/' + ${#authentication.principal.id}}">My Profile</a>
                     <a class="dropdown-item text-white" th:href="@{/favorites}">Favorites</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-white" href="#">University Management</a>
                     <form th:action="@{/logout}" method="POST">
                         <button class="btn w-100" name="logout" type="submit">
                             <i class="fas fa-sign-out-alt fa-lg"></i>

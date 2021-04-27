@@ -202,5 +202,4 @@ public class QuizController {
         redirectAttributes.addFlashAttribute("deleted", "question is deleted");
         return "redirect:/list-quizzes";
     }
-
 }

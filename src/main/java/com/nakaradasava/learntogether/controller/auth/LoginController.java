@@ -37,7 +37,7 @@ public class LoginController {
     }
 
     /**
-     * Set notification session
+     * Set notifications sessions
      * @return redirect to homepage
      */
     @GetMapping("/processLogin")
