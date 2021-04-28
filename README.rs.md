@@ -32,7 +32,7 @@ Projekat je radjen u sledecim tehnologijama:
 #### Baza podataka:
 * **MySQL**
 
-####Front-End:
+#### Front-End:
 * **HTML - Thymeleaf**
 * **CSS**
 * **Bootstrap**
@@ -181,7 +181,7 @@ spring:
         enabled: true
 ```
 
-###🚨 Moguce greske
+### 🚨 Moguce greske
 ```sh
 -  url: jdbc:mysql://localhost:3306/learn_together
 ````
@@ -264,12 +264,12 @@ Istu promenu izvrsiti u fajlu `UploadConfig` na lokaciji:
 ```sh 
 Linija 15: registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static\\images\\");
 ```
-####📢Linux i Mac = file:Vasa/Putanja/Do/Static
-####📢Windows = file:C:\\\Vasa\\\Putanja\\\Do\\\Static
+#### 📢Linux i Mac = file:Vasa/Putanja/Do/Static
+#### 📢Windows = file:C:\\\Vasa\\\Putanja\\\Do\\\Static
 
 
 
-###✅ Pokretanje projekta ✅
+### ✅ Pokretanje projekta ✅
 
 Pokretanje projekta mozete izvrsiti na dva nacina:
 
