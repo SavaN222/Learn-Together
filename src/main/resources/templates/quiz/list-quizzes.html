@@ -29,6 +29,12 @@
     </div>
 </div>
 
+<div th:if="${fieldErr}">
+    <div class="alert alert-danger text-center">
+        <span th:text="${fieldErr}">field empty  err</span>
+    </div>
+</div>
+
 <div th:if="${deleted}">
     <div class="alert bg-dark-blue text-center">
         <span class="text-danger" th:text="${deleted}">quiz/question deleted</span>

@@ -66,7 +66,7 @@ public class QuestionController {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("questionCreateError",
-                    "Question title or content cannot be null");
+                    "Title and content cannot be empty, max length of title is 45");
 
             return "redirect:/study-fields";
         }

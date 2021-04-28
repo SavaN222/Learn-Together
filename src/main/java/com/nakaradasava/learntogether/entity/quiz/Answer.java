@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ import javax.persistence.*;
 public class Answer extends IdColumn {
 
     @Column(name = "text")
+    @NotEmpty(message = "cannot be empty")
     private String text;
 
     @ManyToOne

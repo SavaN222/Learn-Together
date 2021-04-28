@@ -51,6 +51,11 @@ public class QuizController {
                            @AuthenticationPrincipal Student student,
                            RedirectAttributes redirectAttributes) {
 
+        if (title.isEmpty()) {
+            redirectAttributes.addFlashAttribute("fieldErr", "Quiz name cannot be empty");
+            return "redirect:/list-quizzes";
+        }
+
         Quiz quiz = new Quiz();
         quiz.setQuizName(title);
         quiz.setStudent(student);
@@ -74,6 +79,11 @@ public class QuizController {
                                  @RequestParam(name = "correctAnswer") Integer correctAnswer,
                                  @RequestParam(name = "quizId") Integer quizId,
                                  RedirectAttributes redirectAttributes) {
+
+        if (title.isEmpty()) {
+            redirectAttributes.addFlashAttribute("fieldErr", "Question name cannot be empty");
+            return "redirect:/list-quizzes";
+        }
 
         Question question = new Question();
         question.setTitle(title);

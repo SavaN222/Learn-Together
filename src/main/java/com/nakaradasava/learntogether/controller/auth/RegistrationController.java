@@ -117,7 +117,7 @@ public class RegistrationController {
 
         registrationService.registerStudent(student);
 
-        redirectAttributes.addFlashAttribute("confirmTokenMsg", "You are register, but you must" +
+        redirectAttributes.addFlashAttribute("confirmTokenMsg", "You are registered, but you must" +
                 " confirm your mail( " + student.getEmail() + " ) to login");
         return "redirect:/login";
     }
