@@ -27,7 +27,7 @@ public class EmailService {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Learn Together - Confirm your mail");
-            helper.setFrom("jessepickman321@gmail.com");
+            helper.setFrom("learntogether1508@gmail.com");
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             throw new IllegalStateException("Faile to send mail");

@@ -22,7 +22,6 @@ Learn Together je socijalna mreza koja povezuje studente **svih univerziteta** i
 
 ![registracija](https://i.ibb.co/f2L5Kmp/registracija.png)
 
-
 ### Potvrda mejl adrese i aktivacija naloga
 
 ![potvrda](https://i.ibb.co/85JDq1n/confirmmail.png)
@@ -87,21 +86,125 @@ Learn Together je socijalna mreza koja povezuje studente **svih univerziteta** i
 
 ## 🔧 Pokretanje
 
-TOAST UI products are open source, so you can create a pull request(PR) after you fix issues. Run npm scripts and develop yourself with the following process.
+### Baza podataka
 
-### Setup
+Potrebno je kreirati konekciju sa bazom podataka, u mom slucaju konekcija se zove `learn_together`.
 
-Fork `master` branch into your personal repository. Clone it to local computer. Install node modules. Before starting development, you should check to see if there are any errors.
+Zatim je potrebno ubaciti sledeci **[*SQL FILE*](link ka fajlusql)**.
+
+### Podesavanje projekta
+Otvoriti `application.yml` fajl i zameniti ga odgovarajucim podacima
+
+putanja -> `lokacijaProjekta/src/main/resources/application.yml`
+
+Fajl izgleda ovako:
+```sh
+spring:
+  # DATABASE
+  datasource:
+    url: jdbc:mysql://localhost:3306/learn_together
+    username: your_username
+    password: your_password
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+  # EMAIL
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: youradress@gmail.com
+    password: your-email-password
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+```
+
+###🚨 Moguce greske
+```sh
+-  url: jdbc:mysql://localhost:3306/learn_together
+````
+**learn_together je naziv konekcije sa bazom, proverite vas naziv ❗**
 
 ```sh
-$ git clone https://github.com/{your-personal-repo}/tui.editor.git
-$ cd [project-name]
-$ npm install
-$ npm run setup:libs
-$ cd ./apps/editor
-$ npm install
-$ npm run test
+-  username: your_username
+-  password: your_password
+````
+**Unesite vas username i password sa kojim ostvarujete konekciju sa bazom ❗**
+
+**🚧 U vecini slucajeva je username:root a password prazan**
+
+**🌠 Primeri konekcije:**
+```sh
+-  username: root
+-  password: 
+
+-  username: john
+-  password: john123
+````
+
+
+**PODESAVANJE MEJL ADRESE ❗**
+
+```sh
+  # EMAIL
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: youradress@gmail.com
+    password: your-email-password
+````
+**🌠 Primer:**
+```sh
+  # EMAIL
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: johndoe@gmail.com
+    password: jdoe555333
+````
+
+**GRESKA: Pristup nije dozvoljen ❓**
+```sh
+ERROR 11680 --- [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u13sm377842ejj.16 - gsmtp
+] with root cause
+
+javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u13sm377842ejj.16 - gsmtp
 ```
+
+**Dva najcesca razloga za pojavu ove greske su:**
+* Nepravilan unos mejl adrese i sifre.
+* Gugl ne dozvoljava pristup stranim aplikacijama.
+
+Da uklonite ovu gresku potrebno je da:
+* [*DOZVOLITE MANJE SIGURNIM APLIKACIJAMA PRISTUP VASEM MEJLU*](https://myaccount.google.com/u/0/lesssecureapps?pli=1&rapt=AEjHL4MmQ2kpWEDZ1wfdbTM6updFNoZ2U3Uo7WNUHe9HpgL8KCzA1i1jncNJayP6ek3Uf2G8morP5YXshkpOkUzNRfa02CUMoQ)
+-obratite paznju koji je korisnik ulogovan na gugl nalog.
+  ![guglSecure](https://i.ibb.co/4pYSHtT/Less-secure-app-access.png)
+  ovo je potrebno da bi aplikacija preko vaseg mejla slala novo-registrovanim studentima link za potvrdu naloga.
+  
+### 📂 Putanja za cuvanje slika
+
+
+
 
 ### Develop
 

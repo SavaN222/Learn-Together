@@ -139,10 +139,16 @@ public class StudentController {
             return "redirect:/profile/" + profileId;
         }
 
+        // avoid database null error
+        if (student.getDescription() == null) {
+            student.setDescription("");
+        }
+
         if (student.getDescription().length() > 128) {
             redirectAttributes.addFlashAttribute("descriptionErr", "Description can't be longer than 128 chars...");
             return "redirect:/profile/" + profileId;
         }
+
          /* -------------[ END VALIDATION ] ---------------------------------------------- */
 
          studentService.updateStudent(student, studentInfo, profileImage);
