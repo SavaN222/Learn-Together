@@ -2,8 +2,8 @@ spring:
   # DATABASE
   datasource:
     url: jdbc:mysql://localhost:3306/learn_together
-    username: sava
-    password: zvezda99
+    username: username
+    password: password
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
@@ -13,8 +13,8 @@ spring:
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
-    username: learntogether1508@gmail.com
-    password: takmicenje123
+    username: your@gmail.com
+    password: password
     port: 587
     properties:
       mail:
