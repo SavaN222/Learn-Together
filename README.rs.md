@@ -3,7 +3,7 @@ Projekat radjen za **[*ðŸš€ TO THE MOON - prvo online individualno srpsko takmiÄ
 <br>
 <br>
 
-> [*English Description*](link ka eng opisu)
+> [*English Description*](https://github.com/SavaN222/Learn-Together/blob/main/README.md)
 
 [![learnTogetherGif.gif](https://s3.gifyu.com/images/learnTogetherGif.gif)](https://gifyu.com/image/t1ZV)
 
@@ -134,7 +134,7 @@ Projekat je radjen u sledecim tehnologijama:
 
 Potrebno je kreirati konekciju sa bazom podataka, u mom slucaju konekcija se zove `learn_together`.
 
-Zatim je potrebno ubaciti sledeci **[*SQL FILE*](link ka fajlusql)**.
+Zatim je potrebno ubaciti sledeci **[*SQL FILE*](lhttps://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)**.
 
 ### Podesavanje projekta
 Otvoriti `application.yml` fajl i zameniti ga odgovarajucim podacima
