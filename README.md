@@ -16,7 +16,7 @@ Project for **[*🚀 TO THE MOON - first online individual serbian programming c
 
 ## 👨‍💻 About Project
 
-**Learn Together** is social network that connects students of all universities and enables them to quickly and easily exchange knowledge in various interesting and creative ways. 
+**Learn Together** is a social network that connects students of all universities and enables them to quickly and easily exchange knowledge in various interesting and creative ways. 
 
 Used technologies:
 
