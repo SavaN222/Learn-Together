@@ -158,8 +158,8 @@ spring:
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
-    username: youradress@gmail.com
-    password: your-email-password
+    username: your@gmail.com
+    password: your_email_password
     port: 587
     properties:
       mail:
@@ -212,8 +212,8 @@ spring:
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
-    username: youradress@gmail.com
-    password: your-email-password
+    username: your@gmail.com
+    password: your_email_password
 ````
 **🌠 Primer:**
 ```sh
@@ -359,3 +359,5 @@ Ocekivani prikaz:
 Otvorite projekat u vasem Java radnom okruzenju i kliknite na start dugme.
 ![idepokretanje](https://i.ibb.co/XsVVD5b/ide-Pokretanje.png)
 
+### API koji su korisceni
+* **[*Random quote api*](https://github.com/lukePeavey/quotable)**
