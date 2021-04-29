@@ -30,7 +30,7 @@ CREATE TABLE `answer` (
   PRIMARY KEY (`id`),
   KEY `FKplq0bjdsn3i0eml0s28ap87ap` (`question_id`),
   CONSTRAINT `FKplq0bjdsn3i0eml0s28ap87ap` FOREIGN KEY (`question_id`) REFERENCES `quiz_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `comment_post` (
   KEY `FK46o4sw5i0ykgcca4gfbr63l9q` (`post_id`),
   CONSTRAINT `FK46o4sw5i0ykgcca4gfbr63l9q` FOREIGN KEY (`post_id`) REFERENCES `post_university` (`id`),
   CONSTRAINT `FKh53mlyacf2ky34mmj4r20htum` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `comment_post` (
 
 LOCK TABLES `comment_post` WRITE;
 /*!40000 ALTER TABLE `comment_post` DISABLE KEYS */;
-INSERT INTO `comment_post` VALUES (1,'Comment from mobile',_binary '','SEEN',2,1),(2,'Good job',_binary '\0','UNSEEN',1,3),(3,'ww',_binary '\0','UNSEEN',3,3);
+INSERT INTO `comment_post` VALUES (5,'Wow amazing',_binary '\0','UNSEEN',10,8);
 /*!40000 ALTER TABLE `comment_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `comment_study` (
   KEY `FKrot8kaurggdcpuwesvki7kpws` (`question_study_id`),
   CONSTRAINT `FKqacfdd17doj9fhwtiq4bdjpt4` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FKrot8kaurggdcpuwesvki7kpws` FOREIGN KEY (`question_study_id`) REFERENCES `question_study` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +127,7 @@ CREATE TABLE `comment_study` (
 
 LOCK TABLES `comment_study` WRITE;
 /*!40000 ALTER TABLE `comment_study` DISABLE KEYS */;
-INSERT INTO `comment_study` VALUES (2,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula at lacus id feugiat. Sed lectus sapien, iaculis id massa id, semper dignissim neque. Vestibulum et mollis orci. In nec ligula mattis, vulputate libero vel, laoreet eros. Morbi ex velit, viverra quis purus a, vestibulum feugiat nisl. In posuere leo a mi faucibus semper. In viverra neque vel dictum tincidunt. Praesent eu nibh bibendum turpis auctor sodales nec ac velit. Praesent eu dignissim augue. Maecenas rhoncus ex nisi, eleifend fringilla nunc pulvinar ut. Integer feugiat nulla justo, consectetur tempus metus volutpat lobortis. Aenean a justo sagittis, vehicula dolor eu, vulputate eros. Proin vel metus ut arcu tristique mattis vel at ante.\r\n\r\nPraesent nibh elit, ornare quis magna sit amet, dignissim vulputate ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt tortor in risus tincidunt condimentum. Suspendisse arcu risus, vehicula a malesuada tempor, vestibulum ac erat. Nam accumsan euismod turpis a tincidunt. Ut magna nisi, mollis non lacus id, ultrices pulvinar tellus. Cras ornare tempus cursus. Phasellus commodo risus ac mauris malesuada blandit sed nec libero. Nunc tincidunt tincidunt risus, a sollicitudin nibh consequat a. Cras cursus mauris odio, in pretium sem scelerisque lacinia. Curabitur nisl felis, sollicitudin ut felis eu, volutpat consectetur massa. Aenean sit amet diam eros. Mauris consequat quis arcu id tristique. Vestibulum id dolor auctor, aliquam ex in, tincidunt metus. Nullam efficitur ut sapien quis feugiat. Donec id eros dolor.\r\n\r\nAliquam nec odio mauris. Cras ac tincidunt eros, et rutrum augue. Fusce ut nunc egestas, vestibulum nulla ac, fermentum lacus. Suspendisse vel sollicitudin quam, nec aliquet sem. Fusce vel urna suscipit ante porta interdum nec at purus. Nam facilisis ultrices rhoncus. Praesent volutpat augue congue luctus porta. Aliquam bibendum nisl at sapien tincidunt, tincidunt lobortis ex egestas. Nunc arcu turpis, efficitur non purus sit amet, scelerisque ullamcorper nisi. Praesent pulvinar mauris in molestie vestibulum. Praesent posuere, lectus pulvinar ullamcorper pharetra, quam diam venenatis mauris, eu dictum velit ante id leo. Morbi tincidunt feugiat tellus, sit amet feugiat nisl viverra a. Quisque tincidunt id justo ut feugiat.\r\n\r\nIn dapibus laoreet arcu et lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sed placerat tortor, vitae ullamcorper ipsum. Donec commodo ultricies scelerisque. Etiam faucibus elit vel urna elementum elementum vitae sit amet justo. Mauris mattis elit at lacus fermentum, a accumsan lorem elementum. Suspendisse nec dignissim enim.',_binary '\0','UNSEEN',3,2),(5,'DDDDDDDDDDDDD',_binary '\0','UNSEEN',2,4),(7,'ddd d',_binary '','UNSEEN',2,1),(8,'wow',_binary '\0','UNSEEN',10,4);
+INSERT INTO `comment_study` VALUES (18,'Did you check kupujemprodajem?',_binary '\0','SEEN',2,16),(19,'No, thank you. ?',_binary '\0','UNSEEN',12,16),(20,'UpWork',_binary '\0','UNSEEN',12,17);
 /*!40000 ALTER TABLE `comment_study` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +151,7 @@ CREATE TABLE `friends` (
   CONSTRAINT `FKs32lvtgcytvvqc282mypkitsd` FOREIGN KEY (`student_lower_id`) REFERENCES `student` (`id`),
   CONSTRAINT `FKtcfeaw8c7m7sjfxgtl612uppp` FOREIGN KEY (`student_higher_id`) REFERENCES `student` (`id`),
   CONSTRAINT `FKtnefesxwqhacwxero1edyid95` FOREIGN KEY (`action_user_id`) REFERENCES `student` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `friends` (
 
 LOCK TABLES `friends` WRITE;
 /*!40000 ALTER TABLE `friends` DISABLE KEYS */;
-INSERT INTO `friends` VALUES (1,'ACCEPT',1,2,1),(8,'ACCEPT',3,3,2),(9,'ACCEPT',10,10,2),(10,'PENDING',11,11,2);
+INSERT INTO `friends` VALUES (1,'ACCEPT',1,2,1),(8,'ACCEPT',3,3,2),(14,'ACCEPT',2,12,2),(15,'ACCEPT',10,12,10),(16,'ACCEPT',2,10,2);
 /*!40000 ALTER TABLE `friends` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,7 @@ CREATE TABLE `like_post` (
   KEY `FK1uohn32m0ys3wrfn73k1w4xqy` (`post_id`),
   CONSTRAINT `FK1uohn32m0ys3wrfn73k1w4xqy` FOREIGN KEY (`post_id`) REFERENCES `post_university` (`id`),
   CONSTRAINT `FK9hks3w5yx5oiy8fq5ud4avoxs` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +189,6 @@ CREATE TABLE `like_post` (
 
 LOCK TABLES `like_post` WRITE;
 /*!40000 ALTER TABLE `like_post` DISABLE KEYS */;
-INSERT INTO `like_post` VALUES (1,2,1),(3,1,3),(4,3,3);
 /*!40000 ALTER TABLE `like_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +208,7 @@ CREATE TABLE `like_study` (
   KEY `FKi84um5l5rayh1smpsyepvq73m` (`question_study_id`),
   CONSTRAINT `FKi84um5l5rayh1smpsyepvq73m` FOREIGN KEY (`question_study_id`) REFERENCES `question_study` (`id`),
   CONSTRAINT `FKp7q57x6l0di8v8t30ck2nempu` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +217,7 @@ CREATE TABLE `like_study` (
 
 LOCK TABLES `like_study` WRITE;
 /*!40000 ALTER TABLE `like_study` DISABLE KEYS */;
-INSERT INTO `like_study` VALUES (1,3,2),(3,2,1),(4,10,4),(5,3,4);
+INSERT INTO `like_study` VALUES (13,2,16),(14,12,17);
 /*!40000 ALTER TABLE `like_study` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +239,7 @@ CREATE TABLE `post_university` (
   KEY `FK5p0fd035v4ney5ydmxolsg3la` (`university_id`),
   CONSTRAINT `FK5p0fd035v4ney5ydmxolsg3la` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`),
   CONSTRAINT `FKkp886u9eruoy04wxx0g7buukh` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +248,7 @@ CREATE TABLE `post_university` (
 
 LOCK TABLES `post_university` WRITE;
 /*!40000 ALTER TABLE `post_university` DISABLE KEYS */;
-INSERT INTO `post_university` VALUES (1,'My first post in university section.',_binary '',1,78),(2,'Praesent nibh elit, ornare quis magna sit amet, dignissim vulputate ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt tortor in risus tincidunt condimentum. Suspendisse arcu risus, vehicula a malesuada tempor, vestibulum ac erat. Nam accumsan euismod turpis a tincidunt. Ut magna nisi, mollis non lacus id, ultrices pulvinar tellus. Cras ornare tempus cursus. Phasellus commodo risus ac mauris malesuada blandit sed nec libero. Nunc tincidunt tincidunt risus, a sollicitudin nibh consequat a. Cras cursus mauris odio, in pretium sem scelerisque lacinia. Curabitur nisl felis, sollicitudin ut felis eu, volutpat consectetur massa. Aenean sit amet diam eros. Mauris consequat quis arcu id tristique. Vestibulum id dolor auctor, aliquam ex in, tincidunt metus. Nullam efficitur ut sapien quis feugiat. Donec id eros dolor.\r\n\r\nAliquam nec odio mauris. Cras ac tincidunt eros, et rutrum augue. Fusce ut nunc egestas, vestibulum nulla ac, fermentum lacus. Suspendisse vel sollicitudin quam, nec aliquet sem. Fusce vel urna suscipit ante porta interdum nec at purus. Nam facilisis ultrices rhoncus. Praesent volutpat augue congue luctus porta. Aliquam bibendum nisl at sapien tincidunt, tincidunt lobortis ex egestas. Nunc arcu turpis, efficitur non purus sit amet, scelerisque ullamcorper nisi. Praesent pulvinar mauris in molestie vestibulum. Praesent posuere, lectus pulvinar ullamcorper pharetra, quam diam venenatis mauris, eu dictum velit ante id leo. Morbi tincidunt feugiat tellus, sit amet feugiat nisl viverra a. Quisque tincidunt id justo ut feugiat.\r\n\r\nIn dapibus laoreet arcu et lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sed placerat tortor, vitae ullamcorper ipsum. Donec commodo ultricies scelerisque. Etiam faucibus elit vel urna elementum elementum vitae sit amet justo. Mauris mattis elit at lacus fermentum, a accumsan lorem elementum. Suspendisse nec dignissim enim.',_binary '',3,78),(3,'post',_binary '\0',2,78),(4,'HELLO FROM UNIVERSITY!',_binary '\0',2,78),(5,'dddddddd',_binary '\0',2,78);
+INSERT INTO `post_university` VALUES (8,'This is only visible for RAF students',_binary '\0',2,78);
 /*!40000 ALTER TABLE `post_university` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +271,7 @@ CREATE TABLE `question_study` (
   KEY `FKdh0ifshu6gjwc8m63wmb70nyy` (`study_field_id`),
   CONSTRAINT `FK744mdlmf9sesxtbchdlw9tr1j` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FKdh0ifshu6gjwc8m63wmb70nyy` FOREIGN KEY (`study_field_id`) REFERENCES `study_field` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +280,7 @@ CREATE TABLE `question_study` (
 
 LOCK TABLES `question_study` WRITE;
 /*!40000 ALTER TABLE `question_study` DISABLE KEYS */;
-INSERT INTO `question_study` VALUES (1,'Question......',_binary '\0','My first question in study field',1,25),(2,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula at lacus id feugiat. Sed lectus sapien, iaculis id massa id, semper dignissim neque. Vestibulum et mollis orci. In nec ligula mattis, vulputate libero vel, laoreet eros. Morbi ex velit, viverra quis purus a, vestibulum feugiat nisl. In posuere leo a mi faucibus semper. In viverra neque vel dictum tincidunt. Praesent eu nibh bibendum turpis auctor sodales nec ac velit. Praesent eu dignissim augue. Maecenas rhoncus ex nisi, eleifend fringilla nunc pulvinar ut. Integer feugiat nulla justo, consectetur tempus metus volutpat lobortis. Aenean a justo sagittis, vehicula dolor eu, vulputate eros. Proin vel metus ut arcu tristique mattis vel at ante.\r\n\r\nPraesent nibh elit, ornare quis magna sit amet, dignissim vulputate ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt tortor in risus tincidunt condimentum. Suspendisse arcu risus, vehicula a malesuada tempor, vestibulum ac erat. Nam accumsan euismod turpis a tincidunt. Ut magna nisi, mollis non lacus id, ultrices pulvinar tellus. Cras ornare tempus cursus. Phasellus commodo risus ac mauris malesuada blandit sed nec libero. Nunc tincidunt tincidunt risus, a sollicitudin nibh consequat a. Cras cursus mauris odio, in pretium sem scelerisque lacinia. Curabitur nisl felis, sollicitudin ut felis eu, volutpat consectetur massa. Aenean sit amet diam eros. Mauris consequat quis arcu id tristique. Vestibulum id dolor auctor, aliquam ex in, tincidunt metus. Nullam efficitur ut sapien quis feugiat. Donec id eros dolor.\r\n\r\nAliquam nec odio mauris. Cras ac tincidunt eros, et rutrum augue. Fusce ut nunc egestas, vestibulum nulla ac, fermentum lacus. Suspendisse vel sollicitudin quam, nec aliquet sem. Fusce vel urna suscipit ante porta interdum nec at purus. Nam facilisis ultrices rhoncus. Praesent volutpat augue congue luctus porta. Aliquam bibendum nisl at sapien tincidunt, tincidunt lobortis ex egestas. Nunc arcu turpis, efficitur non purus sit amet, scelerisque ullamcorper nisi. Praesent pulvinar mauris in molestie vestibulum. Praesent posuere, lectus pulvinar ullamcorper pharetra, quam diam venenatis mauris, eu dictum velit ante id leo. Morbi tincidunt feugiat tellus, sit amet feugiat nisl viverra a. Quisque tincidunt id justo ut feugiat.\r\n\r\nIn dapibus laoreet arcu et lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sed placerat tortor, vitae ullamcorper ipsum. Donec commodo ultricies scelerisque. Etiam faucibus elit vel urna elementum elementum vitae sit amet justo. Mauris mattis elit at lacus fermentum, a accumsan lorem elementum. Suspendisse nec dignissim enim.',_binary '\0','da',3,30),(4,'HELP!!!',_binary '\0','Question',2,25),(7,'FDFDS',_binary '\0','Test pitanje programiranje',2,25);
+INSERT INTO `question_study` VALUES (16,'Can someone give me a list of best computer up to 500euros? ?',_binary '','Best laptops for 500e',12,25),(17,'Which is the best website for freelancing?',_binary '\0','Freelance???',2,25);
 /*!40000 ALTER TABLE `question_study` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +298,7 @@ CREATE TABLE `quiz` (
   PRIMARY KEY (`id`),
   KEY `FK6awm9kbqny41efdoaol63uc4y` (`student_id`),
   CONSTRAINT `FK6awm9kbqny41efdoaol63uc4y` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +325,7 @@ CREATE TABLE `quiz_question` (
   PRIMARY KEY (`id`),
   KEY `FKdtynvfjgh6e7fd8l0wk37nrpc` (`quiz_id`),
   CONSTRAINT `FKdtynvfjgh6e7fd8l0wk37nrpc` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -363,7 +362,7 @@ CREATE TABLE `student` (
   KEY `FK157t7rer269uuhfphq1mcd7y9` (`university_id`),
   CONSTRAINT `FK157t7rer269uuhfphq1mcd7y9` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`),
   CONSTRAINT `FKru964th5p2qpd72at1v1ft9y5` FOREIGN KEY (`study_field_id`) REFERENCES `study_field` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,7 +371,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'Basketball Player ?\r\nFront-End developer ?‍?','nakaradasava@gmail.com',_binary '','Male','$2a$10$FFcsmAUJokVoDZzUwclqJuaUH5b8FSo2k8iVcnLiFgiZZfXs9RZj6','/images/profile_pictures/male.png','student','John',25,78),(2,'Back-End developer ?‍?','savanakarada22@gmail.com',_binary '','Male','$2a$10$tBgwiwl6HtuP6qgm.RVpG.0t4qKrkMry2e5aD5QBiRMFc5EpIJBdi','/images/user-photos/2/IMG_20200708_114736_521.jpg','student','Sava',25,78),(3,NULL,'tester@gmail.com',_binary '','Female','$2a$10$Xc5lNRMYKj5qL6GH2Vn62.la2ogRT11FJlj8J1sQwn/cWTmzDHGb6','/images/profile_pictures/female.png','student','tester',25,78),(4,NULL,'test1508@gmail.com',_binary '','Male','$2a$10$u7pHlDfpWjuhSHG7kL0qlO80Z57JqvOt9z4Wy7yKwDSk/8PqNt3Qm','/images/profile_pictures/male.png','student','Test',38,8),(8,NULL,'savanakarada1508@gmail.com',_binary '','Male','$2a$10$XJ3lJpVbaKdrGjP8XEOYvuisq8FUtfiSp0ejiqgxRqjgQRY2aEfHC','/images/profile_pictures/male.png','student','SavaN1508',30,156),(9,'','jessepickman321@gmail.com',_binary '','Male','$2a$10$V7gAX.SwlQRbedUL7Glpc.hR/FHDiY.fykjy.g0cvQZNyeLroMODG','/images/user-photos/9/lockscreen.jpg','student','Jesse',30,156),(10,NULL,'maletester@gmail.com',_binary '','Male','$2a$10$Yqo3shOngnLN2KgYiLNvue5C9o27.epMwCUPyJDxYzUcgBuEctwIS','/images/profile_pictures/male.png','student','male_tester',25,78),(11,NULL,'femaletester@gmail.com',_binary '','Female','$2a$10$1f.MSia1ZWe45L93RgY4CukClQyoa.cPBDZP.5CJs1iotV0nQUWmm','/images/profile_pictures/female.png','student','female_tester',35,78);
+INSERT INTO `student` VALUES (1,'Basketball Player ?\r\nFront-End developer ?‍?','nakaradasava@gmail.com',_binary '','Male','$2a$10$FFcsmAUJokVoDZzUwclqJuaUH5b8FSo2k8iVcnLiFgiZZfXs9RZj6','/images/profile_pictures/male.png','student','John',25,78),(2,'Back-End developer ?‍?','savanakarada22@gmail.com',_binary '','Male','$2a$10$tBgwiwl6HtuP6qgm.RVpG.0t4qKrkMry2e5aD5QBiRMFc5EpIJBdi','/images/user-photos/2/IMG_20200708_114736_521.jpg','student','Sava',25,78),(3,NULL,'tester@gmail.com',_binary '','Female','$2a$10$Xc5lNRMYKj5qL6GH2Vn62.la2ogRT11FJlj8J1sQwn/cWTmzDHGb6','/images/profile_pictures/female.png','student','tester',25,78),(4,NULL,'test1508@gmail.com',_binary '','Male','$2a$10$u7pHlDfpWjuhSHG7kL0qlO80Z57JqvOt9z4Wy7yKwDSk/8PqNt3Qm','/images/profile_pictures/male.png','student','Test',38,8),(8,NULL,'savanakarada1508@gmail.com',_binary '','Male','$2a$10$XJ3lJpVbaKdrGjP8XEOYvuisq8FUtfiSp0ejiqgxRqjgQRY2aEfHC','/images/profile_pictures/male.png','student','SavaN1508',30,156),(9,'','jessepickman321@gmail.com',_binary '','Male','$2a$10$V7gAX.SwlQRbedUL7Glpc.hR/FHDiY.fykjy.g0cvQZNyeLroMODG','/images/user-photos/9/lockscreen.jpg','student','Jesse',30,156),(10,NULL,'maletester@gmail.com',_binary '','Male','$2a$10$Yqo3shOngnLN2KgYiLNvue5C9o27.epMwCUPyJDxYzUcgBuEctwIS','/images/profile_pictures/male.png','student','male_tester',25,78),(11,NULL,'femaletester@gmail.com',_binary '','Female','$2a$10$1f.MSia1ZWe45L93RgY4CukClQyoa.cPBDZP.5CJs1iotV0nQUWmm','/images/profile_pictures/female.png','student','female_tester',35,78),(12,'','gahahv@hhshshs.com',_binary '','Female','$2a$10$xlx8POFuXj5DTjl/VuNvoufRIokqVOufKZWOmtu/6bZE71QmvTkHa','/images/user-photos/12/svgA9715694077794288.png','student','Emilija',11,40);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +391,7 @@ CREATE TABLE `student_like_post` (
   KEY `FK5t3x477hkxyf4ep1kxmox9n1e` (`post_id`),
   CONSTRAINT `FK5t3x477hkxyf4ep1kxmox9n1e` FOREIGN KEY (`post_id`) REFERENCES `student_post` (`id`),
   CONSTRAINT `FK8ieqt8tlb5jqw75bn19x0ljqe` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,7 +400,7 @@ CREATE TABLE `student_like_post` (
 
 LOCK TABLES `student_like_post` WRITE;
 /*!40000 ALTER TABLE `student_like_post` DISABLE KEYS */;
-INSERT INTO `student_like_post` VALUES (3,2,1),(4,10,2),(5,1,2),(6,3,2);
+INSERT INTO `student_like_post` VALUES (7,2,8),(8,12,8);
 /*!40000 ALTER TABLE `student_like_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,7 +419,7 @@ CREATE TABLE `student_post` (
   PRIMARY KEY (`id`),
   KEY `FK2fobyd1nj9883q075u46tnw32` (`student_id`),
   CONSTRAINT `FK2fobyd1nj9883q075u46tnw32` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,7 +428,7 @@ CREATE TABLE `student_post` (
 
 LOCK TABLES `student_post` WRITE;
 /*!40000 ALTER TABLE `student_post` DISABLE KEYS */;
-INSERT INTO `student_post` VALUES (1,'My first post',_binary '\0',1),(2,'My post from mobile',_binary '\0',2),(5,'Hello everyone!!! ?',_binary '\0',3),(6,'Post for friend',_binary '\0',4);
+INSERT INTO `student_post` VALUES (8,'Hello everybody!!!',_binary '\0',10),(9,'Did you check my NBA quiz??\r\nhttp://localhost:8080/quiz/5/question/?questionId=0',_binary '\0',2);
 /*!40000 ALTER TABLE `student_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,7 +451,7 @@ CREATE TABLE `student_post_comment` (
   KEY `FKvuuexlatt9r4ytc49iwcubab` (`student_post_id`),
   CONSTRAINT `FK5i3wxn521f0oit5r9u423vjte` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FKvuuexlatt9r4ytc49iwcubab` FOREIGN KEY (`student_post_id`) REFERENCES `student_post` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,7 +460,7 @@ CREATE TABLE `student_post_comment` (
 
 LOCK TABLES `student_post_comment` WRITE;
 /*!40000 ALTER TABLE `student_post_comment` DISABLE KEYS */;
-INSERT INTO `student_post_comment` VALUES (1,'First comment from mobile',_binary '\0','UNSEEN',2,1),(2,'Good job',_binary '\0','UNSEEN',10,2),(3,'yes',_binary '\0','UNSEEN',1,2),(4,'ddd',_binary '\0','UNSEEN',3,2);
+INSERT INTO `student_post_comment` VALUES (5,'Hi!!',_binary '','UNSEEN',2,8),(6,'Hii!',_binary '\0','UNSEEN',12,8),(7,'to hard man!!!',_binary '\0','UNSEEN',10,9);
 /*!40000 ALTER TABLE `student_post_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -504,7 +503,7 @@ CREATE TABLE `token` (
   PRIMARY KEY (`id`),
   KEY `FK1j9myk0fjdutkio0tf3mne3u9` (`student_id`),
   CONSTRAINT `FK1j9myk0fjdutkio0tf3mne3u9` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,4 +553,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-29 16:18:33
+-- Dump completed on 2021-04-29 21:14:09
