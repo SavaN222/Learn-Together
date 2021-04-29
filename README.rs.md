@@ -16,7 +16,7 @@ Projekat radjen za **[*🚀 TO THE MOON - prvo online individualno srpsko takmi�
 
 ## 👨‍💻 O projektu
 
-Learn Together je socijalna mreza koja povezuje studente **svih univerziteta** i omogucava im brzu i laksu razmenu znanja na razne zanimljive i kreatine nacine.
+**Learn Together** je socijalna mreza koja povezuje studente **svih univerziteta** i omogucava im brzu i laksu razmenu znanja na razne zanimljive i kreativne nacine.
 
 Projekat je radjen u sledecim tehnologijama:
 
@@ -39,41 +39,41 @@ Projekat je radjen u sledecim tehnologijama:
 ---
 <br>
 
-### Registracija
+### 👦👧 Registracija
 
 ![registracija](https://i.ibb.co/f2L5Kmp/registracija.png)
 
 <br>
 
-### Potvrda mejl adrese i aktivacija naloga
+### 📩 Potvrda mejl adrese i aktivacija naloga
 
 ![potvrda](https://i.ibb.co/85JDq1n/confirmmail.png)
 
 <br>
 
-### Izgled pocetne stranice
+### 🏠 Izgled pocetne stranice
 * **Prikaz Informacija o studentu.**
-* **Naizmenicni citati prilikom osvezavanja stranice.**
+* **Naizmenicni citati prilikom osvezivanja stranice.**
 * **Objave prijatelja.**
 
 ![homepage](https://i.ibb.co/VtxsQsW/homepage.png)
 
 <br>
 
-### Study Field sekcija
+### 🎓 Study Field sekcija
 * **Postavljanje pitanja u okviru studijskom smera, vidljivo svim studentima nezavisno od fakulteta.**
 * **Komentarisanje i lajkovanje pitanja.**
-* **Brisanje/Editovanje komentara/pitanja.**
+* **Brisanje/Izmena komentara/pitanja.**
 * **Obavestenja.**
 
 [![studyFieldGif470ae0e77426923b.gif](https://s3.gifyu.com/images/studyFieldGif470ae0e77426923b.gif)](https://gifyu.com/image/tOuP)
 
 <br>
 
-### University sekcija
+### 🏢 University sekcija
 * **Postavljanje objava u okviru fakulteta vidljivo samo studentima fakulteta.**
 * **Komentarisanje i lajkovanje objava.**
-* **Brisanje/Editovanje komentara/objava.**
+* **Brisanje/Izmena komentara/objava.**
 * **Obavestenja.**
 * **Lista svih studenata sa fakulteta.**
 
@@ -81,7 +81,7 @@ Projekat je radjen u sledecim tehnologijama:
 
 <br>
 
-### Quiz sekcija
+### ❗❔ Quiz sekcija
 * **Kreiranje kvizova od strane studenata.**
 * **Brisanje kviza/pitanja.**
 * **Igranje kviza.**
@@ -91,17 +91,17 @@ Projekat je radjen u sledecim tehnologijama:
 ### Kreiranje Kviza
 [[![createQuizGif.gif](https://s3.gifyu.com/images/createQuizGif.gif)](https://gifyu.com/image/tOQh)
 * **Kreiranje numerickih ili tekstualnih pitanja.**
-* **Kreitanje 4 ponudjenih odgovora, izabrati koji je tacan.**
+* **Kreiranje 4 ponudjenih odgovora, izabrati koji je tacan.**
 
 <br>
 
 ### Igranje Kviza
 [![playQuiz.gif](https://s3.gifyu.com/images/playQuiz.gif)](https://gifyu.com/image/tAgN)
-* **Prilikom pokretanja kviza ili osvezivanje stranice, pozicije ponudjenih odgovora su naizmenicne(nisu na istom mestu).**
+* **Prilikom pokretanja kviza ili osvezavanja stranice, pozicije ponudjenih odgovora su naizmenicne(nisu na istom mestu).**
 
 <br>
 
-### Moj Profil sekcija
+### 🐱‍🏍 Moj Profil sekcija
 * **Prikaz informacija o studentu.**
 * **Prikaz svih postavljenih pitanja u okviru 'STUDY FIELD' sekcije.**
 * **Prikaz svih objava sa pocetne stranice.**
@@ -114,12 +114,12 @@ Projekat je radjen u sledecim tehnologijama:
 
 <br>
 
-### Dodavanje prijatelja
+### 👫 Dodavanje prijatelja
 [![addFriendGif.gif](https://s3.gifyu.com/images/addFriendGif.gif)](https://gifyu.com/image/tOWP)
 
 <br>
 
-### Favorites
+### 🏆 Favorites
 * **Prikaz svih 'lajkovanih' pitanja iz sekcije 'STUDY FIELD'.**
 * **Prikaz svih 'lajkovanih' objava sa fakulteta.**
 
@@ -141,7 +141,7 @@ Otvoriti `application.yml` fajl i zameniti ga odgovarajucim podacima
 putanja -> `lokacijaProjekta/src/main/resources/application.yml`
 
 Fajl izgleda ovako:
-```sh
+```yml
 spring:
   # DATABASE
   datasource:
@@ -181,12 +181,12 @@ spring:
 ```
 
 ### 🚨 Moguce greske
-```sh
+```yml
 -  url: jdbc:mysql://localhost:3306/learn_together
 ````
 **learn_together je naziv konekcije sa bazom, proverite vas naziv ❗**
 
-```sh
+```yml
 -  username: your_username
 -  password: your_password
 ````
@@ -195,7 +195,7 @@ spring:
 **🚧 U vecini slucajeva je username:root a password prazan**
 
 **🌠 Primeri konekcije:**
-```sh
+```yml
 -  username: root
 -  password: 
 
@@ -206,7 +206,7 @@ spring:
 
 **PODESAVANJE MEJL ADRESE ❗**
 
-```sh
+```yml
   # EMAIL
   mail:
     default-encoding: UTF-8
@@ -215,7 +215,7 @@ spring:
     password: your_email_password
 ````
 **🌠 Primer:**
-```sh
+```yml
   # EMAIL
   mail:
     default-encoding: UTF-8
@@ -289,7 +289,7 @@ Ukoliko korsitite Linux/Mac operativni sistem pokrenite:
 $ mvn spring-boot:run
 ```
 Ocekivani prikaz:
-``` sh
+``` java
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------< com.nakaradasava:learn-together >-------------------
@@ -362,6 +362,8 @@ Otvorite projekat u vasem Java radnom okruzenju i kliknite na start dugme.
 
 #### API koji su korisceni
 * **[*Random quote api*](https://github.com/lukePeavey/quotable)**
+
+<br>
 
 #### Nalozi za testiranje
 * **Username: male_tester**
