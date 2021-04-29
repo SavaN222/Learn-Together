@@ -354,7 +354,7 @@ Očekivani prikaz:
 2021-04-28 22:22:00.962  INFO 5476 --- [           main] c.n.l.LearnTogetherApplication           : Started LearnTogetherApplication in 7.457 seconds (JVM running for 8.057)
 
 ```
-#### Pokretanje preko IDE, npr Intelij
+#### Pokretanje preko IDE, npr Intellij
 Otvorite projekat u vašem Java radnom okruženju i kliknite na start dugme.
 ![idepokretanje](https://i.ibb.co/XsVVD5b/ide-Pokretanje.png)
 
