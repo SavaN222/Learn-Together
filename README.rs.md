@@ -115,7 +115,7 @@ Projekat je radjen u sledecim tehnologijama:
 <br>
 
 ### Dodavanje prijatelja
-[![add-friend.gif](https://s3.gifyu.com/images/add-friend.gif)](https://gifyu.com/image/tA6M)
+[![addfriend.gif](https://s3.gifyu.com/images/addfriend.gif)](https://gifyu.com/image/tOW8)
 
 <br>
 
