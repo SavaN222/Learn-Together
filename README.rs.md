@@ -1,5 +1,5 @@
 # Learn Together 👨‍🎓👩‍🎓
-Projekat radjen za **[*🚀 TO THE MOON - prvo online individualno srpsko takmičenje u programiranju*](https://dzimiks.com/contests)**.
+Projekat rađen za **[*🚀 TO THE MOON - prvo online individualno srpsko takmičenje u programiranju*](https://dzimiks.com/contests)**.
 <br>
 <br>
 
@@ -16,9 +16,9 @@ Projekat radjen za **[*🚀 TO THE MOON - prvo online individualno srpsko takmi�
 
 ## 👨‍💻 O projektu
 
-**Learn Together** je socijalna mreza koja povezuje studente **svih univerziteta** i omogucava im brzu i laksu razmenu znanja na razne zanimljive i kreativne nacine.
+**Learn Together** je socijalna mreža koja povezuje studente **svih univerziteta** i omogućava im brzu i lakšu razmenu znanja na razne zanimljive i kreativne načine.
 
-Projekat je radjen u sledecim tehnologijama:
+Projekat je radjen u sledećim tehnologijama:
 
 ---
 #### Back-End:
@@ -51,9 +51,9 @@ Projekat je radjen u sledecim tehnologijama:
 
 <br>
 
-### 🏠 Izgled pocetne stranice
-* **Prikaz Informacija o studentu.**
-* **Naizmenicni citati prilikom osvezivanja stranice.**
+### 🏠 Izgled početne stranice
+* **Prikaz informacija o studentu.**
+* **Naizmenični citati prilikom osveživanja stranice.**
 * **Objave prijatelja.**
 
 ![homepage](https://i.ibb.co/VtxsQsW/homepage.png)
@@ -61,10 +61,10 @@ Projekat je radjen u sledecim tehnologijama:
 <br>
 
 ### 🎓 Study Field sekcija
-* **Postavljanje pitanja u okviru studijskom smera, vidljivo svim studentima nezavisno od fakulteta.**
+* **Postavljanje pitanja u okviru studijskog smera, vidljivo svim studentima nezavisno od fakulteta.**
 * **Komentarisanje i lajkovanje pitanja.**
 * **Brisanje/Izmena komentara/pitanja.**
-* **Obavestenja.**
+* **Obaveštenja.**
 
 [![studyFieldGif470ae0e77426923b.gif](https://s3.gifyu.com/images/studyFieldGif470ae0e77426923b.gif)](https://gifyu.com/image/tOuP)
 
@@ -74,7 +74,7 @@ Projekat je radjen u sledecim tehnologijama:
 * **Postavljanje objava u okviru fakulteta vidljivo samo studentima fakulteta.**
 * **Komentarisanje i lajkovanje objava.**
 * **Brisanje/Izmena komentara/objava.**
-* **Obavestenja.**
+* **Obaveštenja.**
 * **Lista svih studenata sa fakulteta.**
 
 [![universityGif.gif](https://s3.gifyu.com/images/universityGif.gif)](https://gifyu.com/image/tOQH)
@@ -90,21 +90,21 @@ Projekat je radjen u sledecim tehnologijama:
 
 ### Kreiranje Kviza
 [[![createQuizGif.gif](https://s3.gifyu.com/images/createQuizGif.gif)](https://gifyu.com/image/tOQh)
-* **Kreiranje numerickih ili tekstualnih pitanja.**
-* **Kreiranje 4 ponudjenih odgovora, izabrati koji je tacan.**
+* **Kreiranje numeričkih ili tekstualnih pitanja.**
+* **Kreiranje 4 ponudjenih odgovora, izabrati koji je tačan.**
 
 <br>
 
 ### Igranje Kviza
 [![playQuiz.gif](https://s3.gifyu.com/images/playQuiz.gif)](https://gifyu.com/image/tAgN)
-* **Prilikom pokretanja kviza ili osvezavanja stranice, pozicije ponudjenih odgovora su naizmenicne(nisu na istom mestu).**
+* **Prilikom pokretanja kviza ili osvežavanja stranice, pozicije ponudjenih odgovora su naizmenične(nisu na istom mestu).**
 
 <br>
 
 ### 🐱‍🏍 Moj Profil sekcija
 * **Prikaz informacija o studentu.**
 * **Prikaz svih postavljenih pitanja u okviru 'STUDY FIELD' sekcije.**
-* **Prikaz svih objava sa pocetne stranice.**
+* **Prikaz svih objava sa početne stranice.**
 * **Prikaz i ukupni broj svih prijatelja.**
 * **Izmena profila.**
 
@@ -128,15 +128,15 @@ Projekat je radjen u sledecim tehnologijama:
 
 <br>
 
-## 🔧 Pokretanje & Podesavanje
+## 🔧 Pokretanje & Podešavanje
 
 ### Baza podataka
 
-Potrebno je kreirati konekciju sa bazom podataka, u mom slucaju konekcija se zove `learn_together`.
+Potrebno je kreirati konekciju sa bazom podataka, u mom slučaju konekcija se zove `learn_together`.
 
 Zatim je potrebno ubaciti sledeci [*SQL FILE*](https://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)
 ### Podesavanje projekta
-Otvoriti `application.yml` fajl i zameniti ga odgovarajucim podacima
+Otvoriti `application.yml` fajl i zameniti ga odgovarajućim podacima
 
 putanja -> `lokacijaProjekta/src/main/resources/application.yml`
 
@@ -180,19 +180,19 @@ spring:
         enabled: true
 ```
 
-### 🚨 Moguce greske
+### 🚨 Moguće greške
 ```yml
 -  url: jdbc:mysql://localhost:3306/learn_together
 ````
-**learn_together je naziv konekcije sa bazom, proverite vas naziv ❗**
+**learn_together je naziv konekcije sa bazom, proverite vaš naziv ❗**
 
 ```yml
 -  username: your_username
 -  password: your_password
 ````
-**Unesite vas username i password sa kojim ostvarujete konekciju sa bazom ❗**
+**Unesite vaš username i password sa kojim ostvarujete konekciju sa bazom ❗**
 
-**🚧 U vecini slucajeva je username:root a password prazan**
+**🚧 U većini slučajeva je username:root a password prazan**
 
 **🌠 Primeri konekcije:**
 ```yml
@@ -204,7 +204,7 @@ spring:
 ````
 
 
-**PODESAVANJE MEJL ADRESE ❗**
+**PODEŠAVANJE MEJL ADRESE ❗**
 
 ```yml
   # EMAIL
@@ -224,7 +224,7 @@ spring:
     password: jdoe555333
 ````
 
-**GRESKA: Pristup nije dozvoljen ❓**
+**GREŠKA: Pristup nije dozvoljen ❓**
 ```sh
 ERROR 11680 --- [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials u13sm377842ejj.16 - gsmtp
@@ -234,46 +234,46 @@ javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not ac
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials u13sm377842ejj.16 - gsmtp
 ```
 
-**Dva najcesca razloga za pojavu ove greske su:**
-* Nepravilan unos mejl adrese i sifre.
+**Dva najčešća razloga za pojavu ove greške su:**
+* Nepravilan unos mejl adrese i šifre.
 * Gugl ne dozvoljava pristup stranim aplikacijama.
 
-Da uklonite ovu gresku potrebno je da:
-* [*DOZVOLITE MANJE SIGURNIM APLIKACIJAMA PRISTUP VASEM MEJLU*](https://myaccount.google.com/u/0/lesssecureapps?pli=1&rapt=AEjHL4MmQ2kpWEDZ1wfdbTM6updFNoZ2U3Uo7WNUHe9HpgL8KCzA1i1jncNJayP6ek3Uf2G8morP5YXshkpOkUzNRfa02CUMoQ)
--obratite paznju koji je korisnik ulogovan na gugl nalog.
+Da uklonite ovu grešku potrebno je da:
+* [*DOZVOLITE MANJE SIGURNIM APLIKACIJAMA PRISTUP VAšEM MEJLU*](https://myaccount.google.com/u/0/lesssecureapps?pli=1&rapt=AEjHL4MmQ2kpWEDZ1wfdbTM6updFNoZ2U3Uo7WNUHe9HpgL8KCzA1i1jncNJayP6ek3Uf2G8morP5YXshkpOkUzNRfa02CUMoQ)
+-obratite pažnju koji je korisnik ulogovan na gugl nalog.
   ![guglSecure](https://i.ibb.co/4pYSHtT/Less-secure-app-access.png)
-  ovo je potrebno da bi aplikacija preko vaseg mejla slala novo-registrovanim studentima link za potvrdu naloga.
+  ovo je potrebno da bi aplikacija preko vašeg mejla slala novo-registrovanim studentima link za potvrdu naloga.
   
-### 📂 Putanja za cuvanje slika
+### 📂 Putanja za čuvanje slika
 U fajlu `StudentService` na putanji: `lokacijaProjekta/src/main/java/com/nakaradasava/learntogether/service/student/StudentService`
 
 promeniti:
 ```sh 
 Linija 82: String windowsPath = "C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static";
 ```
-sa vasom putanjom do static foldera.
+sa vašom putanjom do static foldera.
 
 📢Linux i Mac operativni sistemi koriste /`forward slash` dok windows koristi \ `backslash`
 
 📢Windows putanja koristi duple znake `\\` zbog 'escape character', Linux i Max koriste normalnu putanju sa jednim znakom `/`
 
-Istu promenu izvrsiti u fajlu `UploadConfig` na lokaciji:
+Istu promenu izvršiti u fajlu `UploadConfig` na lokaciji:
 `lokacijaProjekta/src/main/java/com/nakaradasava/learntogether/config/UploadConfig`
 
 ```sh 
 Linija 15: registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static\\images\\");
 ```
-#### 📢Linux i Mac = file:Vasa/Putanja/Do/Static
-#### 📢Windows = file:C:\\\Vasa\\\Putanja\\\Do\\\Static
+#### 📢Linux i Mac = file:Vaša/Putanja/Do/Static
+#### 📢Windows = file:C:\\\Vaša\\\Putanja\\\Do\\\Static
 
 
 
 ### ✅ Pokretanje projekta ✅
 
-Pokretanje projekta mozete izvrsiti na dva nacina:
+Pokretanje projekta mozete izvršiti na dva načina:
 
 #### Pokretanje preko terminala:
-Postavite vasu putanju u direktorijum projekta
+Postavite vašu putanju u direktorijum projekta
 
 ``` sh
 $ pwd
@@ -288,7 +288,7 @@ Ukoliko korsitite Linux/Mac operativni sistem pokrenite:
 ``` sh
 $ mvn spring-boot:run
 ```
-Ocekivani prikaz:
+Očekivani prikaz:
 ``` java
 [INFO] Scanning for projects...
 [INFO]
@@ -355,12 +355,12 @@ Ocekivani prikaz:
 
 ```
 #### Pokretanje preko IDE, npr Intelij
-Otvorite projekat u vasem Java radnom okruzenju i kliknite na start dugme.
+Otvorite projekat u vašem Java radnom okruženju i kliknite na start dugme.
 ![idepokretanje](https://i.ibb.co/XsVVD5b/ide-Pokretanje.png)
 
 ### OSTALO
 
-#### API koji su korisceni
+#### API koji su korišćeni
 * **[*Random quote api*](https://github.com/lukePeavey/quotable)**
 
 <br>
