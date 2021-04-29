@@ -66,7 +66,7 @@ Projekat je radjen u sledecim tehnologijama:
 * **Brisanje/Editovanje komentara/pitanja.**
 * **Obavestenja.**
 
-[![studyFieldGif.gif](https://s3.gifyu.com/images/studyFieldGif.gif)](https://gifyu.com/image/tAc2)
+[![studyFieldGif470ae0e77426923b.gif](https://s3.gifyu.com/images/studyFieldGif470ae0e77426923b.gif)](https://gifyu.com/image/tOuP)
 
 <br>
 
@@ -77,7 +77,7 @@ Projekat je radjen u sledecim tehnologijama:
 * **Obavestenja.**
 * **Lista svih studenata sa fakulteta.**
 
-[![university.gif](https://s3.gifyu.com/images/university.gif)](https://gifyu.com/image/tAct)
+[![universityGif.gif](https://s3.gifyu.com/images/universityGif.gif)](https://gifyu.com/image/tOQH)
 
 <br>
 
@@ -89,7 +89,7 @@ Projekat je radjen u sledecim tehnologijama:
 <br>
 
 ### Kreiranje Kviza
-[![create-quiz.gif](https://s3.gifyu.com/images/create-quiz.gif)](https://gifyu.com/image/tAgM)
+[[![createQuizGif.gif](https://s3.gifyu.com/images/createQuizGif.gif)](https://gifyu.com/image/tOQh)
 * **Kreiranje numerickih ili tekstualnih pitanja.**
 * **Kreitanje 4 ponudjenih odgovora, izabrati koji je tacan.**
 
