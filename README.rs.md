@@ -134,8 +134,7 @@ Projekat je radjen u sledecim tehnologijama:
 
 Potrebno je kreirati konekciju sa bazom podataka, u mom slucaju konekcija se zove `learn_together`.
 
-Zatim je potrebno ubaciti sledeci **[*SQL FILE*](lhttps://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)**.
-
+Zatim je potrebno ubaciti sledeci [*SQL FILE*](https://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)
 ### Podesavanje projekta
 Otvoriti `application.yml` fajl i zameniti ga odgovarajucim podacima
 
