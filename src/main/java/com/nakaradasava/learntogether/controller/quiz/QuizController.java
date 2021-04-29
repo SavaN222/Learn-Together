@@ -85,7 +85,7 @@ public class QuizController {
             return "redirect:/list-quizzes";
         }
 
-        if (answer1 == null || answer2 == null || answer3 == null || answer4 == null) {
+        if (answer1.isEmpty() || answer2.isEmpty() || answer3.isEmpty() || answer4.isEmpty()) {
             redirectAttributes.addFlashAttribute("fieldErr", "Answer field cannot be empty");
             return "redirect:/list-quizzes";
         }
