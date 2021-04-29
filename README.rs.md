@@ -359,5 +359,12 @@ Ocekivani prikaz:
 Otvorite projekat u vasem Java radnom okruzenju i kliknite na start dugme.
 ![idepokretanje](https://i.ibb.co/XsVVD5b/ide-Pokretanje.png)
 
-### API koji su korisceni
+### OSTALO
+
+#### API koji su korisceni
 * **[*Random quote api*](https://github.com/lukePeavey/quotable)**
+
+#### Nalozi za testiranje
+* **Username: male_tester**
+* **Username: female_tester**
+* **Password: test123**
