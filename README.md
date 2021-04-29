@@ -97,7 +97,7 @@ Used technologies:
 
 ### Playing Quiz
 [![playQuiz.gif](https://s3.gifyu.com/images/playQuiz.gif)](https://gifyu.com/image/tAgN)
-* **When page is refreshed or quiz is started, position of answers is changed(Not in the same place every time).**
+* **When page is refreshed or quiz is started, position of answers is changed(not in the same place every time).**
 
 <br>
 
@@ -136,11 +136,11 @@ First you need to create database connection, in my case name of connection is `
 
 After creating connection you must import data from this [*SQL FILE*](https://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)
 ### Project Configuration
-Open `application.yml` file and change it with right information.
+Open `application.yml` file and change it with right credentials.
 
 path -> `projectLocation/src/main/resources/application.yml`
 
-File looking something like this:
+File looks something like this:
 ```yml
 spring:
   # DATABASE
@@ -234,12 +234,12 @@ javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not ac
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials u13sm377842ejj.16 - gsmtp
 ```
 
-**Two of the most cases for this error is:**
+**Two of the most cases for this error are:**
 * Bad credentials.
 * Google does not allow access to foreign applications.
 
-For fix this error you must:
-* [*ENABLE LESS SECURE APPS ACCESS TO GOOGLE ACCOUNT*](https://myaccount.google.com/u/0/lesssecureapps?pli=1&rapt=AEjHL4MmQ2kpWEDZ1wfdbTM6updFNoZ2U3Uo7WNUHe9HpgL8KCzA1i1jncNJayP6ek3Uf2G8morP5YXshkpOkUzNRfa02CUMoQ)
+For fixing this error you must:
+* [*ALLOW LESS SECURE APPS ACCESS TO GOOGLE ACCOUNT*](https://myaccount.google.com/u/0/lesssecureapps?pli=1&rapt=AEjHL4MmQ2kpWEDZ1wfdbTM6updFNoZ2U3Uo7WNUHe9HpgL8KCzA1i1jncNJayP6ek3Uf2G8morP5YXshkpOkUzNRfa02CUMoQ)
   -pay attention to which user is logged in to the google account.
   ![guglSecure](https://i.ibb.co/4pYSHtT/Less-secure-app-access.png)
   this is necessary for the application to send a link to confirm the account to newly-registered students via your e-mail
@@ -249,7 +249,7 @@ In file `StudentService` on path: `projectLocation/src/main/java/com/nakaradasav
 
 change:
 ```sh 
-Linija 82: String windowsPath = "C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static";
+Line 82: String windowsPath = "C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static";
 ```
 with your path to static folder.
 
@@ -261,7 +261,7 @@ Same change applied in `UploadConfig` on path:
 `lokacijaProjekta/src/main/java/com/nakaradasava/learntogether/config/UploadConfig`
 
 ```sh 
-Linija 15: registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static\\images\\");
+Line 15: registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\Korisnik\\IdeaProjects\\Learn Together\\src\\main\\resources\\static\\images\\");
 ```
 #### 📢Linux and Mac = file:Your/Path/To/Static
 #### 📢Windows = file:C:\\\Your\\\Path\\\To\\\Static
