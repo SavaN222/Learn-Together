@@ -16,7 +16,7 @@ Project for **[*🚀 TO THE MOON - first online individual serbian programming c
 
 ## 👨‍💻 About Project
 
-**Learn Together** is social network that connects students of all universities and enables them to quickly and easy exchange knowledge in various interesting and creative ways. 
+**Learn Together** is social network that connects students of all universities and enables them to quickly and easily exchange knowledge in various interesting and creative ways. 
 
 Used technologies:
 
@@ -61,7 +61,7 @@ Used technologies:
 <br>
 
 ### 🎓 Study Field section
-* **Ask questions in study fields, visible to all students regardless of university.**
+* **Ask questions in study fields, visible to all students, regardless of their university.**
 * **Comment and Like question.**
 * **Delete/Edit comment/question.**
 * **Notifications.**
@@ -82,8 +82,8 @@ Used technologies:
 <br>
 
 ### ❗❔ Quiz section
-* **Student can create quiz with questions and answers.**
-* **Student can delete quiz or question.**
+* **The student can create quizzes with questions and answers.**
+* **The student can delete quiz or question.**
 * **Play quiz.**
 
 <br>
@@ -97,14 +97,14 @@ Used technologies:
 
 ### Playing Quiz
 [![playQuiz.gif](https://s3.gifyu.com/images/playQuiz.gif)](https://gifyu.com/image/tAgN)
-* **When page is refreshed or quiz is started, position of answers is changed(not in the same place every time).**
+* **When the page is refreshed or quiz is started, position of answers is changed (not in the same place every time).**
 
 <br>
 
 ### 🐱‍🏍 My Profile Section
 * **Show information about the student.**
 * **Show all posted questions in 'STUDY FIELD' section.**
-* **Show all posts from news feed.**
+* **Show all posts from the news feed.**
 * **Show all friends and total number of it.**
 * **Update profile.**
 
@@ -132,11 +132,11 @@ Used technologies:
 
 ### Database
 
-First you need to create database connection, in my case name of connection is `learn_together`.
+First, you need to create database connection, in my case name of the connection is `learn_together`.
 
-After creating connection you must import data from this [*SQL FILE*](https://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)
+After creating the connection you must import data from this [*SQL FILE*](https://github.com/SavaN222/Learn-Together/blob/main/learnTogether.sql)
 ### Project Configuration
-Open `application.yml` file and change it with right credentials.
+Open `application.yml` file and change it with the right credentials.
 
 path -> `projectLocation/src/main/resources/application.yml`
 
@@ -190,7 +190,7 @@ spring:
 -  username: your_username
 -  password: your_password
 ````
-**Override your_username and your_password with your credentials for connection to database ❗**
+**Override your_username and your_password with your credentials for connection to the database ❗**
 
 **🚧 In most cases username is root, password is empty**
 
