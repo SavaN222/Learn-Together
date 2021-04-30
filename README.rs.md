@@ -5,9 +5,7 @@ Projekat rađen za **[*🚀 TO THE MOON - prvo online individualno srpsko takmi�
 
 > [*English Description*](https://github.com/SavaN222/Learn-Together/blob/main/README.md)
 
-[![learnTogetherGif.gif](https://s3.gifyu.com/images/learnTogetherGif.gif)](https://gifyu.com/image/t1ZV)
-
-
+[![YouTube prezentacija](https://i.ibb.co/p496zj0/gitThumb.png)](https://www.youtube.com/watch?v=qTPnJl19dKA&ab_channel=S.N22)
 ## 🚩 Navigacija
 
 - [O projektu](#-o-projektu)
