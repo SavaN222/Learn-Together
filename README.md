@@ -7,6 +7,7 @@ Project for **[*🚀 TO THE MOON - first online individual serbian programming c
 
 [![YouTube presentation](https://i.ibb.co/p496zj0/gitThumb.png)](https://www.youtube.com/watch?v=qTPnJl19dKA&ab_channel=S.N22)
 
+### ⏰ The project started on April 4 and ended on April 29.
 
 ## 🚩 Navigation
 
